@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 197.16405 103.19146"
+   height="103.19146mm"
+   width="197.16405mm">
+<defs>
+  <pattern id="img1" patternUnits="userSpaceOnUse" width="197.16405" height="103.19146">
+    <image href="bkg-downloads.jpg" x="0" y="0" width="197.16405" height="103.19146" />
+  </pattern>
+</defs>
+  <g
+     transform="translate(-7.0502082,-79.200966)"
+     id="layer1">
+    <path
+       d="m 17.486964,113.56494 c 7.863284,-14.455246 34.45273,-26.026266 45.459753,-19.247838 20.178425,12.426438 49.310593,-21.938383 77.000943,-5.764089 31.07575,18.151747 64.26659,-9.352047 64.26659,-9.352047 v 90.071674 c 0,0 -61.24029,11.83587 -98.5773,-0.36636 C 59.784245,153.921 48.2523,189.24955 27.946587,173.11602 12.166777,160.57846 7.8562724,131.26925 17.486964,113.56494 Z" fill="url(#img1)" id="rect833" />
+  </g>
+</svg>
