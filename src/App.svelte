@@ -1,26 +1,65 @@
 <script>
     import { component_subscribe, hasContext, listen } from "svelte/internal";
 
-    let versions = [], langs = {}, langData = {}, menu = [], ready = false;
-    let currLang = (navigator.language || navigator.userLanguage).split('-').shift() || 'en'; 
+    let downloads = [], langData = {}, menu = [], langList = [], ready = false;
+    let currLang = localStorage.getItem('currlang') || (navigator.language || navigator.userLanguage).split('-').shift() || 'en'; 
 
-    
+/*     var mddSetup = {
+        active: false,
+        title: 'icons',
+        mainclass: "colors",
+        data: [
+            { val: '', txt: translate.all, class: 'icon-remove_red_eye', type: "class" },
+            { val: 'H', txt: translate.horizontal, class: 'icon-crop_5_4', type: "class" },
+            { val: 'V', txt: translate.vertical, class: 'icon-crop_portrait', type: "class" },
+            { val: 'S', txt: translate.square, class: 'icon-crop_square', type: "class" }
+        ]
+    } */
+
+
+    // PANDACUB MAIL
+    // LOGIN: walter@pandacub.app
+    // PWD: Ei]ohxOyp*vtawmndrfgj4zcqlk0be
 
     async function loadV() {
         try {
-            let resp = await fetch('/build/data.json');
-            let json = await resp.json();
+            let p1 = new Promise(async (resolve) => {
+                try {
+                    let resp = await fetch('/data.json');
+                    let json = await resp.json();
+                    resolve(json);  
+
+                } catch (error) {
+                    console.log('GET DATA');
+                    console.log(error);                    
+                    resolve('');
+                }
+            });
+            let p2 = new Promise(async (resolve) => {
+                try {
+                    let tmp = await setLang(currLang);
+                    resolve(tmp);       
+
+                } catch (error) {
+                    console.log('SET LANG');
+                    console.log(error);
+                    resolve('');
+                }
+            });
+            let resp = await Promise.all([p1, p2]);
+            console.log(resp)
             let curSys = getOSInfo(); 
 
-            json.versions.forEach(ele => { 
+            let data = resp[0];
+            langData = resp[1]; 
+
+            data.downloads.forEach(ele => { 
                 if (ele.os.toLowerCase() == curSys.os) { ele.actual = true; } 
                 if (curSys.arch) {
                     ele.list.forEach((l) => l.actual = curSys.arch == l.arch.toLowerCase());
                 }
             });
-            versions = json.versions;
-            langs = json.languages;
-            setLang(currLang);
+            downloads = data.downloads;
             ready = true;
 
         } catch (error) {   
@@ -44,11 +83,15 @@
         return resp.os ? resp : null;
     }
 
-    function setLang(lang) {
-        langData = langs[lang];
+    async function setLang(lang) {
+
+        let resp = await fetch(`/langs/${lang}.json`);
+        let json = await resp.json();
+
         currLang = lang;
-        menu = Object.entries(langData.menu).map(entry => { return { id: entry[0], lbl: entry[1]}; });
-        console.log(menu)
+        localStorage.setItem('currlang', currLang);
+        menu = Object.entries(json.menu).map(e => { return { id: e[0], lbl: e[1]}; });
+        return json;
     }
 
 </script>
@@ -67,6 +110,9 @@
                         {#each menu as m}
                             <li><a href="#{m.id}">{m.lbl}</a></li>
                         {/each}
+                        <li>
+
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -95,22 +141,27 @@
         </section>
 
         <section id="resources">
-            <ul>
-                <li>
-                    <h2 class="strokeme">{langData.featurestitle}</h2>
-                </li>
-                {#each langData.featurelist as fl}
+            <div>
+                <ul>
                     <li>
-                        <h5>{fl.title}</h5>
-                        <p>{fl.text}</p>
+                        <h2 class="strokeme">{langData.featurestitle}</h2>
                     </li>
-                {/each}
+                    {#each langData.featurelist as fl}
+                        <li class="border">
+                            <div>
+                                <img src="/img/features/{fl.icon}.png" alt="{fl.title}">
+                            </div>
+                            <div>
+                                <h5>{fl.title}</h5>
+                                <p>{fl.text}</p>                            
+                            </div>                        
 
-                <li>
-                    <p>{langData.featuresobs.first}<a href="https://tinypng.com" target="_blank" rel="noopener">{langData.featuresobs.link}</a>{langData.featuresobs.last}</p>
-                </li>                                            
-            </ul>
-            
+                        </li>
+                    {/each}
+                </ul>
+                <p>{langData.featuresobs.first}<a href="https://tinypng.com" target="_blank" rel="noopener">{langData.featuresobs.link}</a>{langData.featuresobs.last}</p>                
+            </div>
+
         </section>
 
         <section id="downloads">
@@ -119,11 +170,11 @@
 
             <div>
                 <div>
-                    {#each versions as v}
+                    {#each downloads as v}
                         <div class="os" class:sel={v.actual}>
                             <h5>{v.os}</h5>
                             <div>
-                                <img src="/img/{v.id}.png" alt="{versions.os}">
+                                <img src="/img/{v.id}.png" alt="{downloads.os}">
                             </div>
                             <div class="links">
                                     {#each v.list as link}
@@ -198,6 +249,19 @@
 {/if}
 
 <style>
+    aside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        text-transform: uppercase;
+    }
     .back2top {
         position: fixed;
         bottom: 10px;
@@ -398,6 +462,21 @@
         text-align: left;
     }
 
+    #resources ul > li:first-child {
+        margin-bottom: 4rem;
+    }
+
+    #resources ul > li:not(:first-child) {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+    }    
+    #resources ul > li.border:not(:last-child) {
+        border-bottom: 1px dotted #ddd;
+    }
+
+
     #resources ul h5 {
         text-transform: uppercase;
         color: forestgreen;
@@ -406,6 +485,10 @@
 
     #resources ul p {
         margin-top: 0;
+    }
+
+    #resources ul img {
+        height: 80px;
     }
 
     ul {

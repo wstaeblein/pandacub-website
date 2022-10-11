@@ -1,0 +1,37 @@
+{
+    "languages": [{ "code": "pt", "name": "Português" }, { "code": "en", "name": "English" }, { "code": "es", "name": "Español" }],
+    "downloads": [
+        {
+            "id": "win",
+            "os": "Windows",
+            "list": [
+                {
+                    "arch": "i32",
+                    "url": "https://www.dropbox.com/s/b29i3hujkostw56/Panda%20Cub%20App%20win%200.9.4%20ia32.msi?dl=1",
+                    "desc": "32 bits",
+                    "ext": ".msi"
+                },
+                {
+                    "arch": "x64",
+                    "url": "https://www.dropbox.com/s/8zxw80oik8ki7o1/Panda%20Cub%20App%20win%200.9.4.msi?dl=1",
+                    "desc": "64 bits",
+                    "ext": ".msi"
+                }
+            ]
+        },
+        {
+            "id": "linux",
+            "os": "Linux",
+            "list": [
+
+            ]
+        },
+        {
+            "id": "mac",
+            "os": "MacOS",
+            "list": [
+
+            ]
+        } 
+    ]
+}
