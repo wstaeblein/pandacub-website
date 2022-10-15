@@ -1,10 +1,12 @@
 {
     "menu": {
         "resources": "Recursos",
-        "downloadlink": "Download",
+        "download": "Download",
         "donate": "Doação",
         "contactlink": "Contato"
     },
+    "wait": "Aguarde",
+    "version": "Versão",
     "overtitle": "Totalmente gratuito!",
     "title": "Otimizador e Redimensionador de Imagens",
     "hero": { 
@@ -29,14 +31,18 @@
     "featuresobs": {
         "first": "Para usar esse aplicativo é necessário a criação de uma conta no site ",
         "link": "tinypng.com",
-        "last": ". Esta conta é totalmente gratuita até 500 compressões de imagens por mês."
+        "last": ". Esta conta é totalmente gratuita até 500 compressões de imagens por mês.",
+        "test": { "abc": { "123": "xxx" } }
     },
+    "download": "Baixar",
     "downloadstitle": "Escolha o seu download",
     "soon": "Em Breve!!",
+    "donate": "Doar",
     "donationtitle": "Faça uma Doação",
     "donationtext1": "Este app é uma banda de um homem só e não é fácil criar e manter um pandinha desses.<br>Conto com sua ajuda para deixar o Panda Cub sempre forte, saudável e bem alimentado!",
     "donationtext2": "Use o QR Code ou o botão de doação.<br>Qualquer valor é bem vindo! Desde já obrigado pelo apoio.",
     "donatebtn": "Fazer Doação",
+    "donationphrase": "Obrigado por ajudar a manter o Panda Cub forte, saudável e bem alimentado.",
     "contacttitle": "Contato",
     "contacttext": {
         "first": "Use o formulário abaixo para qualquer contato. Se preferir, ",

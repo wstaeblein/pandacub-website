@@ -1,16 +1,18 @@
 {
     "menu": {
         "resources": "Resources",
-        "downloadlink": "Download",
+        "download": "Download",
         "donate": "Donate",
         "contactlink": "Contact"
     },
+    "wait": "Wait",
+    "version": "Version",
     "overtitle": "Totally free!",
     "title": "Image Optimizer and Resizer",
     "hero": { 
         "first" : "Application to easily reduce the size and even dimensions of images in JPG, PNG and WEBP formats. Makes use of the ", 
         "link": "tinypng.com", 
-        "last": "service's API."
+        "last": " service's API."
     },
     "herocards": [
         { "img": "practical.png", "text": "More Convenience" },
@@ -31,12 +33,15 @@
         "link": "tinypng.com",
         "last": "website. This account is completely free for up to 500 image compressions per month."
     },
+    "download": "Download",
     "downloadstitle": "Choose your download",
     "soon": "Coming Soon!!",
+    "donate": "Donate",
     "donationtitle": "Make a Donation",
     "donationtext1": "This app is a one-man band and it's not easy to create and maintain such a little panda.<br>I count on your help to keep Panda Cub strong, healthy and well fed!",
     "donationtext2": "Use the QR Code or the donation button.<br>Any amount is welcome! Thanks in advance for your support.",
     "donatebtn": "Make a Donation",
+    "donationphrase": "Thanks for helping keep Panda Cub strong, healthy and well fed.",
     "contacttitle": "Contact",
     "contacttext": {
         "first": "Use the form below for any contact. or ",

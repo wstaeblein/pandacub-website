@@ -1,9 +1,15 @@
 {
-    "languages": [{ "code": "pt", "name": "Português" }, { "code": "en", "name": "English" }, { "code": "es", "name": "Español" }],
+    "languages": [{ "code": "pt", "name": "Português" }, { "code": "en", "name": "English" }, { "code": "es", "name": "Español" }], 
+    "appversion": "0.7.2",
     "downloads": [
         {
             "id": "win",
             "os": "Windows",
+            "test": {
+                "abc": {
+                    "def": "abc"
+                }
+            },
             "list": [
                 {
                     "arch": "i32",
