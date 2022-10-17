@@ -23,6 +23,14 @@
     // LOGIN: walter@pandacub.app
     // PWD: Ei]ohxOyp*vtawmndrfgj4zcqlk0be
 
+    window.addEventListener('scroll', function() { console.log(window.scrollY, window.innerHeight * 0.5)
+        if (window.scrollY > window.innerHeight * 0.5) {
+            document.querySelector('.back2top').classList.remove('vanish');
+        } else {
+            document.querySelector('.back2top').classList.add('vanish');
+        }
+    });
+
     async function load() {
         try {
             let p1 = new Promise(async (resolve) => {
@@ -121,14 +129,19 @@
     }
 
     async function setLang(lang) { console.log('----> ' + lang)
+        currLang = lang;
+        
         if (langList[lang]) {
+            localStorage.setItem("currlang", currLang);
+            menu = Object.entries(langList[lang].menu).map((e) => {
+                return { id: e[0], lbl: e[1] };
+            });            
             return langList[lang];
         } else {
             try {
                 let resp = await fetch(`/langs/${lang}.json`);
                 let json = await resp.json();
 
-                currLang = lang;
                 localStorage.setItem("currlang", currLang);
                 menu = Object.entries(json.menu).map((e) => {
                     return { id: e[0], lbl: e[1] };
@@ -146,10 +159,7 @@
 
     async function handleLang(evt) {
         if (evt.detail) {
-            console.log('DETAIL: ' + evt.detail)
             let tmp = await setLang(evt.detail);
-            console.log('----------------------------------------------')
-            console.log(tmp)
             langData = tmp;
         }
     }
@@ -157,7 +167,7 @@
 
 {#if ready}
     <main id="home">
-        <span class="back2top">
+        <span class="back2top vanish">
             <a href="#home"><img src="/img/back.png" alt="" /></a>
         </span>
         <img src="/img/pandacub.png" class="panda" alt="Panda Cub" />
@@ -295,7 +305,7 @@
             <h2 class="strokeme">{langData.donationtitle}</h2>
             <div>
                 <div>
-                    <img src="/img/piggy.png" alt="Piggy" />
+                    <img src="/img/panda-coin.png" alt="Piggy" />
                 </div>
                 <div>
                     <p>{@html langData.donationtext1}</p>
@@ -370,6 +380,11 @@
 {/if}
 
 <style>
+    .vanish {
+        opacity: 0;
+        pointer-events: none;
+    }
+
     .dropdown {
         width: 28px;
         height: 28px;
@@ -468,10 +483,11 @@
     .back2top {
         position: fixed;
         bottom: 10px;
-        right: 10px;
+        right: 10px; /* 0 15vw; */
         width: 48px;
         height: 48px;
         z-index: 11;
+        transition: opacity 0.5s ease;
     }
 
     .back2top > a {
@@ -563,8 +579,9 @@
 
     #resources,
     #downloads {
-        margin-top: calc(40px + 15vw);
-        margin-bottom: calc(10px + 5vw);
+/*         margin-top: calc(40px + 15vw);
+        margin-bottom: calc(10px + 5vw); */
+        margin: calc(40px + 15vw) 15vw calc(10px + 5vw);
     }
 
     #downloads {
@@ -593,6 +610,14 @@
         gap: 10%;
         flex-wrap: wrap;
         margin: 0 15vw;
+    }
+
+    #donate > div > div:first-child {
+        max-width: 400px;
+    }
+
+    #donate > div > div:first-child > img {
+        width: 100%;
     }
 
     #donate h2 {
@@ -764,7 +789,7 @@
     nav.menu {
         margin: 10px auto 0;
         position: relative;
-        width: 435px;
+        width: 445px;
         height: 40px;
         /* background-color: #34495e; */
         border-radius: 8px;
@@ -810,7 +835,7 @@
         width: 70px;
     }
     nav.menu a:nth-child(5) {
-        width: 80px;
+        width: 90px;
     }
 
     nav.menu a {
@@ -848,7 +873,7 @@
     }
     nav.menu .start-4,
     nav.menu a:nth-child(5):hover ~ .animation {
-        width: 80px;
+        width: 90px;
         left: 310px;
         background-color: #ff0033;
     }

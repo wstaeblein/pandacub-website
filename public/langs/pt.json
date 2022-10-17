@@ -2,7 +2,7 @@
     "menu": {
         "resources": "Recursos",
         "download": "Download",
-        "donate": "Doação",
+        "donate": "Doar",
         "contactlink": "Contato"
     },
     "wait": "Aguarde",
@@ -31,8 +31,7 @@
     "featuresobs": {
         "first": "Para usar esse aplicativo é necessário a criação de uma conta no site ",
         "link": "tinypng.com",
-        "last": ". Esta conta é totalmente gratuita até 500 compressões de imagens por mês.",
-        "test": { "abc": { "123": "xxx" } }
+        "last": ". Esta conta é totalmente gratuita até 500 compressões de imagens por mês."
     },
     "download": "Baixar",
     "downloadstitle": "Escolha o seu download",
