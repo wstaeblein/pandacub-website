@@ -18,12 +18,12 @@
         mainclass: "colors",
         data: [],
     };
-
+console.log('LANG: ' + (navigator.language || navigator.userLanguage).split("-").shift() )
     // PANDACUB MAIL
     // LOGIN: walter@pandacub.app
     // PWD: Ei]ohxOyp*vtawmndrfgj4zcqlk0be
 
-    window.addEventListener('scroll', function() { console.log(window.scrollY, window.innerHeight * 0.5)
+    window.addEventListener('scroll', function() { 
         if (window.scrollY > window.innerHeight * 0.5) {
             document.querySelector('.back2top').classList.remove('vanish');
         } else {

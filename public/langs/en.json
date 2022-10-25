@@ -10,9 +10,9 @@
     "overtitle": "Totally free!",
     "title": "Image Optimizer and Resizer",
     "hero": { 
-        "first" : "Application pour réduire facilement la taille et même les dimensions des images aux formats JPG, PNG et WEBP. Utilise l'API du service ", 
+        "first" : "Application to easily reduce the size and even the dimensions of images in JPG, PNG and WEBP formats. Uses the ", 
         "link": "tinypng.com", 
-        "last": "."
+        "last": "service API."
     },
     "herocards": [
         { "img": "practical.png", "text": "More Convenience" },
