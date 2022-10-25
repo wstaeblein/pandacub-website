@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import ClickOutside from './ClickOutside.svelte';
+    import ClickOutside from './Clickoutside.svelte';
 	
     export let value;
     export let setup;
