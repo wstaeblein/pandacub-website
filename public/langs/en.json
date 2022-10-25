@@ -10,9 +10,9 @@
     "overtitle": "Totally free!",
     "title": "Image Optimizer and Resizer",
     "hero": { 
-        "first" : "Application to easily reduce the size and even dimensions of images in JPG, PNG and WEBP formats. Makes use of the ", 
+        "first" : "Application pour réduire facilement la taille et même les dimensions des images aux formats JPG, PNG et WEBP. Utilise l'API du service ", 
         "link": "tinypng.com", 
-        "last": " service's API."
+        "last": "."
     },
     "herocards": [
         { "img": "practical.png", "text": "More Convenience" },
@@ -22,7 +22,7 @@
     "featurestitle": "What the App Offers",
     "featurelist": [
         { "title": "Simple and straightforward interface", "icon": "drag", "text": "Just drag one or more image files over the program window to start the process." },
-        { "title": "Available in multiple languages", "icon": "globe", "text": "Currently the interface is available in Portuguese, English and Spanish." },
+        { "title": "Available in multiple languages", "icon": "globe", "text": "Currently the interface is available in portuguese, english, spanish and french." },
         { "title": "Control over the output file", "icon": "file", "text": "You can choose to overwrite the file, create a folder for the result, create a new file or even make a backup of the original." },
         { "title": "Image resizing", "icon": "redim", "text": "Scale down proportionately, scale down to fit or cover given dimensions, or create thumbnails." },
         { "title": "Image metadata management", "icon": "meta", "text": "Here you can choose to remove or preserve the copyright, geolocation and date of the images." },

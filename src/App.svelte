@@ -55,11 +55,11 @@
                 }
             });
             let resp = await Promise.all([p1, p2]);
-            console.log(resp);
+            console.log(resp); 
             let curSys = getOSInfo();
 
-            data = resp[0];
-            langData = resp[1];
+            data = resp[0]; 
+            langData = resp[1]; console.log(langData)
             prepDonationURL();
 
             mddSetup.data = data.languages.map((d) => {
@@ -244,10 +244,7 @@
                     {#each langData.featurelist as fl}
                         <li class="border">
                             <div>
-                                <img
-                                    src="/img/features/{fl.icon}.png"
-                                    alt={fl.title}
-                                />
+                                <img src="/img/features/{fl.icon}.png" loading="lazy" alt={fl.title} />
                             </div>
                             <div>
                                 <h5>{fl.title}</h5>
@@ -278,7 +275,7 @@
                         <div class="os" class:sel={v.actual}>
                             <h5>{v.os}</h5>
                             <div>
-                                <img src="/img/{v.id}.png" alt={downloads.os} />
+                                <img src="/img/{v.id}.png" loading="lazy" alt={downloads.os} />
                             </div>
                             <div class="links">
                                 {#each v.list as link}
@@ -296,7 +293,7 @@
                     {/each}
                 </div>
                 <div>
-                    <img src="/img/pandacub-sit.png" alt="Sitting panda cub" />
+                    <img src="/img/pandacub-sit.png" loading="lazy" alt="Sitting panda cub" />
                 </div>
             </div>
         </section>
@@ -305,7 +302,7 @@
             <h2 class="strokeme">{langData.donationtitle}</h2>
             <div>
                 <div>
-                    <img src="/img/panda-coin.png" alt="Piggy" />
+                    <img src="/img/panda-coin.png" loading="lazy" alt="Panda cub with coin" />
                 </div>
                 <div>
                     <p>{@html langData.donationtext1}</p>
@@ -313,7 +310,7 @@
                     <p>{@html langData.donationtext2}</p>
 
                     <p>
-                        <img src="/img/qrcode.png" alt="QR Code" />
+                        <img src="/img/qrcode.png" loading="lazy" alt="QR Code" />
                     </p>
                     <br />
                     <p>
@@ -340,16 +337,10 @@
                         >{langData.contacttext.last}
                     </p>
                     <div>
-                        <input
-                            type="text"
-                            placeholder={langData.placeholders.name}
-                        />
+                        <input type="text" placeholder={langData.placeholders.name} />
                     </div>
                     <div>
-                        <input
-                            type="text"
-                            placeholder={langData.placeholders.subject}
-                        />
+                        <input type="text" placeholder={langData.placeholders.subject} />
                     </div>
                     <div>
                         <textarea placeholder={langData.placeholders.text} />
@@ -359,7 +350,7 @@
                 </div>
 
                 <div class="grass"></div>
-                <div class="pandabamboo"><img src="/img/panda-bamboo.png" alt="panda"></div>
+                <div class="pandabamboo"><img src="/img/panda-bamboo.png" loading="lazy" alt="panda"></div>
                 <div class="syn">
                     <span>{langData.syn.first}<b>&#10084;</b>{langData.syn.second}
                         <a href="https://synergys.component_subscribe.br" alt="Website Synergys" target="_blank" rel="noopener">
@@ -579,9 +570,8 @@
 
     #resources,
     #downloads {
-/*         margin-top: calc(40px + 15vw);
-        margin-bottom: calc(10px + 5vw); */
-        margin: calc(40px + 15vw) 15vw calc(10px + 5vw);
+        margin-top: calc(40px + 12vw);
+        margin-bottom: calc(10px + 5vw);
     }
 
     #downloads {
@@ -613,7 +603,7 @@
     }
 
     #donate > div > div:first-child {
-        max-width: 400px;
+        max-width: 320px;
     }
 
     #donate > div > div:first-child > img {
@@ -712,7 +702,7 @@
 
     #resources ul h5 {
         text-transform: uppercase;
-        color: forestgreen;
+        color: #121969;
         margin: 10px 0 5px;
     }
 
@@ -789,7 +779,7 @@
     nav.menu {
         margin: 10px auto 0;
         position: relative;
-        width: 445px;
+        width: auto;
         height: 40px;
         /* background-color: #34495e; */
         border-radius: 8px;
@@ -811,6 +801,7 @@
         text-align: center;
         color: white;
         cursor: pointer;
+        transform: translateY(-1px);
     }
     nav.menu .animation {
         position: absolute;
@@ -826,16 +817,16 @@
         pointer-events: none;
     }
     nav.menu a:nth-child(2) {
-        width: 100px;
+        width: 120px;
     }
     nav.menu a:nth-child(3) {
-        width: 100px;
+        width: 130px;
     }
     nav.menu a:nth-child(4) {
-        width: 70px;
+        width: 90px;
     }
     nav.menu a:nth-child(5) {
-        width: 90px;
+        width: 110px;
     }
 
     nav.menu a {
@@ -855,26 +846,26 @@
     }
     nav.menu .start-1,
     nav.menu a:nth-child(2):hover ~ .animation {
-        width: 100px;
+        width: 120px;
         left: 40px;
         background-color: #ff0033;
     }
     nav.menu .start-2,
     nav.menu a:nth-child(3):hover ~ .animation {
-        width: 100px;
-        left: 140px;
+        width: 130px;
+        left: 160px;
         background-color: #ff0033;
     }
     nav.menu .start-3,
     nav.menu a:nth-child(4):hover ~ .animation {
-        width: 70px;
-        left: 240px;
+        width: 90px;
+        left: 290px;
         background-color: #ff0033;
     }
     nav.menu .start-4,
     nav.menu a:nth-child(5):hover ~ .animation {
-        width: 90px;
-        left: 310px;
+        width: 110px;
+        left: 380px;
         background-color: #ff0033;
     }
 

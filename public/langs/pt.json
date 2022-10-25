@@ -22,7 +22,7 @@
     "featurestitle": "O Que o App Oferece",
     "featurelist": [
         { "title": "Interface simples e direta", "icon": "drag", "text": "Basta clicar e arrastar um ou mais arquivos de imagem sobre a janela do programa para iniciar o processo." },
-        { "title": "Disponível várias línguas", "icon": "globe", "text": "Atualmente a interface está disponível em português, inglês e espanhol." },
+        { "title": "Disponível várias línguas", "icon": "globe", "text": "Atualmente a interface está disponível em português, inglês, espanhol e francês." },
         { "title": "Controle sobre o arquivo de saída", "icon": "file", "text": "Você pode escolher sobrescrever o arquivo, criar uma pasta para o resultado, criar um novo arquivo ou ainda fazer um backup do original." },
         { "title": "Redimensionamento de imagens", "icon": "redim", "text": "Diminua proporcionalmente, diminua para caber ou cobrir dimensões informadas ou ainda crie miniaturas." },
         { "title": "Gerência de metadados das imagens", "icon": "meta", "text": "Aqui você pode escolher remover ou preservar o copyright, a geolocalização e a data das imagens." },
