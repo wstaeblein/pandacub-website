@@ -12,7 +12,7 @@
     "hero": { 
         "first" : "Application to easily reduce the size and even the dimensions of images in JPG, PNG and WEBP formats. Uses the ", 
         "link": "tinypng.com", 
-        "last": "service API."
+        "last": " service API."
     },
     "herocards": [
         { "img": "practical.png", "text": "More Convenience" },

@@ -3,7 +3,8 @@
     import Minidropdown from './Minidropdown.svelte';
 
     let tmstart = new Date().getTime();
-    let waitTime = 2000;
+    let waitTime = 1200;
+    let menuActive  =false;
     let downloads = [],
         langData = {},
         data = {},
@@ -162,7 +163,7 @@
             let tmp = await setLang(evt.detail);
             langData = tmp;
         }
-    }
+    }close
 </script>
 
 {#if ready}
@@ -174,28 +175,24 @@
         <header id="home">
             <div class="nav">
                 <div>
-                    <img
-                        src="/img/logos/pandacub.png"
-                        class="logo"
-                        alt="Panda Cub Logo"
-                    />
+                    <img src="/img/logos/pandacub.png" class="logo" alt="Panda Cub Logo" />
                 </div>
-                <div class="mobimenux">
+                <div class:mobimenu={menuActive}>
+                    <img id="logomobi" src="/img/logos/pandacub-small-dark.png" alt="Logo" />
+                    <img id="burger" alt="Menu" on:click={() => menuActive = true} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAXVBMVEUAAAD+/v7////////////+/v7+/v7////////s7Oz////s7Oz5+fn9/f3////s7Oz////29vb4+Pj5+fn////////////////////+/v7////+/v7x8fH+/v7///+aJC4IAAAAHnRSTlMABP3cwKRriTK9+qogFey3h2ZALNTJsa+XkW5MSAZL7rdqAAAAfElEQVRYw+3WRw6FMAwEUCe/80PvLfc/JkICJSwZFiA07wCzsOWRhWg19m9AamT1DTQg+LsAC/kxwAswhQVEqTgKIES3EyYvQJt7nWgBmp24CdDQEGO3xuYJqDJxFEuRaD6m+gEoh8PnfKVGOj0gjyzAe7ZVlnz264wQLSati3nyPtnJjAAAAABJRU5ErkJggg==" />
                     <nav class="menu">
-                        <a href="">
-                            <img
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAdVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////li2ZAAAAAJnRSTlMAMvjoPRLY5ArvBcqeeSDdlbFrK72DS0Qm0KfTtpBkYBvEinNXT+b708MAAAGRSURBVEjH7ZLbdqsgEIYHZHRAxWM87CTm0IT3f8TdMDatbUO9atfq6ncjMv8HzAL4vZjj0cAMeghC2DJNs4HH3Sm9kdnA8ipxzyTKb7JxnkjAI+hQcKY40Cohj9xMtFkh2MzXpfSfzH4liMondbnX3qtEWBAj53PEJza2VUCgKeFue7AWVMzRxwJtIr9o24Pa7ZRRrQwKuOd61UA/SrntYKhCgmodt2tw8qas0ez1Q6Ef/XxSE57nlN4fqU4+F8wl5kxHWN1PLndInf5MwLPkdoVRqXvD2BvRcu2McMfO7WYNHGK3IJ5gyHhYWpgZKl4jQ1NH7h26NlhyvRpeHzO3azO5TPM6A00FRxS9Pubiaprdhzy33pgu5tBEL4857UGd3ANOCvqUD5hDyttaWhz/QyN05OOOcElut4uYSxdA5oildi65AD1pzX9BZIl4SxKAuSoAkYTzfNPqaoBZJzA/I7T/PO1aQXbo6eRaQYFH/QnfLTTFV0KxFCjfxne2c02Mb+ZygqUxiDsNzXPNYu738B8Xu4vqsiMoQwAAAABJRU5ErkJggg=="
-                                alt="home"
-                            />
+                        <a href="" on:click|preventDefault={() => menuActive = false}>
+                            <img alt="home" id="homelight" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAdVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////li2ZAAAAAJnRSTlMAMvjoPRLY5ArvBcqeeSDdlbFrK72DS0Qm0KfTtpBkYBvEinNXT+b708MAAAGRSURBVEjH7ZLbdqsgEIYHZHRAxWM87CTm0IT3f8TdMDatbUO9atfq6ncjMv8HzAL4vZjj0cAMeghC2DJNs4HH3Sm9kdnA8ipxzyTKb7JxnkjAI+hQcKY40Cohj9xMtFkh2MzXpfSfzH4liMondbnX3qtEWBAj53PEJza2VUCgKeFue7AWVMzRxwJtIr9o24Pa7ZRRrQwKuOd61UA/SrntYKhCgmodt2tw8qas0ez1Q6Ef/XxSE57nlN4fqU4+F8wl5kxHWN1PLndInf5MwLPkdoVRqXvD2BvRcu2McMfO7WYNHGK3IJ5gyHhYWpgZKl4jQ1NH7h26NlhyvRpeHzO3azO5TPM6A00FRxS9Pubiaprdhzy33pgu5tBEL4857UGd3ANOCvqUD5hDyttaWhz/QyN05OOOcElut4uYSxdA5oildi65AD1pzX9BZIl4SxKAuSoAkYTzfNPqaoBZJzA/I7T/PO1aQXbo6eRaQYFH/QnfLTTFV0KxFCjfxne2c02Mb+ZygqUxiDsNzXPNYu738B8Xu4vqsiMoQwAAAABJRU5ErkJggg==" />                           
+                            <img alt="home" id="homedark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAk1BMVEUAAABkZGRnZ2djY2P///+EhIQzMzNsbGz///9OTk5lZWVbW1tYWFg/Pz9ERERKSkpTU1NZWVlWVlampqb///+enp7///9ra2tBQUFVVVVubm5qamq1tbWysrKtra1ubm5cXFxXV1dsbGxubm5tbW1ra2v///////9paWlYWFhubm5bW1vExMS4uLiUlJT///8zMzO6FcGNAAAAMHRSTlMAgIz1MigVIBLx78cb/fr26NHjQAo3Bd/84ciWXFVJrHHe2K+lnisi5tnArY9jMht9x6N8AAABcUlEQVRIx+3S2W6DMBAF0MGt7QBmC4SSEsi+b/P/X1fJDKkjFcNTK0U9bxhfM2MGXld+v+dARloGFmKx8rzVQuiHq6etJpbjGWpMf+QTGw50kfMAtWAuhwREgg9H0R+YxGiIJ32B2kVtPEXNra0B4YSoJZxTZaFrCUifui3Ffi9YgaQrII+oRTOoDocqryJ7gLdlp6IMEcNSpK4t0J43Vpwq87madgdmIe2SfIlkepN+R0BtqMOz5EYdLpfnHwPtoZGjqhAN4Uw5VOqSG3+XSo1TMS/wSbEWaUzNTR7D7NJ+rqhkk6/4mApcCBrmtl1jjgxxKtc0vyz7HuZgq8xrN7lpfi2aTWsJp7Y7wSLsEDHR3voJPBpj6aOFL29NuR5s9AXo4bRJeNP6BmRCT3Z0ZiIB1JYJcLCXA4JtFZBBAfIngehDiwYHypFWDg4w0Nh/4LcDadAXCGowZZc3A72rPWPtksFzYv/+sMtobfe09jq+AIYXxKOQLstlAAAAAElFTkSuQmCC" />
                         </a>
                         {#each menu as m}
-                            <a href="#{m.id}">{m.lbl}</a>
+                            <a href="#{m.id}" on:click={() => menuActive = false}>{m.lbl}</a>
                         {/each}
                         <div class="animation start-0" />
                         <div class="dropdown">
                             <Minidropdown bind:value={currLang} setup={mddSetup} on:minidropdown={handleLang}></Minidropdown>
                         </div>
-                        
+                        <img alt="Close" id="close" on:click={() => menuActive = false} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEUAAAAoKCgrKysmJiYzMzMqKiooKCgjIyMkJCQvLy8zMzMJXJBWAAAACnRSTlMAG/CBFOvRt5dNI+iQEgAAAQNJREFUSMfM1KFuQkEQheFW1RKamrraurqmqgqCxKJRKARvgEOjcEAg8D8lySZwMnvEsVw3e3e/e3d3Zl6e5nlfb/uhye+PgjGcB/X96wJWj2AGfNUJQ+B0X/QBcBgU4BtgKkCEADj9t+ANQIQAWLboE0CEANi36A8RFeDYwg0iKsBFgogGFGGHiApwbfEIERVgLhERw7LAR+p8IwwwogOc6AAnOsCJDnDCABEOGOGAEw6IcMAJB5wQ4IQBTgiIE/In4k/mbcaDykcdLytfd0yYnHIxaXPax8LJpReLN5Z/bCCxBeUmlttgbqS5FedmfhsLnuqAUIVCsEoiVKkRrBYHCwAAc/g48uebttwAAAAASUVORK5CYII=" />
                     </nav>
                 </div>
             </div>
@@ -213,10 +210,7 @@
                     <div class="overtitle">{langData.overtitle}</div>
                     <h1 class="">{langData.title}</h1>
                     <p class="subtitle">
-                        {langData.hero.first}<a
-                            href="https://tinypng.com/"
-                            rel="noopener">{langData.hero.link}</a
-                        >{langData.hero.last}
+                        {langData.hero.first}<a href="https://tinypng.com/" target="_blank" rel="noopener">{langData.hero.link}</a >{langData.hero.last}
                     </p>
                 </div>
                 <ul class="features">
@@ -411,34 +405,17 @@
         bottom: 68px;
         z-index: 2;
     }
-    .mobimenu {
-        position: fixed;
-        background: #fff;
-        color: forestgreen;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 111;
-        display: flex;
+
+    #burger, #close, #logomobi {
+        display: none;
     }
 
-    .mobimenu ul {
-        display: block !important;
-        font-size: larger;
-        width: 220px;
-        margin: auto;
+    #homelight {
+        display: inline-block;
     }
 
-    .mobimenu ul > li {
-        padding: 12px 0;
-    }
-
-    .mobimenu ul > li:last-child {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        padding: 0;
+    #homedark {
+        display: none;
     }
 
     .lang {
@@ -984,4 +961,180 @@
             width: 220px;
         }
     }
+
+    @media screen and (max-width: 1024px) {
+        header {
+            margin: 0 20px;
+        }
+
+        .panda {
+            display: none;
+        }
+
+        #initial {
+            margin: 4vw 15px;
+        }
+
+        div.nav {
+            padding: 0;
+        }
+
+    }
+
+    @media screen and (max-width: 900px) {
+
+        .dropdown {
+            transform: none;
+            position: fixed;
+            top: 50px;
+            right: 15px;
+        }
+
+        #burger {
+            display: inline-block;
+            width: 32px;
+            cursor: pointer;
+            margin: 15px 15px 0 0;
+        }
+
+        nav.menu {
+            display: none;
+        }
+
+        .mobimenu {
+            position: fixed;
+            background: #fff;
+            color: forestgreen;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 111;
+            display: flex;
+        }
+
+        .mobimenu #logomobi {
+            display: block;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            height: 40px;
+        }
+        
+
+        .mobimenu #close {
+            display: block;
+            position: fixed;
+            top: 10px;
+            right: 18px;
+            height: 28px;
+            transition: opacity 0.4s ease;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        .mobimenu #close:hover {
+            opacity: 1;
+        }
+
+        .mobimenu #homelight {
+            display: none;
+        }
+
+        .mobimenu #homedark {
+            display: inline-block;
+        }    
+
+        .mobimenu nav.menu {
+            font-size: larger;
+            display: block;
+            margin: auto;
+            height: fit-content;
+            text-align: center;
+        }
+
+        .mobimenu > nav.menu > a {
+            padding: 12px 0;
+            color: #333;
+            display: block;
+            margin: auto;
+        }
+
+        .mobimenu  > nav.menu > a:last-child {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 0;
+        }
+
+        nav.menu .animation {
+
+            height: 40px;
+
+        }
+
+
+
+        nav.menu a:first-child {
+            width: 130px;
+            pointer-events: bounding-box;
+        }
+        nav.menu a:nth-child(2) {
+            width: 130px;
+        }
+        nav.menu a:nth-child(3) {
+            width: 130px;
+        }
+        nav.menu a:nth-child(4) {
+            width: 130px;
+        }
+        nav.menu a:nth-child(5) {
+            width: 130px;
+        }
+
+        nav.menu a {
+            width: 130px;
+        }
+        nav.menu a > img {
+            height: 20px;
+            transform: translateY(2px);
+        }
+
+        nav.menu .start-0,
+        nav.menu a:nth-child(1):hover ~ .animation {
+            width: 130px;
+            left: 0;
+            top: 8px;
+            background-color: #ff0033;
+        }
+        nav.menu .start-1,
+        nav.menu a:nth-child(2):hover ~ .animation {
+            width: 130px;
+            left: 0;
+            top: 72px;
+            background-color: #ff0033;
+        }
+        nav.menu .start-2,
+        nav.menu a:nth-child(3):hover ~ .animation {
+            width: 130px;
+            left: 0;
+            top: 136px;
+            background-color: #ff0033;
+        }
+        nav.menu .start-3,
+        nav.menu a:nth-child(4):hover ~ .animation {
+            width: 130px;
+            left: 0;
+            top: 200px;
+            background-color: #ff0033;
+        }
+        nav.menu .start-4,
+        nav.menu a:nth-child(5):hover ~ .animation {
+            width: 130px;
+            left: 0;
+            top: 264px;
+            background-color: #ff0033;
+        }
+
+    }
+
 </style>
