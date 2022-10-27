@@ -1,10 +1,12 @@
 <script>
+    import { fade } from 'svelte/transition';
     import { component_subscribe, hasContext, listen } from "svelte/internal";
     import Minidropdown from './Minidropdown.svelte';
 
     let tmstart = new Date().getTime();
     let waitTime = 1200;
     let menuActive  =false;
+    let menuClosing = false;
     let downloads = [],
         langData = {},
         data = {},
@@ -163,7 +165,16 @@
             let tmp = await setLang(evt.detail);
             langData = tmp;
         }
-    }close
+    }
+
+    function closeMenu() {
+        menuClosing = true;
+        setTimeout(() => {
+            menuActive = false;
+            menuClosing = false;
+        }, 550);
+        
+    }
 </script>
 
 {#if ready}
@@ -177,8 +188,8 @@
                 <div>
                     <img src="/img/logos/pandacub.png" class="logo" alt="Panda Cub Logo" />
                 </div>
-                <div class:mobimenu={menuActive}>
-                    <img id="logomobi" src="/img/logos/pandacub-small-dark.png" alt="Logo" />
+                <div class:mobimenu={menuActive} class:closing={menuClosing}>
+                    <img id="logomobi" src="/img/logos/pandacub-small-dark.png" loading="lazy" alt="Logo" />
                     <img id="burger" alt="Menu" on:click={() => menuActive = true} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAXVBMVEUAAAD+/v7////////////+/v7+/v7////////s7Oz////s7Oz5+fn9/f3////s7Oz////29vb4+Pj5+fn////////////////////+/v7////+/v7x8fH+/v7///+aJC4IAAAAHnRSTlMABP3cwKRriTK9+qogFey3h2ZALNTJsa+XkW5MSAZL7rdqAAAAfElEQVRYw+3WRw6FMAwEUCe/80PvLfc/JkICJSwZFiA07wCzsOWRhWg19m9AamT1DTQg+LsAC/kxwAswhQVEqTgKIES3EyYvQJt7nWgBmp24CdDQEGO3xuYJqDJxFEuRaD6m+gEoh8PnfKVGOj0gjyzAe7ZVlnz264wQLSati3nyPtnJjAAAAABJRU5ErkJggg==" />
                     <nav class="menu">
                         <a href="" on:click|preventDefault={() => menuActive = false}>
@@ -192,18 +203,14 @@
                         <div class="dropdown">
                             <Minidropdown bind:value={currLang} setup={mddSetup} on:minidropdown={handleLang}></Minidropdown>
                         </div>
-                        <img alt="Close" id="close" on:click={() => menuActive = false} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEUAAAAoKCgrKysmJiYzMzMqKiooKCgjIyMkJCQvLy8zMzMJXJBWAAAACnRSTlMAG/CBFOvRt5dNI+iQEgAAAQNJREFUSMfM1KFuQkEQheFW1RKamrraurqmqgqCxKJRKARvgEOjcEAg8D8lySZwMnvEsVw3e3e/e3d3Zl6e5nlfb/uhye+PgjGcB/X96wJWj2AGfNUJQ+B0X/QBcBgU4BtgKkCEADj9t+ANQIQAWLboE0CEANi36A8RFeDYwg0iKsBFgogGFGGHiApwbfEIERVgLhERw7LAR+p8IwwwogOc6AAnOsCJDnDCABEOGOGAEw6IcMAJB5wQ4IQBTgiIE/In4k/mbcaDykcdLytfd0yYnHIxaXPax8LJpReLN5Z/bCCxBeUmlttgbqS5FedmfhsLnuqAUIVCsEoiVKkRrBYHCwAAc/g48uebttwAAAAASUVORK5CYII=" />
+                        <img alt="Close" id="close" on:click={closeMenu} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEUAAAAoKCgrKysmJiYzMzMqKiooKCgjIyMkJCQvLy8zMzMJXJBWAAAACnRSTlMAG/CBFOvRt5dNI+iQEgAAAQNJREFUSMfM1KFuQkEQheFW1RKamrraurqmqgqCxKJRKARvgEOjcEAg8D8lySZwMnvEsVw3e3e/e3d3Zl6e5nlfb/uhye+PgjGcB/X96wJWj2AGfNUJQ+B0X/QBcBgU4BtgKkCEADj9t+ANQIQAWLboE0CEANi36A8RFeDYwg0iKsBFgogGFGGHiApwbfEIERVgLhERw7LAR+p8IwwwogOc6AAnOsCJDnDCABEOGOGAEw6IcMAJB5wQ4IQBTgiIE/In4k/mbcaDykcdLytfd0yYnHIxaXPax8LJpReLN5Z/bCCxBeUmlttgbqS5FedmfhsLnuqAUIVCsEoiVKkRrBYHCwAAc/g48uebttwAAAAASUVORK5CYII=" />
                     </nav>
                 </div>
             </div>
         </header>
         <section id="initial">
-            <div>
-                <img
-                    src="/img/screens/{currLang}.png"
-                    class="screen"
-                    alt="Tela"
-                />
+            <div id="screen">
+                <img src="/img/screens/{currLang}.png" class="screen" alt="Tela" />
             </div>
             <div>
                 <div class="hero">
@@ -520,7 +527,7 @@
     .form {
         max-width: 600px;
         width: 100%;
-        margin: 0 auto 3vw;
+        margin: 0 auto max(4vw, 80px);
     }
 
     .form > div:not(:last-child) {
@@ -574,13 +581,13 @@
 
     #donate > div {
         display: flex;
-        gap: 10%;
-        flex-wrap: wrap;
+        gap: 8%;
+        flex-wrap: nowrap;
         margin: 0 15vw;
     }
 
     #donate > div > div:first-child {
-        max-width: 320px;
+        width: 25%;
     }
 
     #donate > div > div:first-child > img {
@@ -611,21 +618,27 @@
 
     #downloads > div {
         display: flex;
-        gap: 10%;
+        gap: 6%;
         flex-wrap: wrap;
         margin: 0 15vw;
+        justify-content: space-between;
     }
 
     #downloads > div > div:first-child {
         display: flex;
-        gap: 15%;
-        flex-wrap: wrap;
+        gap: 0;
+        flex-wrap: nowrap;
         padding: 1vw 0;
         width: 65%;
+        justify-content: space-between;
     }
+
+
 
     #downloads > div div.os {
         text-align: center;
+        padding: 10px;
+        width: 160px;
     }
 
     #downloads > div div.os > div > a {
@@ -643,7 +656,7 @@
     }
 
     #downloads > div div.os img {
-        width: 70%;
+        width: max(6vw, 48px);
     }
     #downloads > div div.os div.links {
         margin-top: 15px;
@@ -664,7 +677,7 @@
     }
 
     #resources ul > li:first-child {
-        margin-bottom: 4rem;
+        margin-bottom: max(30px, 3vw);
     }
 
     #resources ul > li:not(:first-child) {
@@ -673,6 +686,7 @@
         margin-bottom: 20px;
         padding-bottom: 5px;
     }
+
     #resources ul > li.border:not(:last-child) {
         border-bottom: 1px dotted #ddd;
     }
@@ -737,6 +751,7 @@
 
     section > div:last-child {
         text-align: left;
+        padding: 0 20px;
     }
 
     .panda {
@@ -889,7 +904,7 @@
     }
 
     img.logo {
-        height: 52px;
+        height: max(calc(1.6vw + 30px), 36px);
         padding-top: 10px;
     }
 
@@ -905,14 +920,7 @@
         margin: 0 0 10px 0;
     }
 
-    h2 {
-        font-family: "Teko", sans-serif;
-        font-size: calc(14px + 1.6vw);
-        text-transform: uppercase;
-        color: #fff;
-        margin: 0 0 10px 0;
-        letter-spacing: 2px;
-    }
+
 
     .hero p.subtitle {
         text-shadow: 2px 2px 0 #888;
@@ -949,6 +957,14 @@
         ul.features {
             gap: 5%;
         }
+
+        #downloads > div {
+            margin: 0 3vw;
+        }
+
+        #donate > div {
+            margin: 0 3vw;
+        }
     }
 
     @media screen and (max-width: 1120px) {
@@ -960,9 +976,30 @@
         img.screen {
             width: 220px;
         }
+
+        section {
+            gap: 6%;
+        }
+
+        #initial {
+            margin: 4vw 8px;
+        }
     }
 
     @media screen and (max-width: 1024px) {
+
+        #downloads > div > div:last-child {
+            display: none;
+        }
+
+        #downloads > div > div:first-child {
+            width: 100%;
+        }
+
+        #downloads > div {
+            margin: 0;
+        }
+
         header {
             margin: 0 20px;
         }
@@ -972,16 +1009,51 @@
         }
 
         #initial {
-            margin: 4vw 15px;
+            margin: 4vw 20px;
         }
 
         div.nav {
             padding: 0;
         }
 
+        section {
+            gap: 5%;
+        }
+
+        ul.features {
+            gap: 20px;
+        }
+
     }
 
     @media screen and (max-width: 900px) {
+
+        #donate > div {
+            gap: 0;
+            margin: 0;
+        }
+
+        #donate > div > div:first-child {
+            width: 180px;
+            box-sizing: border-box;
+            padding-right: 20px;
+        }
+
+        ul.features {
+            gap: 15px;
+        }
+
+        section {
+            gap: 4%;
+        }
+
+        #initial {
+            margin: 4vw;
+        }
+
+        img.screen {
+            width: 190px;
+        }
 
         .dropdown {
             transform: none;
@@ -994,7 +1066,7 @@
             display: inline-block;
             width: 32px;
             cursor: pointer;
-            margin: 15px 15px 0 0;
+            margin: 15px 0 0;
         }
 
         nav.menu {
@@ -1011,7 +1083,30 @@
             height: 100%;
             z-index: 111;
             display: flex;
+            animation: fadein 600ms forwards;
         }
+
+        .mobimenu.closing {
+            animation: fadeout 600ms forwards;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeout {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }        
 
         .mobimenu #logomobi {
             display: block;
@@ -1025,7 +1120,7 @@
         .mobimenu #close {
             display: block;
             position: fixed;
-            top: 10px;
+            top: 15px;
             right: 18px;
             height: 28px;
             transition: opacity 0.4s ease;
@@ -1137,4 +1232,92 @@
 
     }
 
+    @media screen and (max-width: 750px) {
+
+        .pandabamboo {
+            left: 0;
+        }
+
+        #screen {
+            display: none;
+        }
+
+        .overtitle, h1 {
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        #downloads div.subtitle {
+            font-size: 16px;
+            padding-top: 5px;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .pandabamboo {
+            left: -4vw;
+            transform: rotate(45deg);
+            bottom: 0px;
+        }
+
+        #donate > div {
+            display: block;
+        }
+
+        #donate > div > div:first-child {
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        #donate > div > div:first-child > img {
+            width: 180px;
+        }
+
+        #donate > div > div > p > img {
+            margin: auto;
+            display: block;
+        }
+
+        #donate > div > div > p:last-child {
+            text-align: center;
+        }
+
+        section > div:last-child {
+            padding: 0 10px;
+        }
+
+        ul.features {
+            gap: 10px;
+        }
+
+        section {
+            gap: 15px;
+        }
+
+        #initial {
+            margin: 4vw 10px;
+        }
+    }
+
+    @media screen and (max-width: 512px) {
+        #downloads > div div.os > div > a {
+            display: block;
+            padding: 0;
+            margin-bottom: 10px;
+            margin: 0!important;
+        }
+
+        #resources ul > li:not(:first-child) {
+            display: block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        #resources ul p {
+            text-align: justify;
+        }
+    }
 </style>

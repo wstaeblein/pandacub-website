@@ -18,6 +18,15 @@ h1 {
     letter-spacing: 1px;
 }
 
+h2 {
+    font-family: "Teko", sans-serif;
+    font-size: calc(14px + 1.6vw);
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+}
+
 a {
 	color: rgb(0,100,200);
 	text-decoration: none;
@@ -89,4 +98,29 @@ a.button::before {
 
 a.button:hover::before {
     transform: scale(1);
+}
+
+
+@media screen and (max-width: 900px) {
+
+    body {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    body {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
 }
