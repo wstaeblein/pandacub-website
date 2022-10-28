@@ -53,5 +53,10 @@
     "syn": {
         "first": "Feito com ",
         "second": " por "
-    }            
+    },
+    "seo": {
+        "desc": "Permite otimizar e redimensionar imagens nos formatos PNG, JPG e WEBP sem perda de qualidade.",
+        "title": "Panda Cub - Aplicativo de Otimização de Imagens",
+        "appname": "Panda Cub App"
+    }      
 }
