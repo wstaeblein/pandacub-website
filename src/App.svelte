@@ -200,10 +200,12 @@
         }).then(() => {
             formMode = 2;
             myForm.reset();
+            setTimeout(() => formMode = 0, 4000);
 
         }).catch((error) => {
             formMode = 3;
             console.log(error);
+            setTimeout(() => formMode = 0, 4000);
         });
     }
 
@@ -437,12 +439,12 @@
                             <span>{langData.formwait}</span>
                         </div>
                     {:else if formMode == 2}
-                        <div class="formwait">
+                        <div class="formwait" on:click={() => formMode = 0}>
                             <img alt="ok" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAxlBMVEUAAAAyunwqtXkyunwyunwyunwyunwos3grtnoyunwyunwyunwyunwyunwyunwyunwyunwyunwyunwLoW4Mom4MoW8Nom8LoW4LoW4yunwNom8grHkNo28Oo28Oo28QpG8Oom8yunwKoG7///8NonAqtXk1u373/fpjy5u05s9dyZi76NSm3cv0+/jw+va149Or382b3cFqzqBVxpNCwIfa8+iv4NC/6te459Ky4dIVp3LP7+A2tIY7vYKM2LZlw6RYv5tBtY8Dxft0AAAAIXRSTlMA9BCuhdqPJQfkzVUb7MZ1al069d2zkuzNt4n6eGxhPlhVO3rrAAACGklEQVRYw52X53raMBhGJcvgsIdZIauSABPa0BKa0pJ03f9NBTL8woct68v5f87joSnyqNdCVa1IrWWlqsJaXbDolkuaUCp3fe2gBfu40Qp89FDqXGRYmGg3tJNG26lHTV1IM8r3O1J7IDt5fll7Us7Uz5T2Rp1l+OeawflpQWkWyv3+/O/Q0Ww6h34kNRsZCdDUH6AJv+3r/F5/1yAd1UHDT5+tEms3SDTeZ1bo6d/aPQ8ohG8PIL19UpCvj9Bi+KTQegmUPH2wSdeovd/19sGTfqOLQczx7f/twYAu8X17YbbpO9Q9/J/EXxljtlO9py5q+oj7zePtusD/OjE7Ji+FGhlFK7sjuS/000IoFPFpYfaZ+L92PgpKVImPgsNHoSoq8P9Yi4LLB9OKkJiriQXJPNP/8eqDC6FTFnYPCi4fHATWlhRcPgIShQdSePTw48OPuF5aF9/ggyF+IwoM34yOB9JiyfRNH0MZBYZvxnQyLe5YvvmE6ewqfIFPiLCgoMDwe1jSSMHpg0Hmojq/K/DBTfayPk88/R42ltMC1p98LrG1nRR8/DjA5npagJ/L2LW9z5d4/xyGgfOAMfv398k4uSo44kwnbn9EDlncQhyRYx63cE0OmtzCQBAUr9DPOGxzCv2s4zrjGeB/7DsMeFceWoiveZcuWhhFrGsfLQyvWBdPWojHAf/qi0LvMmBfvlHoDW58TP71/xmh+aefbOvLQAAAAABJRU5ErkJggg==" />
                             <span>{langData.formok}</span>
                         </div>
                     {:else if formMode == 3}
-                        <div class="formwait hand" on:click={manageForm.bind(this, 'reset')}>
+                        <div class="formwait hand" on:click={() => formMode = 0}>
                             <img alt="err" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA8FBMVEUAAADxUknoSUHxUknxUknxUknxUknxUknpSULxUknxUknxUknxUknxUknxUknxUknxUknxUknxUkmvEA+zExK1FRS2FxW3FxazExLxUkmwERC0FBO1FhW5Ghi7GxrEJCG9HRvSMy3fQDnTNC/xUkmtDg7////W1tawExP5tbHiQzzYOTPyV07y8vL80M7yYlr95uSzJSXzZV3+9/fpvb3enJzLnJzIjY3HiIj7y8nRvLzgo6PLoKD4pJ/zcWm7OTn23t71xcPnubnmtbXNpqbqW1S2Ly/V0NDiqanUgID1g3zCcnLzcGjEUlLgUEq5RkZeS/FbAAAAJHRSTlMA9BDaro+F5AfszcZ1al1VOiYb9NuRhnDDt+2vrl5WOycczc18uB89AAACV0lEQVRYw52X2XLTMBRAJddLYydxmr17C9dKCyFdUihQ2rRAyw7//zcY0UG+V5YscR49c85IjqOFmejncZgmHIAnaRjnfeZFL1oDwlrUc7WDtrJxox246DEHIzxuTHRaYKXVseobGTSSbZj9LgcHeNfkR+BIVKuvh+BMuF7jb4IHm3ohBC9C+/z930MXvOmi35/7B3j1e8jgP8iU3wHC96/nQJjfnADh31cdkO//ZCGEuJujZ9dLIRYk0QoeAzEgzk/FHxbVwrF8dErGFT8OgGu+KihfFvAY+N8htPH4S18VkF9yew9V2jKA159y/qggfcXdM7RGyfUPD0BUeTPHfskKFXraR3wjSIH44sdRtRBpM5gvSYH44qGQBTWHPmCuhZXPRYEKfZYD4djmXxwVuJCzGLSC3ceFmIVgL1CfFEKWgnPhfenTQsoSsBaoTwsJ4+BY+CB9WuAMwF6gPi24Bl68UgFUYNzNn83qC5wljr6hkLDUzTcVnrDQzZe80ws7LHbxzYUxyx18S2FP/ztrPuKSBA6bFpSryxnmDPnDpiXtqihI4RcKjPRFlfq08IAC+/Zl/WUheV3xP+IZGDYW5dPCW/wKJoatTfm4QP1BULu53t8qHxWoX4wN2/vPCyGWXwrEt0/l/Im/FZgOGM/PVvrysVI6egOSjBYKB6bokOVfGBzgY553YZchIt/CiBFCv8K24bDtWpjWHdc9xrCNfP/3MDJfeVwKg13bpau5MD3wuvbRwtbE6+JJC4Nx4HP1pYXhJPC4fNPCcLRvEezX/6c7471DZuA34aDQlgz3i7oAAAAASUVORK5CYII=" />
                             <span>{langData.formerror}</span>
                         </div>
