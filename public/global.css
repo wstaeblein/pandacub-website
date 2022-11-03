@@ -57,11 +57,19 @@ input, button, select, textarea {
     width: 100%;
 }
 
+/* input.dirty:valid, textarea.dirty:valid {
+    border-color: forestgreen;
+}
+
+input.dirty:invalid, textarea.dirty:invalid {
+    border-color: crimson;
+} */
+
 input:disabled {
 	color: #ccc;
 }
 
-a.button {
+a.button, button {
     padding: 5px 15px;
     background-color: #ff0033;
     color: #fff!important;
@@ -71,13 +79,16 @@ a.button {
     text-decoration: none;
     position: relative;
     border-radius: 4px;
+    width: auto
 }
-a.button > span {
+a.button > span,
+button > span {
     position: relative;
     z-index: 11;
 }
 
-a.button::before {
+a.button::before,
+button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -93,10 +104,15 @@ a.button::before {
     box-sizing: border-box;
     text-shadow: 1px 1px 0 #000;
     border-radius: 4px;
+    cursor: pointer;
 }
 
+.hand {
+    cursor: pointer;
+}
 
-a.button:hover::before {
+a.button:hover::before,
+button:hover::before {
     transform: scale(1);
 }
 

@@ -5,6 +5,9 @@
         "donate": "Donate",
         "contactlink": "Contact"
     },
+    "formwait": "Please wait while we submit your form",
+    "formok": "Form sent successfully",
+    "formerror": "An error has occurred!",    
     "wait": "Wait",
     "version": "Version",
     "overtitle": "Totally free!",
