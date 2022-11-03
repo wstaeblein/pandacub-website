@@ -5,7 +5,7 @@
         { "code": "es", "name": "Español" },
         { "code": "fr", "name": "Français" }
     ], 
-    "appversion": "0.7.4 Beta",
+    "appversion": "0.7.7",
     "downloads": [
         {
             "id": "win",
