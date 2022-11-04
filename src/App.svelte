@@ -419,16 +419,16 @@
                         >{langData.contacttext.last}
                     </p>
                     <div>
-                        <input type="text" name="name" placeholder={langData.placeholders.name} required />
+                        <input type="text" name="Name" placeholder={langData.placeholders.name} required />
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="email" name="Email" placeholder="Email" required />
                     </div>                    
                     <div>
-                        <input type="text" name="subject" placeholder={langData.placeholders.subject} />
+                        <input type="text" name="Subject" placeholder={langData.placeholders.subject} />
                     </div>
                     <div>
-                        <textarea name="text" placeholder={langData.placeholders.text} required />
+                        <textarea name="Text" placeholder={langData.placeholders.text} required />
                     </div>
                     <br>
                     
