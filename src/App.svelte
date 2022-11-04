@@ -410,7 +410,8 @@
                     {langData.contacttitle}
                 </h2>
 
-                <form method="POST" name="contact" bind:this={myForm} data-netlify="true" on:submit={handleSubmit}>
+                <form method="POST" name="contact" bind:this={myForm} on:submit={handleSubmit}>
+                    <input type="hidden" name="form-name" value="contact">
                     <p class="just">
                         {langData.contacttext.first}<a
                             href="mailto:ola@pandacub.app"
