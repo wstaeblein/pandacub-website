@@ -1,4 +1,4 @@
-exports.version = async function (event, context) {
+exports.handler = async function (event, context) {
 
 /*     if (event.httpMethod == 'GET') {
         
@@ -7,6 +7,7 @@ exports.version = async function (event, context) {
     var beta = version[0] == '0' ? ' Beta' : ''; */
     return {
         statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
         //body: JSON.stringify({ version: version + beta })
         body: JSON.stringify({ version: '0.7.7' })
     };
