@@ -189,11 +189,11 @@
     function handleSubmit(event) {
         event.preventDefault();
 
-        //const myForm = event.target;
+        console.log(myForm);
         const formData = new FormData(myForm);
         formMode = 1;
 
-        fetch("/", {
+        fetch("/form", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData).toString()
@@ -411,7 +411,7 @@
                 </h2>
 
                 <form method="POST" name="contactaux" bind:this={myForm}>
-                    <input type="hidden" name="form-name" value="contact">
+                    <input type="hidden" name="form-name" value="Contact">
                     <p class="just">
                         {langData.contacttext.first}<a
                             href="mailto:ola@pandacub.app"
