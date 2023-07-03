@@ -5,3 +5,47 @@
     from = "/api/*"
     to = "/functions/:splat"
     status = 200
+
+[[redirects]]
+    from = "/privacy/pt"
+    to = "/pages/privacy-pt.html"
+    status = 200
+
+[[redirects]]
+    from = "/privacy/es"
+    to = "/pages/privacy-es.html"
+    status = 200
+
+[[redirects]]
+    from = "/privacy/en"
+    to = "/pages/privacy-en.html"
+    status = 200    
+
+[[redirects]]
+    from = "/privacy/fr"
+    to = "/pages/privacy-fr.html"
+    status = 200        
+
+[[redirects]]
+    from = "/privacy"
+    to = "/pages/privacy-pt.html"
+    status = 200
+    conditions = {Language = ["pt"]}
+
+[[redirects]]
+    from = "/privacy"
+    to = "/pages/privacy-es.html"
+    status = 200
+    conditions = {Language = ["es"]}    
+
+[[redirects]]
+    from = "/privacy"
+    to = "/pages/privacy-fr.html"
+    status = 200
+    conditions = {Language = ["fr"]}        
+
+[[redirects]]
+    from = "/privacy"
+    to = "/pages/privacy-en.html"
+    status = 200
+  
