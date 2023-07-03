@@ -5,7 +5,7 @@
         { "code": "es", "name": "Español" },
         { "code": "fr", "name": "Français" }
     ], 
-    "appversion": "0.7.7",
+    "appversion": "0.8.2",
     "downloads": [
         {
             "id": "win",
@@ -18,13 +18,13 @@
             "list": [
                 {
                     "arch": "i32",
-                    "url": "https://www.dropbox.com/s/wuuimhk1y38zu5c/Panda%20Cub%20App%200.7.2%20ia32.msi?dl=1",
+                    "url": "https://www.dropbox.com/s/3xz1ueen8qgir6b/Panda%20Cub%20App%200.8.2%20ia32.msi?dl=1",
                     "desc": "32 bits",
                     "ext": ".msi"
                 },
                 {
                     "arch": "x64",
-                    "url": "https://www.dropbox.com/s/kmqx9qsjb9d21qt/Panda%20Cub%20App%200.7.2.msi?dl=1",
+                    "url": "https://www.dropbox.com/s/ycbyzm34bw2007t/Panda%20Cub%20App%200.8.2.msi?dl=1",
                     "desc": "64 bits",
                     "ext": ".msi"
                 }

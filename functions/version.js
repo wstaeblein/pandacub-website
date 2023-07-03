@@ -9,6 +9,6 @@ exports.handler = async function (event, context) {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
         //body: JSON.stringify({ version: version + beta })
-        body: JSON.stringify({ version: '0.7.7' })
+        body: JSON.stringify({ version: '0.8.2' })
     };
 };
