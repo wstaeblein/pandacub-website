@@ -34,7 +34,12 @@
             "id": "linux",
             "os": "Linux",
             "list": [
-
+                {
+                    "arch": "x64",
+                    "url": "https://www.dropbox.com/s/jn8lqgfsfrr1gke/Panda%20Cub%20App-0.8.2.AppImage?dl=1",
+                    "desc": "64 bits",
+                    "ext": ".AppImage"
+                }
             ]
         },
         {
