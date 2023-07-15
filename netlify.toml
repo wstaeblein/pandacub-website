@@ -48,4 +48,22 @@
     from = "/privacy"
     to = "/pages/privacy-en.html"
     status = 200
-  
+
+[[redirects]]
+    from = "/*"
+    to = "/pages/404-pt.html"
+    status = 200
+    conditions = {Language = ["pt"]}      
+    
+[[redirects]]
+    from = "/*"
+    to = "/pages/404-es.html"
+    status = 200
+    conditions = {Language = ["es"]}    
+    
+[[redirects]]
+    from = "/*"
+    to = "/pages/404-fr.html"
+    status = 200
+    conditions = {Language = ["fr"]}    
+    

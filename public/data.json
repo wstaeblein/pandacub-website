@@ -5,16 +5,11 @@
         { "code": "es", "name": "Español" },
         { "code": "fr", "name": "Français" }
     ], 
-    "appversion": "0.8.2",
+    "appversion": "0.8.7",
     "downloads": [
         {
             "id": "win",
             "os": "Windows",
-            "test": {
-                "abc": {
-                    "def": "abc"
-                }
-            },
             "list": [
                 {
                     "arch": "i32",
