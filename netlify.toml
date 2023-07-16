@@ -31,12 +31,14 @@
     to = "/pages/privacy-pt.html"
     status = 200
     conditions = {Language = ["pt"]}
+    force = true
 
 [[redirects]]
     from = "/privacy"
     to = "/pages/privacy-es.html"
     status = 200
-    conditions = {Language = ["es"]}    
+    conditions = {Language = ["es"]}
+    force = true
 
 [[redirects]]
     from = "/privacy"
@@ -48,6 +50,7 @@
     from = "/privacy"
     to = "/pages/privacy-en.html"
     status = 200
+    force = true
 
 [[redirects]]
     from = "/*"
