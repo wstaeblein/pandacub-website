@@ -58,24 +58,24 @@
 # 404 Errors
 [[redirects]]
     from = "/*"
-    to = "/pages/404-pt.html"
-    status = 200
+    to = "/404-pt.html"
+    status = 404
     conditions = {Language = ["pt"]}      
     
 [[redirects]]
     from = "/*"
-    to = "/pages/404-es.html"
-    status = 200
+    to = "/404-es.html"
+    status = 404
     conditions = {Language = ["es"]}    
     
 [[redirects]]
     from = "/*"
-    to = "/pages/404-fr.html"
-    status = 200
+    to = "/404-fr.html"
+    status = 404
     conditions = {Language = ["fr"]}    
 
 [[redirects]]
     from = "/*"
-    to = "/pages/404-en.html"
-    status = 200
+    to = "/404-en.html"
+    status = 404
     conditions = {Language = ["en"]}    
