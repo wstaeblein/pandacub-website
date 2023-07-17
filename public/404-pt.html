@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
     <head>
-        <title>Page Not Found - Panda Cub App</title>
+        <title>Página Não Encontrada - Panda Cub App</title>
 
         <link rel="preload" href="/img/logos/pandacub.png" as="image">
         
@@ -12,31 +12,22 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <style>
-            html {
-                height: 100%;
-            }
-
-            body {
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            span.letter {
-                font-family: Teko;
-                font-size: max(calc(12vw + 44px), 60px);
-            }
-        </style>
+        <link rel="stylesheet" href="/404.css">
     </head>
     <body>
         <main>
-            <span class="letter">4</span>
-            <span class="letter">4</span>
+            <a href="/">
+                <img src="img/logos/pandacub.png" alt="Logo PandaCub" />
+            </a>
+            <div class="p404">
+                <span class="letter">4</span>
+                <img src="img/icon640.png" alt="404" />
+                <span class="letter">4</span>                
+            </div>
+            <h1>Não Encontrado</h1>
+            <nav>
+                <a href="/" class="button"><span>Voltar ao Site</span></a>
+            </nav>
         </main>
     </body>
 </html>

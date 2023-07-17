@@ -6,6 +6,8 @@
     to = "/functions/:splat"
     status = 200
 
+
+# Privacy Policy
 [[redirects]]
     from = "/privacy/pt"
     to = "/pages/privacy-pt.html"
@@ -52,6 +54,8 @@
     status = 200
     force = true
 
+
+# 404 Errors
 [[redirects]]
     from = "/*"
     to = "/pages/404-pt.html"
@@ -69,4 +73,9 @@
     to = "/pages/404-fr.html"
     status = 200
     conditions = {Language = ["fr"]}    
-    
+
+[[redirects]]
+    from = "/*"
+    to = "/pages/404-en.html"
+    status = 200
+    conditions = {Language = ["en"]}    
