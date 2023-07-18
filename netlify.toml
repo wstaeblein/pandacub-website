@@ -6,6 +6,26 @@
     to = "/functions/:splat"
     status = 200
 
+# Form return
+[[redirects]]
+    from = "/thanks/pt"
+    to = "/thanks-pt.html"
+    status = 200
+
+[[redirects]]
+    from = "/thanks/es"
+    to = "/thanks-es.html"
+    status = 200
+
+[[redirects]]
+    from = "/thanks/fr"
+    to = "/thanks-fr.html"
+    status = 200
+
+[[redirects]]
+    from = "/thanks/*"
+    to = "/thanks-en.html"
+    status = 200    
 
 # Privacy Policy
 [[redirects]]
