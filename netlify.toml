@@ -66,7 +66,8 @@
     from = "/privacy"
     to = "/pages/privacy-fr.html"
     status = 200
-    conditions = {Language = ["fr"]}        
+    conditions = {Language = ["fr"]}      
+    force = true  
 
 [[redirects]]
     from = "/privacy"

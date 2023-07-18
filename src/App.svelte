@@ -5,7 +5,7 @@
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, WhatsApp, Facebook, Twitter } from 'svelte-share-buttons-component';
     import Minidropdown from './Minidropdown.svelte';
 
-    let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); console.log(navigator.userAgent, isMobile)
+    let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     let tmstart = new Date().getTime();
     let waitTime = 1200;
     let menuActive  =false;
