@@ -27,6 +27,7 @@
         { "title": "Simple and straightforward interface", "icon": "drag", "text": "Just drag one or more image files over the program window to start the process." },
         { "title": "Available in multiple languages", "icon": "globe", "text": "Currently the interface is available in portuguese, english, spanish and french." },
         { "title": "Control over the output file", "icon": "file", "text": "You can choose to overwrite the file, create a folder for the result, create a new file or even make a backup of the original." },
+        { "title": "Process large files", "icon": "large2", "text": "Files up to 70 MB can be sent without any problems for processing." },
         { "title": "Image resizing", "icon": "redim", "text": "Scale down proportionately, scale down to fit or cover given dimensions, or create thumbnails." },
         { "title": "Image metadata management", "icon": "meta", "text": "Here you can choose to remove or preserve the copyright, geolocation and date of the images." },
         { "title": "Control over usage", "icon": "dash", "text": "You know at all times how many compressions you did in the current month and how many images just have been processed." }

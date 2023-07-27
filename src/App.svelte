@@ -410,7 +410,7 @@
                     {langData.contacttitle}
                 </h2>
 
-                <form method="POST" name="contactaux" action="/thanks/{currLang}" data-netlify="true" bind:this={myForm}>
+                <form method="POST" name="Contact" action="/thanks/{currLang}" data-netlify="true" bind:this={myForm}>
                     <input type="hidden" name="form-name" value="Contact">
                     <p class="just">
                         {langData.contacttext.first}<a

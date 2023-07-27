@@ -48,6 +48,7 @@
             "icon": "file",
             "text": "Puede optar por sobrescribir el archivo, crear una carpeta para el resultado, crear un nuevo archivo o incluso hacer una copia de seguridad del original."
         },
+        { "title": "Procesar archivos de gran tamaño", "icon": "large2", "text": "Se pueden enviar archivos de hasta 70 MB sin ningún problema para su procesamiento." },
         {
             "title": "Cambiar el tamaño de las imágenes",
             "icon": "redim",

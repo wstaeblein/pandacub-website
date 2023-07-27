@@ -27,6 +27,7 @@
         { "title": "Interface simples e direta", "icon": "drag", "text": "Basta clicar e arrastar um ou mais arquivos de imagem sobre a janela do programa para iniciar o processo." },
         { "title": "Disponível várias línguas", "icon": "globe", "text": "Atualmente a interface está disponível em português, inglês, espanhol e francês." },
         { "title": "Controle sobre o arquivo de saída", "icon": "file", "text": "Você pode escolher sobrescrever o arquivo, criar uma pasta para o resultado, criar um novo arquivo ou ainda fazer um backup do original." },
+        { "title": "Processa arquivos grandes", "icon": "large2", "text": "Arquivos de até 70 MB podem ser enviados sem problemas para serem processados." },
         { "title": "Redimensionamento de imagens", "icon": "redim", "text": "Diminua proporcionalmente, diminua para caber ou cobrir dimensões informadas ou ainda crie miniaturas." },
         { "title": "Gerência de metadados das imagens", "icon": "meta", "text": "Aqui você pode escolher remover ou preservar o copyright, a geolocalização e a data das imagens." },
         { "title": "Controle sobre o uso", "icon": "dash", "text": "Você sabe a todo momento quantas compressões fez no mês e quantas imagens estão ou acabaram de ser processadas." }

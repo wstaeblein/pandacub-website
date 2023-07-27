@@ -75,6 +75,54 @@
     status = 200
     force = true
 
+# EULA
+[[redirects]]
+    from = "/eula/pt"
+    to = "/pages/privacy-pt.html"
+    status = 200
+
+[[redirects]]
+    from = "/eula/es"
+    to = "/pages/privacy-es.html"
+    status = 200
+
+[[redirects]]
+    from = "/eula/en"
+    to = "/pages/eula-en.html"
+    status = 200    
+
+[[redirects]]
+    from = "/eula/fr"
+    to = "/pages/eula-fr.html"
+    status = 200        
+
+[[redirects]]
+    from = "/eula"
+    to = "/pages/eula-pt.html"
+    status = 200
+    conditions = {Language = ["pt"]}
+    force = true
+
+[[redirects]]
+    from = "/eula"
+    to = "/pages/eula-es.html"
+    status = 200
+    conditions = {Language = ["es"]}
+    force = true
+
+[[redirects]]
+    from = "/eula"
+    to = "/pages/eula-fr.html"
+    status = 200
+    conditions = {Language = ["fr"]}      
+    force = true  
+
+[[redirects]]
+    from = "/eula"
+    to = "/pages/eula-en.html"
+    status = 200
+    force = true
+
 
 # 404 Errors
 [[redirects]]

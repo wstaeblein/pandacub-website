@@ -48,6 +48,7 @@
             "icon": "file",
             "text": "Vous pouvez choisir de remplacer le fichier, de créer un dossier pour le résultat, de créer un nouveau fichier ou de sauvegarder l'original."
         },
+        { "title": "Traiter des fichiers volumineux", "icon": "large2", "text": "Des fichiers jusqu'à 70 Mo peuvent être envoyés sans aucun problème pour le traitement." },
         {
             "title": "Redimension d'image",
             "icon": "redim",
