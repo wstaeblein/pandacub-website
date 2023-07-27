@@ -78,12 +78,12 @@
 # EULA
 [[redirects]]
     from = "/eula/pt"
-    to = "/pages/privacy-pt.html"
+    to = "/pages/eula-pt.html"
     status = 200
 
 [[redirects]]
     from = "/eula/es"
-    to = "/pages/privacy-es.html"
+    to = "/pages/eula-es.html"
     status = 200
 
 [[redirects]]
