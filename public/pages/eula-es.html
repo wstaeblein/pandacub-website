@@ -16,40 +16,42 @@
     </head>
     <body>
         <script>
-            document.addEventListener('DOMContentLoaded', (evt) => {
+            window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
+                document.querySelector('section').classList.remove('hide');
             });
-        </script>        
-        <header>
-            <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
-            <div>
-                <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
-            </div>
-        </header>
-        <main>
-            <h1 class="first">Acuerdo de Licencia de Usuario Final</h1>
-            <br>
-            <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
+        </script>  
+        <section>
+            <header>
+                <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
+                <div>
+                    <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
+                </div>
+            </header>
+            <main>
+                <div>
+                    <h1 class="first">Acuerdo de Licencia de Usuario Final</h1>
+                    <br>
+                    <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
 
-            <p>Por la presente se otorga permiso, sin cargo, durante la vigencia de los derechos de autor aplicables, a cualquier persona u organización (el "Usuario") que obtenga una copia de este software y los archivos asociados (el "Software"), para su propio uso y sujeto a las siguientes condiciones:</p>
+                    <p>Por la presente se otorga permiso, sin cargo, durante la vigencia de los derechos de autor aplicables, a cualquier persona u organización (el "Usuario") que obtenga una copia de este software y los archivos asociados (el "Software"), para su propio uso y sujeto a las siguientes condiciones:</p>
 
-            <ol>
-                <li>El usuario acepta toda esta licencia al ejercer cualquier derecho aquí contenido (como ejecutar o distribuir el Software).</li>
-                <li>Este archivo de licencia debe incluirse en todas las copias distribuidas del Software.</li>
-                <li>El aviso de derechos de autor anterior y este aviso de permiso no se modificarán, eliminarán, reemplazarán, recrearán ni enmendarán.</li>
-                <li>El Usuario no realizará ningún cambio en el Software.</li>
-                <li>El usuario no venderá, arrendará ni alquilará copias del Software.</li>
-                <li>El Software no se utilizará con fines ilegales, inmorales o inadecuados.</li>
-                <li>El autor se reserva el derecho de publicar actualizaciones, correcciones y desarrollos adicionales del Software. Es posible que el Usuario deba descargar e instalar dichas actualizaciones para continuar usando el Software.</li>
-                <li>Esta licencia no otorga al Usuario ningún derecho de acceso, uso o divulgación del código fuente original. Todas las técnicas, algoritmos y procedimientos contenidos en el Software y cualquier archivo relacionado son propiedad exclusiva del autor o del licenciante.</li>
-            </ol>
+                    <ol>
+                        <li>El usuario acepta toda esta licencia al ejercer cualquier derecho aquí contenido (como ejecutar o distribuir el Software).</li>
+                        <li>Este archivo de licencia debe incluirse en todas las copias distribuidas del Software.</li>
+                        <li>El aviso de derechos de autor anterior y este aviso de permiso no se modificarán, eliminarán, reemplazarán, recrearán ni enmendarán.</li>
+                        <li>El Usuario no realizará ningún cambio en el Software.</li>
+                        <li>El usuario no venderá, arrendará ni alquilará copias del Software.</li>
+                        <li>El Software no se utilizará con fines ilegales, inmorales o inadecuados.</li>
+                        <li>El autor se reserva el derecho de publicar actualizaciones, correcciones y desarrollos adicionales del Software. Es posible que el Usuario deba descargar e instalar dichas actualizaciones para continuar usando el Software.</li>
+                        <li>Esta licencia no otorga al Usuario ningún derecho de acceso, uso o divulgación del código fuente original. Todas las técnicas, algoritmos y procedimientos contenidos en el Software y cualquier archivo relacionado son propiedad exclusiva del autor o del licenciante.</li>
+                    </ol>
 
-            <p>EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍAS EXPRESAS O IMPLÍCITAS DE NINGÚN TIPO, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN DETERMINADO Y NO VIOLACIÓN. EN NINGÚN CASO LOS AUTORES SERÁN RESPONSABLES DE CUALQUIER RECLAMACIÓN, DAÑOS U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE CUALQUIER OTRO TIPO, QUE SURJA DE, FUERA DE O EN RELACIÓN CON EL SOFTWARE O EL USO U OTRAS OPERACIONES EN EL SOFTWARE.</p>
-        </main>
-        <br><br>
-        <footer>
-
-        </footer>
+                    <p class="just">EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍAS EXPRESAS O IMPLÍCITAS DE NINGÚN TIPO, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN DETERMINADO Y NO VIOLACIÓN. EN NINGÚN CASO LOS AUTORES SERÁN RESPONSABLES DE CUALQUIER RECLAMACIÓN, DAÑOS U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE CUALQUIER OTRO TIPO, QUE SURJA DE, FUERA DE O EN RELACIÓN CON EL SOFTWARE O EL USO U OTRAS OPERACIONES EN EL SOFTWARE.</p>
+                </div>
+            </main>
+        </section>      
+        <footer></footer>
     </body>
 </html>
 

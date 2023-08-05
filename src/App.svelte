@@ -410,8 +410,9 @@
                     {langData.contacttitle}
                 </h2>
 
-                <form method="POST" name="Contact" action="/thanks/{currLang}" data-netlify="true" bind:this={myForm}>
+                <form method="POST" name="Contact" action="/thanks-en" data-netlify="true" bind:this={myForm}>
                     <input type="hidden" name="form-name" value="Contact">
+                    <input type="hidden" name="appid" value="pandacub-app">
                     <p class="just">
                         {langData.contacttext.first}<a
                             href="mailto:ola@pandacub.app"
@@ -763,12 +764,11 @@
 
     #downloads {
         background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='197.16mm' height='103.19mm' version='1.1' viewBox='0 0 197.16 103.19' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='7.1595' x2='242.05' y1='86.692' y2='201.64' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fafafa' offset='0'/%3E%3Cstop stop-color='%23dadada' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='translate(-7.0502 -79.201)'%3E%3Cpath d='m184.09 145.62c-16.159 13.791-49.438 31.536-57.465 21.509-18.437-23.028-42.494 14.749-50.634-10.048-11.131-33.91-68.831 24.89-68.831 24.89v-95.28s59.288-12.52 95.434 0.38755c44.391 15.852 64.506-2.7992 81.813 19.229 8.0959 10.305 9.6902 30.771-0.31736 39.312z' fill='url(%23a)' fill-rule='evenodd'/%3E%3C/g%3E%3Crect x='187.91' y='4.7518' width='8.913' height='91.787' fill='none'/%3E%3C/svg%3E");
-        background-size: cover;
-        min-height: 105vh;
+        background-size: contain;
         margin-top: calc(10px + 1vw);
         display: block;
         background-repeat: no-repeat;
-        background-position: top right;
+        background-position: top left;
     }
 
     #downloads div.subtitle {
@@ -781,7 +781,6 @@
         margin-top: calc(10px + 0.3vw);
         display: block;
         min-height: 60vh;
-        margin-top: -5vw;
     }
 
     #donate > div {
@@ -1273,11 +1272,15 @@
             width: 190px;
         }
 
+
+
         .dropdown {
+            width: 40px;
+            height: 40px;
             transform: none;
             position: fixed;
-            top: 50px;
-            right: 15px;
+            top: 57px;
+            right: 11px;
         }
 
         #burger {
@@ -1374,7 +1377,7 @@
         }
 
         .mobimenu > nav.menu > a {
-            padding: 12px 0;
+            padding: 8px 0;
             color: #333;
             display: block;
             margin: auto;
@@ -1474,7 +1477,7 @@
 
         #downloads div.subtitle {
             font-size: 16px;
-            padding-top: 5px;
+            padding: 5px 0 15px;
         }
 
     }
@@ -1537,6 +1540,15 @@
             margin: 0;
         }
 
+        #downloads > div > div:first-child {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #downloads > div div.os {
+            width: 40%;
+        }
+
         #downloads > div div.os > div > a {
             display: block;
             padding: 0;
@@ -1557,6 +1569,13 @@
 
         .pandabamboo {
             left: -15vw;
+        }
+    }
+
+    @media screen and (orientation: landscape) { 
+        .menushare {
+            margin-top: 0;
+            display: flex;
         }
     }
 </style>

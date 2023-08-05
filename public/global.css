@@ -46,9 +46,9 @@ label {
 
 input, button, select, textarea {
 	font-family: inherit;
-	font-size: 80%;
+	font-size: 90%;
 	-webkit-padding: 0.4em 0;
-	padding: 4px 10px;
+	padding: 8px 10px;
 	margin: 0;
 	box-sizing: border-box;
 	border: 1px solid #aaa;

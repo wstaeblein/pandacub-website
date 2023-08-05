@@ -16,40 +16,42 @@
     </head>
     <body>
         <script>
-            document.addEventListener('DOMContentLoaded', (evt) => {
+            window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
+                document.querySelector('section').classList.remove('hide');
             });
         </script>
-        <header>
-            <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
-            <div>
-                <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
-            </div>
-        </header>
-        <main>
-            <h1 class="first">Contrato de Licença de Usuário Final</h1>
-            <br>
-            <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
+        <section class="hide">
+            <header>
+                <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
+                <div>
+                    <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
+                </div>
+            </header>
+            <main>
+                <div>
+                    <h1 class="first">Contrato de Licença de Usuário Final</h1>
+                    <br>
+                    <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
 
-            <p>Uma permissão é concedida, gratuitamente, pela duração dos direitos autorais aplicáveis, a qualquer pessoa ou organização (o "Usuário") que obtenha uma cópia deste software e arquivos associados (o "Software"), para seu próprio uso e sujeito às seguintes condições:</p>
+                    <p>Uma permissão é concedida, gratuitamente, pela duração dos direitos autorais aplicáveis, a qualquer pessoa ou organização (o "Usuário") que obtenha uma cópia deste software e arquivos associados (o "Software"), para seu próprio uso e sujeito às seguintes condições:</p>
 
-            <ol>
-                <li>O usuário concorda com toda esta licença ao exercer qualquer direito aqui contido (como executar ou distribuir o Software)</li>
-                <li>Este arquivo de licença deve ser incluído em todas as cópias distribuídas do Software.</li>
-                <li>Esta licença não deve ser modificada, removida, substituída, recriada ou alterada.</li>
-                <li>O Usuário não deve fazer nenhuma alteração no Software.</li>
-                <li>O usuário não deve vender, arrendar ou alugar cópias do Software.</li>
-                <li>O Software não deve ser usado para fins ilegais, imorais ou impróprios.</li>
-                <li>O autor reserva-se o direito de lançar atualizações, correções e desenvolvimentos posteriores do Software. O Usuário pode precisar baixar e instalar tais atualizações para continuar usando o Software.</li>
-                <li>Esta licença não concede ao Usuário nenhum direito de acesso, uso ou divulgação do código-fonte original. Todas as técnicas, algoritmos e procedimentos contidos no Software e quaisquer arquivos associados são de propriedade exclusiva do autor ou do licenciador.</li>
-            </ol>
+                    <ol>
+                        <li>O usuário concorda com toda esta licença ao exercer qualquer direito aqui contido (como executar ou distribuir o Software)</li>
+                        <li>Este arquivo de licença deve ser incluído em todas as cópias distribuídas do Software.</li>
+                        <li>Esta licença não deve ser modificada, removida, substituída, recriada ou alterada.</li>
+                        <li>O Usuário não deve fazer nenhuma alteração no Software.</li>
+                        <li>O usuário não deve vender, arrendar ou alugar cópias do Software.</li>
+                        <li>O Software não deve ser usado para fins ilegais, imorais ou impróprios.</li>
+                        <li>O autor reserva-se o direito de lançar atualizações, correções e desenvolvimentos posteriores do Software. O Usuário pode precisar baixar e instalar tais atualizações para continuar usando o Software.</li>
+                        <li>Esta licença não concede ao Usuário nenhum direito de acesso, uso ou divulgação do código-fonte original. Todas as técnicas, algoritmos e procedimentos contidos no Software e quaisquer arquivos associados são de propriedade exclusiva do autor ou do licenciador.</li>
+                    </ol>
 
-            <p>O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA EXPRESSA OU IMPLÍCITA DE QUALQUER TIPO, INCLUINDO MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM DETERMINADO FIM E NÃO VIOLAÇÃO. EM NENHUM CASO OS AUTORES SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM UMA AÇÃO DE CONTRATO, ILÍCITO OU DE OUTRA FORMA, DECORRENTE DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTROS NEGÓCIOS NO SOFTWARE.</p>
-        </main>
-        <br><br>
-        <footer>
-
-        </footer>
+                    <p class="just">O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA EXPRESSA OU IMPLÍCITA DE QUALQUER TIPO, INCLUINDO MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM DETERMINADO FIM E NÃO VIOLAÇÃO. EM NENHUM CASO OS AUTORES SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM UMA AÇÃO DE CONTRATO, ILÍCITO OU DE OUTRA FORMA, DECORRENTE DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTROS NEGÓCIOS NO SOFTWARE.</p>
+                </div>
+            </main>
+        </section>
+        <footer></footer>
     </body>
 </html>
 
