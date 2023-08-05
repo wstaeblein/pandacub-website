@@ -410,7 +410,7 @@
                     {langData.contacttitle}
                 </h2>
 
-                <form method="POST" name="Contact" action="/thanks-en" data-netlify="true" bind:this={myForm}>
+                <form method="POST" name="Contact" action="/thanks-en.html" data-netlify="true" bind:this={myForm}>
                     <input type="hidden" name="form-name" value="Contact">
                     <input type="hidden" name="appid" value="pandacub-app">
                     <p class="just">
