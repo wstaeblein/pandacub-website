@@ -124,6 +124,56 @@
     force = true
 
 
+# HELP
+[[redirects]]
+    from = "/help/pt"
+    to = "/pages/help-pt.html"
+    status = 200
+
+[[redirects]]
+    from = "/help/es"
+    to = "/pages/help-es.html"
+    status = 200
+
+[[redirects]]
+    from = "/help/en"
+    to = "/pages/help-en.html"
+    status = 200    
+
+[[redirects]]
+    from = "/help/fr"
+    to = "/pages/help-fr.html"
+    status = 200   
+    
+
+[[redirects]]
+    from = "/help"
+    to = "/pages/help-pt.html"
+    status = 200
+    conditions = {Language = ["pt"]}      
+    force = true  
+    
+[[redirects]]
+    from = "/help"
+    to = "/pages/help-es.html"
+    status = 200
+    conditions = {Language = ["es"]}    
+    force = true  
+    
+[[redirects]]
+    from = "/help"
+    to = "/pages/help-fr.html"
+    status = 200
+    conditions = {Language = ["fr"]}    
+    force = true  
+
+[[redirects]]
+    from = "/help"
+    to = "/pages/help-en.html"
+    status = 200
+    conditions = {Language = ["en"]}    
+
+
 # 404 Errors
 [[redirects]]
     from = "/*"

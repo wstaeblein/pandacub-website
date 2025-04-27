@@ -12,6 +12,7 @@
     let menuClosing = false;
     let showAfter = false;
     let formMode = 0;
+    let appid = 'pandacub-app';
     let myForm;
     let downloads = [],
         langData = {},
@@ -23,6 +24,7 @@
     let donateUrl = '';
     let seourl = 'https://pandacub.app';
     let openSocial = false;
+    let flipped = false;
     var mddSetup = {
         active: false,
         title: "icons",
@@ -186,32 +188,48 @@
         
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
 
         console.log(myForm);
         const formData = new FormData(myForm);
         formMode = 1;
+        await setTimeout(() => {}, 2000)
 
         fetch("/form", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData).toString()
-        }).then(() => {
-            formMode = 2;
-            myForm.reset();
-            setTimeout(() => formMode = 0, 4000);
-
-        }).catch((error) => {
+        }).then(async () => {
             formMode = 3;
+
+            
+            await tick();
+            flipped = true;
+
+            myForm.reset();
+            //setTimeout(() => formMode = 0, 5000);
+
+        }).catch(async (error) => {
+            formMode = 3;
+
+            await tick();
+            flipped = true;
+
             console.log(error);
-            setTimeout(() => formMode = 0, 4000);
-        });
+            setTimeout(() => formMode = 0, 5000);
+        });            
+        
+
     }
 
     function reset() {
         formMode = 0;
         myForm.reset();
+    }
+
+    function computeDownload() {
+        appid
     }
 
     
@@ -362,6 +380,7 @@
                                 {#each v.list as link}
                                     <a
                                         href={link.url}
+                                        on:click={computeDownload.bind(this, link)}
                                         class:sel={link.actual}
                                         download="pandacub-{v.id}-{v.arch}-{v.version}"
                                         >{link.desc}</a
@@ -410,49 +429,71 @@
                     {langData.contacttitle}
                 </h2>
 
-                <form method="POST" name="Contact" action="/thanks-en.html" data-netlify="true" bind:this={myForm}>
-                    <input type="hidden" name="form-name" value="Contact">
-                    <input type="hidden" name="appid" value="pandacub-app">
-                    <p class="just">
-                        {langData.contacttext.first}<a
-                            href="mailto:ola@pandacub.app"
-                            >{langData.contacttext.link}</a
-                        >{langData.contacttext.last}
-                    </p>
-                    <div>
-                        <input type="text" name="Name" placeholder={langData.placeholders.name} required />
-                    </div>
-                    <div>
-                        <input type="email" name="Email" placeholder="Email" required />
-                    </div>                    
-                    <div>
-                        <input type="text" name="Subject" placeholder={langData.placeholders.subject} />
-                    </div>
-                    <div>
-                        <textarea name="Text" placeholder={langData.placeholders.text} required />
-                    </div>
-                    <br>
+                <div class="flipcard">{formMode}
+                    <div class="cardbody" class:flipped={flipped}>
+                        <form method="POST" name="Contact" class="card" action="/thanks-en.html" data-netlify="true" bind:this={myForm}>
+                            <input type="hidden" name="form-name" value="Contact">
+                            <input type="hidden" name="appid" value="{appid}">
+                            <p class="just">
+                                {langData.contacttext.first}<a
+                                    href="mailto:ola@pandacub.app"
+                                    >{langData.contacttext.link}</a
+                                >{langData.contacttext.last}
+                            </p>
+                            <div>
+                                <input type="text" name="Name" placeholder={langData.placeholders.name} required />
+                            </div>
+                            <div>
+                                <input type="email" name="Email" placeholder="Email" required />
+                            </div>                    
+                            <div>
+                                <input type="text" name="Subject" placeholder={langData.placeholders.subject} />
+                            </div>
+                            <div>
+                                <textarea name="Text" placeholder={langData.placeholders.text} required />
+                            </div>
+                            <br>
+
+                            {#if formMode == 0}
+                                <button class="button" on:click|preventDefault={handleSubmit}><span>{langData.sendmailbtn}</span></button>
+
+                            {:else if formMode == 1}
+                                <div class="formwait anim">
+                                    <img alt="meditation" src="data:image/png;base64,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" />
+                                    <span>{langData.formwait}</span>
+                                </div>
+                            {/if}
+                        </form> 
+                        <div class="result card back">
+
+                            <div class="thanks" class:shown={formMode == 2}>
+                                <h1>{langData.formok}</h1>
+                                <img src="/img/panda-thanks-{currLang}.png" alt="Thanks!" />
+                                <h3>{langData.youropinion}</h3>
+                                <p>{langData.betterprod}</p>
+                                <nav>
+                                    <button class="button" on:click={() => formMode = 0}><span>{langData.back}</span></button>
+                                </nav>                
+                            </div>    
+
+                            <div class="error" class:shown={formMode == 3}>
+                                <img src="/img/sad-panda.png" class="errimg" alt="error" />
+                                <br>
+                                <div class="formwait">
+                                    <img alt="err" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA8FBMVEUAAADxUknoSUHxUknxUknxUknxUknxUknpSULxUknxUknxUknxUknxUknxUknxUknxUknxUknxUkmvEA+zExK1FRS2FxW3FxazExLxUkmwERC0FBO1FhW5Ghi7GxrEJCG9HRvSMy3fQDnTNC/xUkmtDg7////W1tawExP5tbHiQzzYOTPyV07y8vL80M7yYlr95uSzJSXzZV3+9/fpvb3enJzLnJzIjY3HiIj7y8nRvLzgo6PLoKD4pJ/zcWm7OTn23t71xcPnubnmtbXNpqbqW1S2Ly/V0NDiqanUgID1g3zCcnLzcGjEUlLgUEq5RkZeS/FbAAAAJHRSTlMA9BDaro+F5AfszcZ1al1VOiYb9NuRhnDDt+2vrl5WOycczc18uB89AAACV0lEQVRYw52X2XLTMBRAJddLYydxmr17C9dKCyFdUihQ2rRAyw7//zcY0UG+V5YscR49c85IjqOFmejncZgmHIAnaRjnfeZFL1oDwlrUc7WDtrJxox246DEHIzxuTHRaYKXVseobGTSSbZj9LgcHeNfkR+BIVKuvh+BMuF7jb4IHm3ohBC9C+/z930MXvOmi35/7B3j1e8jgP8iU3wHC96/nQJjfnADh31cdkO//ZCGEuJujZ9dLIRYk0QoeAzEgzk/FHxbVwrF8dErGFT8OgGu+KihfFvAY+N8htPH4S18VkF9yew9V2jKA159y/qggfcXdM7RGyfUPD0BUeTPHfskKFXraR3wjSIH44sdRtRBpM5gvSYH44qGQBTWHPmCuhZXPRYEKfZYD4djmXxwVuJCzGLSC3ceFmIVgL1CfFEKWgnPhfenTQsoSsBaoTwsJ4+BY+CB9WuAMwF6gPi24Bl68UgFUYNzNn83qC5wljr6hkLDUzTcVnrDQzZe80ws7LHbxzYUxyx18S2FP/ztrPuKSBA6bFpSryxnmDPnDpiXtqihI4RcKjPRFlfq08IAC+/Zl/WUheV3xP+IZGDYW5dPCW/wKJoatTfm4QP1BULu53t8qHxWoX4wN2/vPCyGWXwrEt0/l/Im/FZgOGM/PVvrysVI6egOSjBYKB6bokOVfGBzgY553YZchIt/CiBFCv8K24bDtWpjWHdc9xrCNfP/3MDJfeVwKg13bpau5MD3wuvbRwtbE6+JJC4Nx4HP1pYXhJPC4fNPCcLRvEezX/6c7471DZuA34aDQlgz3i7oAAAAASUVORK5CYII=" />
+                                    <span>{langData.formerror}</span>
+                                </div>
+
+                                <nav>
+                                    <button class="button" on:click={() => formMode = 0}><span>{langData.back}</span></button>
+                                </nav>                                       
+                            </div>
+                                           
                     
-                    {#if formMode == 0}
-                        <!-- <button class="button" on:click|preventDefault={handleSubmit}><span>{langData.sendmailbtn}</span></button> -->
-                        <button class="button" type="submit"><span>{langData.sendmailbtn}</span></button>
-                    {:else if formMode == 1}
-                        <div class="formwait anim">
-                            <img alt="meditation" src="data:image/png;base64,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" />
-                            <span>{langData.formwait}</span>
-                        </div>
-                    {:else if formMode == 2}
-                        <div class="formwait" on:click={() => formMode = 0}>
-                            <img alt="ok" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAxlBMVEUAAAAyunwqtXkyunwyunwyunwyunwos3grtnoyunwyunwyunwyunwyunwyunwyunwyunwyunwyunwLoW4Mom4MoW8Nom8LoW4LoW4yunwNom8grHkNo28Oo28Oo28QpG8Oom8yunwKoG7///8NonAqtXk1u373/fpjy5u05s9dyZi76NSm3cv0+/jw+va149Or382b3cFqzqBVxpNCwIfa8+iv4NC/6te459Ky4dIVp3LP7+A2tIY7vYKM2LZlw6RYv5tBtY8Dxft0AAAAIXRSTlMA9BCuhdqPJQfkzVUb7MZ1al069d2zkuzNt4n6eGxhPlhVO3rrAAACGklEQVRYw52X53raMBhGJcvgsIdZIauSABPa0BKa0pJ03f9NBTL8woct68v5f87joSnyqNdCVa1IrWWlqsJaXbDolkuaUCp3fe2gBfu40Qp89FDqXGRYmGg3tJNG26lHTV1IM8r3O1J7IDt5fll7Us7Uz5T2Rp1l+OeawflpQWkWyv3+/O/Q0Ww6h34kNRsZCdDUH6AJv+3r/F5/1yAd1UHDT5+tEms3SDTeZ1bo6d/aPQ8ohG8PIL19UpCvj9Bi+KTQegmUPH2wSdeovd/19sGTfqOLQczx7f/twYAu8X17YbbpO9Q9/J/EXxljtlO9py5q+oj7zePtusD/OjE7Ji+FGhlFK7sjuS/000IoFPFpYfaZ+L92PgpKVImPgsNHoSoq8P9Yi4LLB9OKkJiriQXJPNP/8eqDC6FTFnYPCi4fHATWlhRcPgIShQdSePTw48OPuF5aF9/ggyF+IwoM34yOB9JiyfRNH0MZBYZvxnQyLe5YvvmE6ewqfIFPiLCgoMDwe1jSSMHpg0Hmojq/K/DBTfayPk88/R42ltMC1p98LrG1nRR8/DjA5npagJ/L2LW9z5d4/xyGgfOAMfv398k4uSo44kwnbn9EDlncQhyRYx63cE0OmtzCQBAUr9DPOGxzCv2s4zrjGeB/7DsMeFceWoiveZcuWhhFrGsfLQyvWBdPWojHAf/qi0LvMmBfvlHoDW58TP71/xmh+aefbOvLQAAAAABJRU5ErkJggg==" />
-                            <span>{langData.formok}</span>
-                        </div>
-                    {:else if formMode == 3}
-                        <div class="formwait hand" on:click={() => formMode = 0}>
-                            <img alt="err" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA8FBMVEUAAADxUknoSUHxUknxUknxUknxUknxUknpSULxUknxUknxUknxUknxUknxUknxUknxUknxUknxUkmvEA+zExK1FRS2FxW3FxazExLxUkmwERC0FBO1FhW5Ghi7GxrEJCG9HRvSMy3fQDnTNC/xUkmtDg7////W1tawExP5tbHiQzzYOTPyV07y8vL80M7yYlr95uSzJSXzZV3+9/fpvb3enJzLnJzIjY3HiIj7y8nRvLzgo6PLoKD4pJ/zcWm7OTn23t71xcPnubnmtbXNpqbqW1S2Ly/V0NDiqanUgID1g3zCcnLzcGjEUlLgUEq5RkZeS/FbAAAAJHRSTlMA9BDaro+F5AfszcZ1al1VOiYb9NuRhnDDt+2vrl5WOycczc18uB89AAACV0lEQVRYw52X2XLTMBRAJddLYydxmr17C9dKCyFdUihQ2rRAyw7//zcY0UG+V5YscR49c85IjqOFmejncZgmHIAnaRjnfeZFL1oDwlrUc7WDtrJxox246DEHIzxuTHRaYKXVseobGTSSbZj9LgcHeNfkR+BIVKuvh+BMuF7jb4IHm3ohBC9C+/z930MXvOmi35/7B3j1e8jgP8iU3wHC96/nQJjfnADh31cdkO//ZCGEuJujZ9dLIRYk0QoeAzEgzk/FHxbVwrF8dErGFT8OgGu+KihfFvAY+N8htPH4S18VkF9yew9V2jKA159y/qggfcXdM7RGyfUPD0BUeTPHfskKFXraR3wjSIH44sdRtRBpM5gvSYH44qGQBTWHPmCuhZXPRYEKfZYD4djmXxwVuJCzGLSC3ceFmIVgL1CfFEKWgnPhfenTQsoSsBaoTwsJ4+BY+CB9WuAMwF6gPi24Bl68UgFUYNzNn83qC5wljr6hkLDUzTcVnrDQzZe80ws7LHbxzYUxyx18S2FP/ztrPuKSBA6bFpSryxnmDPnDpiXtqihI4RcKjPRFlfq08IAC+/Zl/WUheV3xP+IZGDYW5dPCW/wKJoatTfm4QP1BULu53t8qHxWoX4wN2/vPCyGWXwrEt0/l/Im/FZgOGM/PVvrysVI6egOSjBYKB6bokOVfGBzgY553YZchIt/CiBFCv8K24bDtWpjWHdc9xrCNfP/3MDJfeVwKg13bpau5MD3wuvbRwtbE6+JJC4Nx4HP1pYXhJPC4fNPCcLRvEezX/6c7471DZuA34aDQlgz3i7oAAAAASUVORK5CYII=" />
-                            <span>{langData.formerror}</span>
-                        </div>
-                    {/if}
-                </form>
+                        </div>   
+                    </div>                
+                </div>
+
 
                 <div class="grass"></div>
                 <div class="pandabamboo"><img src="/img/panda-bamboo.png" loading="lazy" alt="panda"></div>
@@ -476,6 +517,84 @@
 {/if}
 
 <style>
+    .error {
+        display: none;
+    }
+
+    .error img.errimg {
+        width: max(calc(12vw + 44px), 180px);
+    }
+
+    .flipcard {
+        perspective: 40rem;
+        max-width: 600px;
+        margin: auto;        
+    }
+
+    .flipcard > .cardbody {
+        display: flex;
+        transform-style: preserve-3d;
+        transition: 0.8s transform;
+    }
+
+    .flipcard > .cardbody > .card {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        min-width: 100%;        
+    }
+
+    .flipcard > .cardbody > .card.back {
+        transform: rotateX(-180deg) translate(-100%, 0);
+        height: 500px;
+    }
+
+    .flipped {
+        transform: rotateX(-180deg);
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+    div.thanks h1 {
+        margin: 0 0 10px 0;
+    }
+
+    div.thanks p {
+        margin-bottom: 12px;
+    }
+
+    .result {
+        /* margin: 0 auto max(4vw, 80px); */
+    }
+
+    .result > div.thanks {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5vw;
+    }
+
+    .result > div.thanks > img {
+        width: max(calc(12vw + 44px), 180px);
+        height: max(calc(12vw + 44px), 180px);
+    }
+
+    .result > div.thanks > p {
+        margin: 0;
+        text-align: center;
+    } 
+
+    .result > div.thanks > span.letter {
+        color: #7aec8f;
+        font-family: Teko;
+        font-size: max(calc(12vw + 44px), 40px);
+        display: inline-block;
+        transform: translateY(6%);
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+
     .formwait {
         display: flex;
         justify-content: center;
@@ -812,6 +931,7 @@
         text-align: center;
         padding: 6vw 0 90px 0;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     #contact > div {

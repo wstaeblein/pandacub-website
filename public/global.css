@@ -116,6 +116,14 @@ button:hover::before {
     transform: scale(1);
 }
 
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: flex;
+}
+
 
 @media screen and (max-width: 900px) {
 
