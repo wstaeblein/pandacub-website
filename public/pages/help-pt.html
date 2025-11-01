@@ -29,13 +29,100 @@
                 </div>
             </header>
             <main>
-                <div>
+                <div class="help">
                     <h1 class="first">AJUDA</h1>
 
-                    <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
+                    <p>Panda Cub App - Copyright © 2022-<span id="year">2026</span> Walter Staeblein</p>
                     <br>
  
-                    <p>Em Breve!</p>
+                    <p>Este app tem por objetivo facilitar o redimensionamento e otimizaçào de imagens. Sua interface está praticamente toda na mesma janela e as opções são simples. A interface está dividida em 6 partes, indicadas por um número de 1 a 6. Basta achar a que lhe interessa.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/pt.png" alt="Interface" />
+                        <img src="/img/screens/help-front.png" alt="Interface" />
+                    </div>
+                    <h3>1- Box de arquivos</h3>
+                    <p>Solte os arquivos de imagens que deseja otimizar ali dentro ou clique o botão para carregar arquivos usando a caixa de diálogo padrão do seu sistema.</p>
+                    <br>
+
+                    <h3>2- Ajustes das imagens</h3>
+                    <p>São 5 ajustes possíveis descritos a seguir:</p>
+                    <ul>
+                        <li>
+                            <h4>Compressão</h4>
+                            <p>Define de onde virá a compressão das imagens.</p>
+                            <ul>
+                                <li><b>Tinify quando possível:</b> Usará sempre o serviço da Tinipng se estiver online, tiver uma chave de api e o tipo de imagem for suportado. Caso contrário será local.</li>
+                                <li><b>Melhor resultado:</b> Irá disparar 2 rotinas de compressão, uma para o Tinypng e outra para o local, desde que o Tinypng cumpra os requisitos acima. Caso contrário será somente local. No fim a imagem com o menor tamanho será </li>
+                                <li><b>Sempre local:</b> Usará sempre o motor interno do aplicativo para fazer todas as atividades.</li>
+                            </ul>
+                            <br>
+                        </li>
+
+                        <li>
+                            <h4>Cor de fundo</h4>
+                            <p>Define a cor de fundo para conversões para formatos sem canal alpha (transparência). Atualmente apenas JPG. Escolha a cor transparente (xadrez) para usufruir do canal alpha. Se a cor escolhida for transparente e a imagem destino tiver canal alpha e for convertida para JPG, preto será usado como cor de fundo.</p>
+                            <br>
+                        </li>      
+                        
+                        <li>
+                            <h4>Conversão</h4>
+                            <p>Define o formato para o qual a imagem resultante será convertida. Se nenhum for escolhido a imagem fica no seu formato original. As exceções são BMP, PCX e HEIC que são automaticamente convertidas para outro formato conforme configuração se um formato especifíco não for escolhido neste ajuste.</p>
+                            <br>
+                        </li>       
+                        
+                        <li>
+                            <h4>Arquivos</h4>
+                            <p>Define como a nova imagem será criada em arquivo. As opções são:</p>
+                            <ul>
+                                <li><b>Sobrescrever: </b>O arquivo original será sobrescrito.</li>                            
+                                <li><b>Criar pasta: </b>Uma pasta chamada otimizada será criada, se já não existir, e o arquivo será criado nela com o nome original. Se um arquivo de mesmo nome já existir nessa pasta, ele será sobrescrito.</li>                            
+                                <li><b>Novo arquivo: </b>Um novo arquivo com o sufixo "-otimizado" será criado.</li>                            
+                                <li><b>Cópia de segurança:</b> Faz uma cópia de segurança do arquivo original com o sufixo "-backup" antes de sobrescreve-lo.</li>                            
+                            </ul>
+                                
+                            <br>
+                        </li>
+                        
+                        <li>
+                            <h4>Tamanho</h4>
+                            <p>Define o tamanho da imagem sendo processada.</p>
+                            <ul>
+                                <li><b>Não alterar: </b>A imagem não sofrerá nenhum redimensionamento.</li>                            
+                                <li><b>Escalar: </b>A imagem é redimensionada em um dos eixos. Ou largura ou altura. A escolha aparece quando esta opção está selecionada. O novo tamanho em pixels e a que eixo se refere. O tamanho do outro eixo é calculado de forma a deixar a imagem com a mesma proporção.</li>
+                                <li><b>Caber: </b>A imagem será redimensionada para caber dentro de um retângulo cujas dimensões, largura e altura, são pedidas quando esta opção está selecionada. O novo tamanho será o maior possível para caber nas dimensões escolhidas.</li>
+                                <li><b>Cobrir: </b>A imagem será redimensionada para cobrir o retângulo cujas dimensões, largura e altura, são pedidas quando esta opção está selecionada. O novo tamanho será o menor possível para cobrir as dimensões escolhidas. Quando usado no Tinypng IA é usada para determinar onde cortar a imagem.</li>
+                                <li><b>Miniatura: </b>No local é o mesmo que Cobrir. No tinypng é capaz de alongar os fundos para criar miniaturas. Como o cobrir, largura e altura são pedidos.</li>
+                            </ul>                               
+                            <br>
+                        </li>                            
+                    </ul>
+                    <br>
+
+                    <h3>3- Barra de Comandos</h3>
+                    <p>Os 3 primeiros botões permitem marcar e desmarcar opções referentes a metadados da imagem. São eles em ordem: Informação de copyright, de geolocalização e data da imagem.</p>                    
+                    <p>Os 3 últimos, também na ordem, trocam a língua da interface, faz uma doação ao autor e invoca a tela de Configurações.</p>
+                    <br>
+
+                    <h3>4- Contadores</h3>
+                    <p>As otimizações feitas por esse aplicativo são contabilizadas nesse espaço. Tanto via Tinypng como local. São mantidos um total geral e outro mensal.</p>                    
+                    <p>A contagem mensal tanto local como online (Tinify) é apenas das compressões feitas usando este app. Cada imagem conta como uma compressão independente de haver conversões e/ou redimensionamentos. Para ver quantas compressões você fez no Tinify no mês corrente habilite "Mostrar a contagem mensal de compressões do Tinify" em configurações.</p>
+                    <br>   
+
+                    <h3>5- Totais</h3>
+                    <p>Mostra o total economizado e o número de otimizações feitas. A porcentagem é referente ao total economizado se comparado ao tamanho antes das otimizações.</p>                    
+                    <br>
+                    
+
+                    <h3>6  Rodapé</h3>
+                    <p>Aqui temos um indicador de conexão com a internet, que tenta aferir se essa conexão existe, além de 4 links:</p>
+                    <ul>
+                        <li><b>Privacidade: </b>Invoca página com a nossa política de privacidade.</li>
+                        <li><b>EULA: </b>Invoca página com a nossa licença de uso.</li>
+                        <li><b>Sobre: </b>Invoca box sobre este aplicativo e seu autor. Aqui você encontra contatos, outros aplicativos e dados diversos.</li>
+                        <li><b>Ajuda: </b>Esta página.</li>
+                    </ul>
+                    <br>                        
                 </div>
             </main>
         </section> 

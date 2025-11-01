@@ -141,6 +141,37 @@ ol > li {
     margin-bottom: 15px;
 }
 
+
+.interface {
+    position: relative;
+    max-width: 700px;
+    aspect-ratio: 1 / 1.2;
+}
+
+.interface > img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+}
+
+.help ul {
+    margin: 0;
+}
+
+.help ul > li {
+    margin-bottom: 5px;
+}
+
+.help ul p {
+    margin: 5px 0;
+}
+
+.help h4 {
+    margin: 0;
+}
+
 @media (max-width: 1024px) {
     h1 {
         font-size: 38px;

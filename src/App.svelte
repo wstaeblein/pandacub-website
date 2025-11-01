@@ -5,6 +5,7 @@
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, WhatsApp, Facebook, Twitter } from 'svelte-share-buttons-component';
     import Minidropdown from './Minidropdown.svelte';
 
+    let otherApps = {};
     let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     let tmstart = new Date().getTime();
     let waitTime = 1200;
@@ -25,7 +26,7 @@
     let seourl = 'https://pandacub.app';
     let openSocial = false;
     let flipped = false;
-    var mddSetup = {
+    let mddSetup = {
         active: false,
         title: "icons",
         mainclass: "colors",
@@ -70,11 +71,23 @@
                     resolve("");
                 }
             });
-            let resp = await Promise.all([p1, p2]);
+
+            let p3 = new Promise(async (resolve) => {
+                let response = await fetch('https://wstaeblein.github.io/myapps/json/data.json');
+                if (response.ok) {
+                    let tmp = await response.json();
+                    resolve(tmp);
+                } else {
+                    resolve('');
+                }
+            });
+
+            let resp = await Promise.all([p1, p2, p3]);
             let curSys = getOSInfo();
 
             data = resp[0]; 
             langData = resp[1]; 
+            otherApps = resp[2];
             prepDonationURL();
 
             mddSetup.data = data.languages.map((d) => {
@@ -114,13 +127,15 @@
     load();
 
     function prepDonationURL() {
+            let url = `https://buymeacoffee.com/wstaeblein/panda-cub-app`;
+            donateUrl = url;
 
-        if (currLang && Object.keys(langData).length) { 
+/*         if (currLang && Object.keys(langData).length) { 
             let phrase = encodeURI(langData.donationphrase.replace(/\s+/g, '+'));
             let currency = currLang == 'pt' ? 'BRL' : 'USD';
             let url = `https://www.paypal.com/donate/?business=S6B6QN3QR6B7S&no_recurring=0&item_name=${phrase}&currency_code=${currency}&&locale.x=${currLang}`;
             donateUrl = url;
-        }
+        } */
     }
 
     function getOSInfo() {
@@ -410,7 +425,7 @@
                     <p>{@html langData.donationtext2}</p>
 
                     <p>
-                        <img src="/img/qrcode.png" loading="lazy" alt="QR Code" />
+                        <img src="/img/qrcode.png" loading="lazy" height="220" alt="QR Code" />
                     </p>
                     <br />
                     <p>
@@ -423,13 +438,34 @@
             </div>
         </section>
 
+        {#if otherApps[currLang]}
+            <section id="apps">
+                <h2 class="strokeme">{langData.otherapps}</h2>
+                <p>{langData.othersdesc}</p>
+
+                <ul class="sites">
+                    {#each otherApps[currLang] as site}
+                        <li>
+                            <a href={site.link} target="_blank">
+
+                                <div><img src="{otherApps.imgs[site.id]}" alt="{site.name}" /></div>
+                                <div class="desc">{site.desc}</div>
+                            </a>
+                        </li>
+                    {/each}
+                </ul>
+
+
+            </section>
+        {/if}
+
         <section id="contact">
             <div>
                 <h2 class="strokeme" id="contactlink">
                     {langData.contacttitle}
                 </h2>
 
-                <div class="flipcard">{formMode}
+                <div class="flipcard">
                     <div class="cardbody" class:flipped={flipped}>
                         <form method="POST" name="Contact" class="card" action="/thanks-en.html" data-netlify="true" bind:this={myForm}>
                             <input type="hidden" name="form-name" value="Contact">
@@ -498,11 +534,7 @@
                 <div class="grass"></div>
                 <div class="pandabamboo"><img src="/img/panda-bamboo.png" loading="lazy" alt="panda"></div>
                 <div class="syn">
-                    <span>{langData.syn.first}<b>&#10084;</b>{langData.syn.second}
-                        <a href="https://synergys.com.br" alt="Website Synergys" target="_blank" rel="noopener">
-                            <img src="data:image/svg+xml,%3Csvg height='30px' style='cursor: pointer; pointer-events: all;' version='1.1' viewBox='0 0 116.50067 14.90286' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns%23' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:xlink='http://www.w3.org/1999/xlink'%3E' + %3Cg transform='translate(157.29 -32.162)'%3E%3Cg fill-rule='evenodd'%3E%3Ccircle cx='-149.84' cy='39.556' r='6.9285' fill='%23fff' style='paint-order:markers fill stroke'%3E%3C/circle%3E%3Cpath d='m-149.84 32.162a7.4514 7.4514 0 0 0 -7.4514 7.4514 7.4514 7.4514 0 0 0 7.4514 7.4514 7.4514 7.4514 0 0 0 7.4514 -7.4514 7.4514 7.4514 0 0 0 -7.4514 -7.4514zm4.6384 2.8893c0.0426-0.0012 0.0645 0.0018 0.0609 0.0098-4e-3 0.0083-0.40137 0.15865-0.88352 0.33419-2.1841 0.7952-3.6774 1.5659-4.7286 2.4404-0.77618 0.64573-1.0705 1.1163-1.0472 1.6742 0.0199 0.47428 0.21819 0.72668 0.71751 0.91307 0.39773 0.14847 1.0508 0.22298 1.5716 0.1793 0.18353-0.0154 0.3398-0.01156 0.34726 0.0085 0.0201 0.05416-0.50225 0.40685-0.86819 0.58619-1.9102 0.93609-4.0136 0.15267-4.0555-1.5104 0.0176-0.87834 0.76752-1.6787 1.3293-2.1326 1.1081-0.88679 2.9103-1.6246 5.1893-2.1245 0.75245-0.16504 2.069-0.37113 2.3672-0.3782zm-2.438 3.2665c0.60369-0.0012 1.1756 0.15052 1.6217 0.44804 0.41738 0.27839 0.62462 0.51811 0.79032 0.91414 0.25262 0.71654 0.0937 1.2655-0.21675 1.7236-1.048 1.5424-4.2193 2.6188-8.1161 2.7547-0.75625 0.02641-1.0324 0.02331-1.0165-0.01144 5e-3 -0.01047 0.22602-0.06495 0.49152-0.12102 1.2863-0.27164 2.9426-0.7905 3.9269-1.2302 2.2269-0.9948 3.1354-2.003 2.627-2.9153-0.21789-0.39095-1.0218-0.70574-1.9423-0.76052-0.246-0.01461-0.45271-0.0412-0.45932-0.05903-0.0201-0.05404 0.60478-0.36812 1.0399-0.52279 0.41266-0.14666 0.84058-0.21924 1.2536-0.22014z' fill='%232ebff4' style='paint-order:markers fill stroke'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Cpath d='m-137.49 43.561q-0.27844 0-0.27844-0.31256v-0.74087q0-0.31256 0.27844-0.31256h6.0078l-5.044-2.5583q-0.40694-0.20837-0.66396-0.42832-0.25702-0.23152-0.40695-0.47462-0.13921-0.25468-0.19276-0.5325-0.0428-0.27783-0.0428-0.59038 0-0.38201 0.12851-0.7293 0.12851-0.35886 0.38553-0.62511 0.26773-0.27783 0.65326-0.42832 0.39623-0.16207 0.91026-0.16207h7.8819q0.28915 0 0.28915 0.30098v0.74087q0 0.31256-0.28915 0.31256h-5.8043l5.0333 2.5583q0.41766 0.20837 0.66396 0.4399 0.25702 0.21995 0.39625 0.47462 0.14992 0.2431 0.19275 0.5325 0.0536 0.27783 0.0536 0.59038 0 0.38201-0.12851 0.74087-0.12851 0.34729-0.39623 0.62511-0.25702 0.26625-0.64255 0.42832-0.38552 0.15049-0.89956 0.15049z'/%3E%3Cpath d='m-122.79 43.561q-0.27843 0-0.27843-0.31256v-2.7551l-3.8446-4.4337q-0.0964-0.10418-0.0964-0.20837 0-0.09261 0.0643-0.13891 0.0643-0.04631 0.14992-0.04631h4.3158q0.28915 0 0.48191 0.23152l2.8486 3.3802 2.9664-3.3918q0.11781-0.12734 0.21419-0.17364 0.0964-0.04631 0.25702-0.04631h0.62112q0.10709 0 0.14993 0.05788 0.0536 0.04631 0.0536 0.11576 0 0.09261-0.0536 0.15049l-3.8767 4.4337v2.8246q0 0.31256-0.28915 0.31256z'/%3E%3Cpath d='m-102.67 43.561q-0.32127 0-0.56758-0.04631-0.2356-0.04631-0.589-0.18522l-8.5351-3.4497v3.3687q0 0.31256-0.28914 0.31256h-1.3815q-0.28914 0-0.28914-0.31256v-7.2814q0-0.30098 0.28914-0.30098h1.3172q0.17134 0 0.31057 0.01157 0.13921 0 0.26772 0.02315t0.25702 0.06946q0.13921 0.04631 0.31056 0.11576l7.9676 3.3224v-3.2413q0-0.30098 0.28915-0.30098h1.3815q0.28914 0 0.28914 0.30098v7.2814q0 0.31256-0.28914 0.31256z'/%3E%3Cpath d='m-94.932 39.937q-0.28914 0-0.28914-0.30098v-0.75245q0-0.30098 0.28914-0.30098h5.1189q0.27844 0 0.27844 0.20837v0.93767q0 0.20837-0.27844 0.20837zm-2.2917 3.6233q-0.76034 0-1.4029-0.2894-0.64255-0.30098-1.1138-0.82191-0.4712-0.5325-0.73892-1.2502-0.25702-0.7293-0.25702-1.5859 0-0.84506 0.24631-1.5628 0.25702-0.7293 0.71752-1.2618 0.46049-0.5325 1.103-0.82191 0.65325-0.30098 1.4457-0.30098h7.4856q0.28914 0 0.28914 0.30098v0.74087q0 0.31256-0.28914 0.31256h-4.9797q-0.3534 0-0.59971 0.08103-0.2356 0.08103-0.38553 0.2894t-0.21418 0.55566q-0.06425 0.34728-0.06425 0.87979v1.2618q0 0.59038 0.07497 0.99555 0.07496 0.40517 0.22489 0.64826 0.16064 0.2431 0.39624 0.35886 0.2356 0.10418 0.56758 0.10418h5.0118q0.28915 0 0.28915 0.31256v0.74087q0 0.31256-0.28915 0.31256z'/%3E%3Cpath d='m-79.438 43.561q-0.42836 0-0.7068-0.31256l-3.2234-3.577q-0.08567-0.0926-0.13922-0.17364-0.04284-0.09261-0.04284-0.25468v-0.35886q0-0.30098 0.27844-0.30098h1.4671q0.51404 0 0.76034-0.20837 0.25702-0.20837 0.25702-0.57881 0-0.7756-1.0174-0.7756h-2.3881v6.228q0 0.31256-0.28914 0.31256h-3.6732q-0.28914 0-0.28914-0.31256v-7.2814q0-0.30098 0.28914-0.30098h9.3597q0.48191 0 0.89956 0.15049 0.41765 0.13891 0.71751 0.40517 0.31056 0.26625 0.48191 0.63669t0.17135 0.82191q0 0.4862-0.17135 0.87979-0.16064 0.38201-0.44978 0.65984-0.27844 0.27783-0.66396 0.45147-0.37482 0.17364-0.80318 0.2431l2.9557 3.2761q0.07496 0.06946 0.07496 0.18522 0 0.06946-0.05354 0.12734-0.04284 0.05788-0.13922 0.05788z'/%3E%3Cpath d='m-72.125 43.561q-0.76034 0-1.4029-0.2894-0.64254-0.30098-1.1137-0.82191-0.4712-0.5325-0.73892-1.2502-0.25702-0.7293-0.25702-1.5859 0-0.84506 0.24631-1.5628 0.25702-0.7293 0.71751-1.2618t1.103-0.82191q0.65325-0.30098 1.4457-0.30098h7.4642q0.28914 0 0.28914 0.30098v0.74087q0 0.31256-0.28914 0.31256h-4.9583q-0.3534 0-0.59971 0.08103-0.2356 0.08103-0.38553 0.2894t-0.21418 0.55566q-0.06425 0.34728-0.06425 0.87979v1.2618q0 0.59038 0.07496 0.99555t0.22489 0.64826q0.16064 0.2431 0.39624 0.35886 0.2356 0.10418 0.56758 0.10418h1.8955v-3.5423q0-0.31256 0.27844-0.31256h3.0628q0.28914 0 0.28914 0.31256v4.5957q0 0.31256-0.28914 0.31256z'/%3E%3Cpath d='m-59.222 43.561q-0.27844 0-0.27844-0.31256v-2.7551l-3.8446-4.4337q-0.09638-0.10418-0.09638-0.20837 0-0.09261 0.06426-0.13891 0.06426-0.04631 0.14993-0.04631h4.3158q0.28914 0 0.48191 0.23152l2.8486 3.3802 2.9664-3.3918q0.1178-0.12734 0.21418-0.17364 0.09638-0.04631 0.25702-0.04631h0.62113q0.10709 0 0.14993 0.05788 0.05354 0.04631 0.05354 0.11576 0 0.09261-0.05354 0.15049l-3.8767 4.4337v2.8246q0 0.31256-0.28914 0.31256z'/%3E%3Cpath d='m-50.939 43.561q-0.27844 0-0.27844-0.31256v-0.74087q0-0.31256 0.27844-0.31256h6.0078l-5.044-2.5583q-0.40694-0.20837-0.66396-0.42832-0.25702-0.23152-0.40694-0.47462-0.13922-0.25468-0.19276-0.5325-0.04284-0.27783-0.04284-0.59038 0-0.38201 0.12851-0.7293 0.12851-0.35886 0.38553-0.62511 0.26773-0.27783 0.65325-0.42832 0.39624-0.16207 0.91027-0.16207h7.8819q0.28914 0 0.28914 0.30098v0.74087q0 0.31256-0.28914 0.31256h-5.8043l5.0333 2.5583q0.41765 0.20837 0.66396 0.4399 0.25702 0.21995 0.39624 0.47462 0.14993 0.2431 0.19276 0.5325 0.05354 0.27783 0.05354 0.59038 0 0.38201-0.12851 0.74087-0.12851 0.34729-0.39624 0.62511-0.25702 0.26625-0.64254 0.42832-0.38553 0.15049-0.89956 0.15049z'/%3E' +%0A%3C/g%3E%3C/g%3E%3C/svg%3E" alt="Logo Synergys"/>
-                        </a>
-                    </span>
+                    <span>{langData.syn.first}<b>&#10084;</b>{langData.syn.second} Walter Staeblein</span>
                 </div>
             </div>
         </section>
@@ -517,6 +549,50 @@
 {/if}
 
 <style>
+    ul.sites {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+        grid-auto-rows: 1fr;
+        gap: 10px;
+        margin: 5px 15vw 8px;
+
+    }
+
+
+    ul.sites > li {
+        transition: all 0.3s ease;
+        font-size: 18px;
+        padding: 0 10px 10px;
+        border-radius: 9px;        
+        border: 1px dotted #250a0a;
+        cursor: pointer;
+    }
+
+    ul.sites > li > a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul.sites > li:hover {
+        background: #fafafa;
+        color: #005500;
+        border: 1px dotted #005500;
+    }
+
+    ul.sites > li > a img {
+        height: 140px;
+        transition: transform 0.3s ease;
+    }
+
+    ul.sites > li:hover > a img {
+        transform: scale(1.2);
+    }
+
+
+
     .error {
         display: none;
     }
@@ -921,6 +997,16 @@
         color: #fff9c8;
     }
 
+
+    #apps {
+        display: block;
+        margin-top: calc(10px + 5vw);
+    }
+
+    #apps h2 {
+        color: #f2f2f2;
+    }
+
     #contact {
         position: relative;
         background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='210.43mm' height='70.567mm' version='1.1' viewBox='0 0 210.43 70.567' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns%23' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='92.241' x2='91.692' y1='112.83' y2='223.74' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ccc' offset='0'/%3E%3Cstop stop-color='%23fff6d5' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cmetadata%3E%3Crdf:RDF%3E%3Ccc:Work rdf:about=''%3E%3Cdc:format%3Eimage/svg+xml%3C/dc:format%3E%3Cdc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/%3E%3Cdc:title/%3E%3C/cc:Work%3E%3C/rdf:RDF%3E%3C/metadata%3E%3Cg transform='translate(0 -107.15)'%3E%3Cpath d='m0 107.15s21.88 19.038 35.139 24.158c18.757 7.244 41.273-23.293 60.679-21.139 30.727 3.4097 65.798 24.477 91.683 14.002 8.8223-3.5703 22.924-17.021 22.924-17.021v70.567h-210.43z' fill='url(%23a)' fill-rule='evenodd'/%3E%3C/g%3E%3C/svg%3E");
@@ -1142,6 +1228,9 @@
         width: 90px;
     }
     nav.menu a:nth-child(5) {
+        width: 70px;
+    }
+    nav.menu a:nth-child(6) {
         width: 110px;
     }
 
@@ -1180,10 +1269,16 @@
     }
     nav.menu .start-4,
     nav.menu a:nth-child(5):hover ~ .animation {
-        width: 110px;
+        width: 70px; 
         left: 380px;
         background-color: #ff0033;
     }
+    nav.menu .start-5,
+    nav.menu a:nth-child(6):hover ~ .animation {
+        width: 110px;
+        left: 450px;
+        background-color: #ff0033;
+    }    
 
     @keyframes float {
         0% {
@@ -1689,6 +1784,15 @@
 
         .pandabamboo {
             left: -15vw;
+        }
+
+        ul.sites {
+            margin: 5px 15px 8px;
+        }
+
+        .syn {
+            text-align: left;
+            padding-left: 10px;
         }
     }
 

@@ -3,6 +3,7 @@
         "resources": "Recursos",
         "download": "Download",
         "donate": "Doar",
+        "apps": "Apps",
         "contactlink": "Contato"
     },
     "formwait": "Aguarde, enviando seu formulário",
@@ -65,5 +66,7 @@
         "desc": "Este app permite otimizar e redimensionar imagens nos formatos PNG, JPG e WEBP sem perda de qualidade.",
         "title": "Panda Cub - Aplicativo de Otimização de Imagens",
         "appname": "Panda Cub App"
-    }      
+    },
+    "otherapps": "Outros Apps",
+    "othersdesc": "Visite nossos outros sites e descubra serviços gratuitos e entretenimento"
 }
