@@ -2,10 +2,10 @@
 @echo off
 (node --version & echo.) >2 & (set /p ver=)<2
 
-if NOT %ver:~1,2% == 18 (goto changenode) else (goto app)
+if NOT %ver:~1,2% == 22 (goto changenode) else (goto app)
 
 :changenode
-nvm use 18
+nvm use 22
 :: Espera 1 segundo para as mudanças ficarem disponíveis
 timeout /t 1
 

@@ -15,12 +15,8 @@
     "wait": "Wait",
     "version": "Version",
     "overtitle": "Totally free!",
-    "title": "Image Optimizer and Resizer",
-    "hero": { 
-        "first" : "Application to easily reduce the size and even the dimensions of images in JPG, PNG and WEBP formats. Uses the ", 
-        "link": "tinypng.com", 
-        "last": " service API."
-    },
+    "title": "Image optimizer, resizer and converter",
+    "hero": "A desktop app to easily reduce the size, dimensions, and convert images. Supports JPG, PNG, GIF, WEBP, AVIF, TIFF, SVG, PCX, and HEIC formats. Can use the tinypng.com service engine, its own engine, or both.",
     "herocards": [
         { "img": "practical.png", "text": "More Convenience" },
         { "img": "speed.png", "text": "More Speed" },
@@ -33,14 +29,11 @@
         { "title": "Control over the output file", "icon": "file", "text": "You can choose to overwrite the file, create a folder for the result, create a new file or even make a backup of the original." },
         { "title": "Process large files", "icon": "large2", "text": "Files up to 70 MB can be sent without any problems for processing." },
         { "title": "Image resizing", "icon": "redim", "text": "Scale down proportionately, scale down to fit or cover given dimensions, or create thumbnails." },
+        { "title": "Image conversion", "icon": "convert", "text": "Easily convert your images between different supported formats." },
         { "title": "Image metadata management", "icon": "meta", "text": "Here you can choose to remove or preserve the copyright, geolocation and date of the images." },
         { "title": "Control over usage", "icon": "dash", "text": "You know at all times how many compressions you did in the current month and how many images just have been processed." }
     ],
-    "featuresobs": {
-        "first": "To use this application it is necessary to create an account on the ",
-        "link": "tinypng.com",
-        "last": " website. This account is completely free for up to 500 image compressions per month."
-    },
+    "featuresobs": "You may wish to create an account on the tinypng.com website and get your API key to use with this app (and elsewhere). This account is completely free for up to 500 image compressions per month. Click the button below to navigate to their page.",
     "download": "Download",
     "downloadstitle": "Choose your download",
     "soon": "Coming Soon!!",

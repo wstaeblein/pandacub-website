@@ -82,6 +82,9 @@
                 }
             });
 
+
+            
+
             let resp = await Promise.all([p1, p2, p3]);
             let curSys = getOSInfo();
 
@@ -129,13 +132,6 @@
     function prepDonationURL() {
             let url = `https://buymeacoffee.com/wstaeblein/panda-cub-app`;
             donateUrl = url;
-
-/*         if (currLang && Object.keys(langData).length) { 
-            let phrase = encodeURI(langData.donationphrase.replace(/\s+/g, '+'));
-            let currency = currLang == 'pt' ? 'BRL' : 'USD';
-            let url = `https://www.paypal.com/donate/?business=S6B6QN3QR6B7S&no_recurring=0&item_name=${phrase}&currency_code=${currency}&&locale.x=${currLang}`;
-            donateUrl = url;
-        } */
     }
 
     function getOSInfo() {
@@ -143,8 +139,7 @@
 
         if (navigator.appVersion.indexOf("Win") != -1) {
             resp.os = "windows";
-            resp.arch =
-                navigator.appVersion.indexOf("x64") != -1 ? "x64" : "i32";
+            resp.arch = navigator.appVersion.indexOf("x64") != -1 ? "x64" : "i32";
         }
         if (navigator.appVersion.indexOf("Mac") != -1) {
             resp.os = "macos";
@@ -243,8 +238,12 @@
         myForm.reset();
     }
 
-    function computeDownload() {
-        appid
+    function computeDownload(link, app, evt) {
+        let obj = { os: app.os, arch: link.arch }
+        fetch('/api/dwn', {
+            method: 'POST',
+            body: JSON.stringify(obj)
+        });
     }
 
     
@@ -330,7 +329,7 @@
                     <div class="overtitle">{langData.overtitle}</div>
                     <h1 class="">{langData.title}</h1>
                     <p class="subtitle">
-                        {langData.hero.first}<a href="https://tinypng.com/" target="_blank" rel="noopener">{langData.hero.link}</a >{langData.hero.last}
+                        {@html langData.hero.replace('$$', '<a href="https://tinypng.com/" target="_blank" rel="noopener">tinypng.com</a>')}
                     </p>
                 </div>
                 <ul class="features">
@@ -367,13 +366,10 @@
                         </li>
                     {/each}
                 </ul>
-                <p>
-                    {langData.featuresobs.first}<a
-                        href="https://tinypng.com"
-                        target="_blank"
-                        rel="noopener">{langData.featuresobs.link}</a
-                    >{langData.featuresobs.last}
-                </p>
+                <div>
+                    <span>{langData.featuresobs}</span>
+                    <br><br><a href="https://tinify.com/developers" class="button" target="_blank" rel="noopener"><span>tinypng.com</span></a>
+                </div>
             </div>
         </section>
 
@@ -384,7 +380,7 @@
             </h2>
             <div class="subtitle">{langData.version}&nbsp;{data.appversion}{data.appversion[0] == '0' ? ' Beta' : ''}</div>
             <div>
-                <div>
+                <div class="deploys">
                     {#each downloads as v}
                         <div class="os" class:sel={v.actual}>
                             <h5>{v.os}</h5>
@@ -393,17 +389,13 @@
                             </div>
                             <div class="links">
                                 {#each v.list as link}
-                                    <a
-                                        href={link.url}
-                                        on:click={computeDownload.bind(this, link)}
-                                        class:sel={link.actual}
-                                        download="pandacub-{v.id}-{v.arch}-{v.version}"
-                                        >{link.desc}</a
-                                    >
+                                    <a href={link.url} on:click={computeDownload.bind(this, link, v)} class:sel={link.actual} download="pandacub-{v.id}-{v.arch}-{v.version}">{link.desc}</a>
+                                    <div class="installformat"><small>{link.format}</small></div>
                                 {:else}
                                     <span>{langData.soon}</span>
                                 {/each}
                             </div>
+                            
                         </div>
                     {/each}
                 </div>
@@ -549,6 +541,18 @@
 {/if}
 
 <style>
+    .installformat {
+        height: auto;
+        overflow: hidden;
+        line-height: 1;
+        padding: 0;
+        transform: translateY(-5px);
+    }
+
+    .installformat > small {
+        font-size: 15px;
+    }
+
     ul.sites {
         list-style: none;
         padding: 0;
@@ -848,10 +852,12 @@
     aside.startscreen img {
         animation: simplefloat 4s ease-in-out infinite;
         animation-fill-mode: both;
+        width: clamp(150px, 50vw, 256px);
     }
 
     aside.startscreen > p {
         margin: 0;
+        font-size: clamp(26px, 10vw, 52px);
     }
 
     .back2top {
@@ -933,7 +939,7 @@
         margin-bottom: 10px;
     }
 
-    .sel {
+    .deploys div.sel {
         border: 1px dotted #777;
         border-radius: 5px;
         background: #fafafa;
@@ -955,6 +961,7 @@
     #downloads {
         margin-top: calc(40px + 12vw);
         margin-bottom: calc(10px + 5vw);
+     
     }
 
     #downloads {
@@ -1009,7 +1016,7 @@
 
     #contact {
         position: relative;
-        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='210.43mm' height='70.567mm' version='1.1' viewBox='0 0 210.43 70.567' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns%23' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='92.241' x2='91.692' y1='112.83' y2='223.74' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ccc' offset='0'/%3E%3Cstop stop-color='%23fff6d5' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cmetadata%3E%3Crdf:RDF%3E%3Ccc:Work rdf:about=''%3E%3Cdc:format%3Eimage/svg+xml%3C/dc:format%3E%3Cdc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/%3E%3Cdc:title/%3E%3C/cc:Work%3E%3C/rdf:RDF%3E%3C/metadata%3E%3Cg transform='translate(0 -107.15)'%3E%3Cpath d='m0 107.15s21.88 19.038 35.139 24.158c18.757 7.244 41.273-23.293 60.679-21.139 30.727 3.4097 65.798 24.477 91.683 14.002 8.8223-3.5703 22.924-17.021 22.924-17.021v70.567h-210.43z' fill='url(%23a)' fill-rule='evenodd'/%3E%3C/g%3E%3C/svg%3E");
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz48c3ZnIHdpZHRoPScyMTAuNDNtbScgaGVpZ2h0PSc3MC41NjdtbScgdmVyc2lvbj0nMS4xJyB2aWV3Qm94PScwIDAgMjEwLjQzIDcwLjU2NycgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczpjYz0naHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjJyB4bWxuczpkYz0naHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8nIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIycgeG1sbnM6eGxpbms9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsnPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0nYScgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSg5MCkiPjxzdG9wIHN0b3AtY29sb3I9JyM2MmMxZTUnIG9mZnNldD0nMjUlJy8+PHN0b3Agc3RvcC1jb2xvcj0nI2NmZWNmNycgb2Zmc2V0PSc5NSUnLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48bWV0YWRhdGE+PHJkZjpSREY+PGNjOldvcmsgcmRmOmFib3V0PScnPjxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PjxkYzp0eXBlIHJkZjpyZXNvdXJjZT0naHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UnLz48ZGM6dGl0bGUvPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwIC0xMDcuMTUpJz48cGF0aCBkPSdtMCAxMDcuMTVzMjEuODggMTkuMDM4IDM1LjEzOSAyNC4xNThjMTguNzU3IDcuMjQ0IDQxLjI3My0yMy4yOTMgNjAuNjc5LTIxLjEzOSAzMC43MjcgMy40MDk3IDY1Ljc5OCAyNC40NzcgOTEuNjgzIDE0LjAwMiA4LjgyMjMtMy41NzAzIDIyLjkyNC0xNy4wMjEgMjIuOTI0LTE3LjAyMXY3MC41NjdoLTIxMC40M3onIGZpbGw9J3VybCgjYSknIGZpbGwtcnVsZT0nZXZlbm9kZCcvPjwvZz48L3N2Zz4=');
         background-size: cover;
         background-position: center top;
         min-height: 50vh;
@@ -1034,20 +1041,20 @@
         justify-content: space-between;
     }
 
-    #downloads > div > div:first-child {
+    #downloads > div > div.deploys {
         display: flex;
-        gap: 0;
+        gap: 15%;
         flex-wrap: nowrap;
         padding: 1vw 0;
         width: 65%;
-        justify-content: space-between;
+        justify-content: end;
     }
 
 
 
     #downloads > div div.os {
         text-align: center;
-        padding: 10px;
+        padding: 10px 2em;
         width: 160px;
     }
 
@@ -1058,7 +1065,7 @@
     }
 
     #downloads > div div.os > div > a:not(:last-child) {
-        margin-right: 15px;
+        margin: 0 8px;
     }
 
     #downloads > div div.os h5 {
@@ -1067,6 +1074,8 @@
 
     #downloads > div div.os img {
         width: max(6vw, 48px);
+        aspect-ratio: 1;
+        object-fit: contain;
     }
     #downloads > div div.os div.links {
         margin-top: 15px;
@@ -1080,6 +1089,11 @@
         width: 100%;
         height: auto;
         object-fit: contain;
+    }
+
+    #resources > div {
+        margin-left: 15vw;
+        margin-right: 15vw;
     }
 
     #resources ul {
@@ -1487,7 +1501,10 @@
             width: 190px;
         }
 
-
+        #resources > div {
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
 
         .dropdown {
             width: 40px;
@@ -1670,6 +1687,9 @@
             background-color: #ff0033;
         }
 
+        .recuo {
+            margin-top: 10vh;
+        }        
     }
 
     @media screen and (max-width: 750px) {
@@ -1694,6 +1714,11 @@
             font-size: 16px;
             padding: 5px 0 15px;
         }
+
+        #resources > div {
+            margin-left: 5vw;
+            margin-right: 5vw;
+        }        
 
     }
 
@@ -1793,6 +1818,11 @@
         .syn {
             text-align: left;
             padding-left: 10px;
+        }
+
+        #resources > div {
+            margin-left: 5px;
+            margin-right: 5px;
         }
     }
 

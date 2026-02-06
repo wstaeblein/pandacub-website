@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <title>HELP - Panda Cub App</title>
 
         <link rel="preload" href="/img/logos/pandacub.png" as="image">
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Teko:wght@700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/png" href="../favicon.ico">
 
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/pages/pages.css">
     </head>
@@ -25,17 +25,104 @@
             <header>
                 <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
                 <div>
-                    <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
+                    <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home"></a>               
                 </div>
             </header>
             <main>
-                <div>
+                <div class="help">
                     <h1 class="first">HELP</h1>
 
-                    <p>Panda Cub App - Copyright © 2022-<span id="year">2023</span> Walter Staeblein</p>
+                    <p>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</p>
                     <br>
  
-                    <p>Coming soon!</p>
+                    <p>This app aims to facilitate the resizing and optimization of images. Its interface is almost entirely in the same window and the options are simple. The interface is divided into 6 parts, indicated by a number from 1 to 6. Just find the one that interests you.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/pt.png" alt="Interface">
+                        <img src="/img/screens/help-front.png" alt="Interface">
+                    </div>
+                    <h3>1- File Box</h3>
+                    <p>Drop the image files you want to optimize in there or click the button to load files using your system&#39;s standard dialog box.</p>
+                    <br>
+
+                    <h3>2- Image Adjustments</h3>
+                    <p>There are 5 possible adjustments described below:</p>
+                    <ul>
+                        <li>
+                            <h4>Compression</h4>
+                            <p>Defines where the image compression will come from.</p>
+                            <ul>
+                                <li><b>Tinify when possible:</b> Will always use the Tinipng service if it is online, has an API key and the image type is supported. Otherwise it will be local.</li>
+                                <li><b>Best result:</b> Will trigger 2 compression routines, one for Tinypng and another for the local one, provided that Tinypng meets the above requirements. Otherwise it will only be local. In the end, the image with the smallest size will be used.</li>
+                                <li><b>Always local:</b> It will always use the application&#39;s internal engine to perform all activities.</li>
+                            </ul>
+                            <br>
+                        </li>
+
+                        <li>
+                            <h4>Background color</h4>
+                            <p>Defines the background color for conversions to formats without an alpha channel (transparency). Currently only JPG. Choose the transparent color (checkerboard) to take advantage of the alpha channel. If the chosen color is transparent and the destination image has an alpha channel and is converted to JPG, black will be used as the background color.</p>
+                            <br>
+                        </li>      
+                        
+                        <li>
+                            <h4>Conversion</h4>
+                            <p>Defines the format to which the resulting image will be converted. If none is chosen, the image remains in its original format. The exceptions are BMP, PCX, and HEIC, which are automatically converted to another format according to the configuration if a specific format is not chosen in this setting.</p>
+                            <br>
+                        </li>       
+                        
+                        <li>
+                            <h4>Files</h4>
+                            <p>Defines how the new image will be created as a file. The options are:</p>
+                            <ul>
+                                <li><b>Overwrite: </b>The original file will be overwritten.</li>                            
+                                <li><b>Create folder: </b>A folder called optimized will be created, if it does not already exist, and the file will be created in it with the original name. If a file with the same name already exists in this folder, it will be overwritten.</li>                            
+                                <li><b>New file: </b>A new file with the suffix &quot;-optimized&quot; will be created.</li>                            
+                                <li><b>Backup:</b> Makes a backup copy of the original file with the suffix &quot;-backup&quot; before overwriting it.</li>                            
+                            </ul>
+                                
+                            <br>
+                        </li>
+                        
+                        <li>
+                            <h4>Dimensions</h4>
+                            <p>Defines the dimensions of the image being processed.</p>
+                            <ul>
+                                <li><b>Do not change: </b>The image will not be resized.</li>                            
+                                <li><b>Scale: </b>The image is resized on one of the axes. Either width or height. The choice appears when this option is selected. The new size in pixels and the axis it refers to. The size of the other axis is calculated to keep the image in the same aspect ratio.</li>
+                                <li><b>Fit: </b>The image will be resized to fit within a rectangle whose dimensions, width and height, are requested when this option is selected. The new size will be the largest possible to fit the chosen dimensions.</li>
+                                <li><b>Cover: </b>The image will be resized to cover the rectangle whose dimensions, width and height, are requested when this option is selected. The new size will be the smallest possible to cover the chosen dimensions. When used in Tinypng, AI is used to determine where to crop the image.</li>
+                                <li><b>Thumbnail: </b>Locally, it&#39;s the same as Cover. In Tinypng, it can stretch backgrounds to create thumbnails. Like Cover, width and height are requested.</li>
+                            </ul>                               
+                            <br>
+                        </li>                            
+                    </ul>
+                    <br>
+
+                    <h3>3- Command Bar</h3>
+                    <p>The first 3 buttons allow you to check and uncheck options related to image metadata. They are, in order: Copyright information, geolocation, and image date.</p>                    
+                    <p>The last 3, also in order, change the interface language, make a donation to the author, and invoke the Settings screen.</p>
+                    <br>
+
+                    <h3>4- Counters</h3>
+                    <p>The optimizations made by this application are counted in this space. Both via Tinypng and locally. A general total and a monthly total are maintained.</p>                    
+                    <p>The monthly count, both locally and online (Tinify), is only for compressions made using this app. Each image counts as one compression, regardless of conversions and/or resizing. To see how many compressions you&#39;ve done in Tinify this month, enable &quot;Show monthly Tinify compression count&quot; in settings.</p>
+                    <br>   
+
+                    <h3>5- Totals</h3>
+                    <p>Shows the total saved and the number of optimizations made. The percentage refers to the total saved compared to the size before optimizations.</p>                    
+                    <br>
+                    
+
+                    <h3>6 Footer</h3>
+                    <p>Here we have an internet connection indicator, which attempts to verify if this connection exists, in addition to 4 links:</p>
+                    <ul>
+                        <li><b>Privacy: </b>Invokes a page with our privacy policy.</li>
+                        <li><b>EULA: </b>Invokes a page with our usage license.</li>
+                        <li><b>About: </b>Invokes a box about this application and its author. Here you can find contacts, other applications and various data.</li>
+                        <li><b>Help: </b>This page.</li>
+                    </ul>
+                    <br>                        
                 </div>
             </main>
         </section> 

@@ -28,7 +28,7 @@ h2 {
 }
 
 a {
-	color: rgb(0,100,200);
+	color: inherit;
 	text-decoration: none;
 }
 

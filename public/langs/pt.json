@@ -15,12 +15,8 @@
     "wait": "Aguarde",
     "version": "Versão",
     "overtitle": "Totalmente gratuito!",
-    "title": "Otimizador e Redimensionador de Imagens",
-    "hero": { 
-        "first" : "Aplicativo para facilmente reduzir o tamanho e até as dimensões de imagens nos formatos JPG, PNG e WEBP. Faz uso da API do serviço ", 
-        "link": "tinypng.com", 
-        "last": "."
-    },
+    "title": "Otimizador, redimensionador e conversor de imagens",
+    "hero": "Aplicativo desktop para facilmente reduzir o tamanho, as dimensões e converter imagens. Suporta os formatos JPG, PNG, GIF, WEBP, AVIF, TIFF, SVG, PCX e HEIC. Pode usar o motor do serviço $$, seu motor próprio ou ambos.",
     "herocards": [
         { "img": "practical.png", "text": "Mais Praticidade" },
         { "img": "speed.png", "text": "Mais Velocidade" },
@@ -33,14 +29,11 @@
         { "title": "Controle sobre o arquivo de saída", "icon": "file", "text": "Você pode escolher sobrescrever o arquivo, criar uma pasta para o resultado, criar um novo arquivo ou ainda fazer um backup do original." },
         { "title": "Processa arquivos grandes", "icon": "large2", "text": "Arquivos de até 70 MB podem ser enviados sem problemas para serem processados." },
         { "title": "Redimensionamento de imagens", "icon": "redim", "text": "Diminua proporcionalmente, diminua para caber ou cobrir dimensões informadas ou ainda crie miniaturas." },
+        { "title": "Conversão de imagens", "icon": "convert", "text": "Facilmente converta imagens entre os diferentes formatos suportados." },
         { "title": "Gerência de metadados das imagens", "icon": "meta", "text": "Aqui você pode escolher remover ou preservar o copyright, a geolocalização e a data das imagens." },
         { "title": "Controle sobre o uso", "icon": "dash", "text": "Você sabe a todo momento quantas compressões fez no mês e quantas imagens estão ou acabaram de ser processadas." }
     ],
-    "featuresobs": {
-        "first": "Para usar esse aplicativo é necessário a criação de uma conta no site ",
-        "link": "tinypng.com",
-        "last": ". Esta conta é totalmente gratuita até 500 compressões de imagens por mês."
-    },
+    "featuresobs": "Você pode criar uma conta no site tinypng.com e obter sua chave de API para usar com este aplicativo (e em outros lugares). Essa conta é totalmente gratuita para até 500 compressões de imagem por mês. Clique no botão abaixo para acessar a página.",
     "download": "Baixar",
     "downloadstitle": "Escolha o seu download",
     "soon": "Em Breve!!",

@@ -15,12 +15,8 @@
     "wait": "Espere",
     "version": "Versión",
     "overtitle": "¡Totalmente Gratis!",
-    "title": "Optimizador y Redimensionador de Imágenes",
-    "hero": {
-        "first": "Aplicación para reducir fácilmente el tamaño e inclusive las dimensiones de imágenes en formatos JPG, PNG y WEBP. Hace uso de la API del servicio ",
-        "link": "tinypng.com",
-        "last": "."
-    },
+    "title": "Optimizador, redimensionador y conversor de imágenes",
+    "hero": "Una aplicación de escritorio para reducir fácilmente el tamaño, las dimensiones y convertir imágenes. Compatible con los formatos JPG, PNG, GIF, WEBP, AVIF, TIFF, SVG, PCX y HEIC. Puede usar el motor de servicio de tinypng.com, su propio motor o ambos.",
     "herocards": [
         {
             "img": "practical.png",
@@ -58,6 +54,7 @@
             "icon": "redim",
             "text": "Reduzca la escala proporcionalmente, reduzca la escala para ajustarse o cubrir dimensiones dadas, o cree miniaturas."
         },
+        { "title": "Conversión de imágenes", "icon": "convert", "text": "Convierta fácilmente imágenes entre diferentes formatos compatibles." },        
         {
             "title": "Gestión de metadatos de imágenes",
             "icon": "meta",
@@ -69,11 +66,7 @@
             "text": "Sabrás en todo momento cuántas compresiones has hecho en el mes y cuántas imágenes están o acaban de procesar."
         }
     ],
-    "featuresobs": {
-        "first": "Para utilizar esta aplicación es necesario crear una cuenta en el sitio web ",
-        "link": "tinypng.com",
-        "last": ". Esta cuenta es completamente gratuita para hasta 500 compresiones de imágenes por mes."
-    },
+    "featuresobs": "Es posible que desee crear una cuenta en tinypng.com y obtener tu clave API para usarla con esta aplicación (y otras). Esta cuenta es completamente gratuita y permite hasta 500 compresiones de imágenes al mes. Haz clic en el botón de abajo para acceder a su página.",
     "download": "Descargar",
     "downloadstitle": "Elige tu descarga",
     "soon": "¡¡Pronto!!",

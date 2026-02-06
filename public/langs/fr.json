@@ -15,12 +15,8 @@
     "wait": "Attendre",
     "version": "Version",
     "overtitle": "Complètement gratuit!",
-    "title": "Optimiseur et Resizer D'image",
-    "hero": {
-        "first": "Application pour réduire facilement la taille et même les dimensions de l'image dans les formats JPG, PNG et WebP. Utilisez l'API de service ",
-        "link": "tinypng.com",
-        "last": "."
-    },
+    "title": "Optimiseur, resizer et convertisseur d'image",
+    "hero": "Une application de bureau permettant de réduire facilement la taille, les dimensions et de convertir des images. Compatible avec les formats JPG, PNG, GIF, WEBP, AVIF, TIFF, SVG, PCX et HEIC. Peut utiliser le moteur de tinypng.com, son propre moteur, ou les deux.",
     "herocards": [
         {
             "img": "practical.png",
@@ -58,6 +54,7 @@
             "icon": "redim",
             "text": "Diminuez proportionnellement, diminuez pour ajuster ou couvrir les dimensions éclairées ou même créer des miniatures."
         },
+{ "title": "Conversion d'images", "icon": "convert", "text": "Convertissez facilement des images entre différents formats pris en charge." },        
         {
             "title": "Réunion Gestion des images",
             "icon": "meta",
@@ -69,17 +66,13 @@
             "text": "Vous savez tout le temps combien de compressions ont fait au cours du mois et combien d'images elles sont ou viennent d'être traitées."
         }
     ],
-    "featuresobs": {
-        "first": "Pour utiliser cette application, il est nécessaire de créer un compte sur le site ",
-        "link": "tinypng.com",
-        "last": ". Ce compte est entièrement gratuit jusqu'à 500 compressions d'image par mois."
-    },
-    "download": "Descendre",
+    "featuresobs": "Vous pouvez créer un compte sur le site tinypng.com et obtenir votre clé API pour l'utiliser avec cette application (et d'autres). Ce compte est entièrement gratuit pour un maximum de 500 compressions d'images par mois. Cliquez sur le bouton ci-dessous pour accéder à leur page.",
+    "download": "Télécharger",
     "downloadstitle": "Choisissez votre téléchargement",
     "soon": "Bientôt!!",
     "donate": "Faire un don",
     "donationtitle": "Faire un don",
-    "donationtext1": "Cette application est un groupe One-Man et il n'est pas facile de créer et de maintenir un tel pandinha. <br> Je compte sur votre aide pour rendre le Panda Cub toujours fort, sain et bien nourri!",
+    "donationtext1": "Cette application est un homme-orchestre et il n'est pas facile de créer et de maintenir un bébé panda. <br> Je compte sur votre aide pour rendre le bébé panda toujours fort, sain et bien nourri!",
     "donationtext2": "Utilisez le code QR ou le bouton de don. <br> Toute valeur est la bienvenue! Merci d'avance pour le soutien.",
     "donatebtn": "Faire un don",
     "donationphrase": "Merci d'avoir aidé à garder le Cub de Panda fort, sain et bien nourri.",
