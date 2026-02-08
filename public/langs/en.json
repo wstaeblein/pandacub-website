@@ -6,6 +6,7 @@
         "apps": "Apps",
         "contactlink": "Contact"
     },
+        "fillall": "Fill all fields to submit",
     "formwait": "Please wait while we submit your form",
     "formok": "Form sent successfully",
     "formerror": "An error has occurred!",    

@@ -6,6 +6,7 @@
         "apps": "Apps",
         "contactlink": "Contactez"
     },
+        "fillall": "Remplir tous les champs pour soumettre",
     "formwait": "Attendre la soumission du formulaire",
     "formok": "Formulaire envoyé avec succès",
     "formerror": "Une erreur est survenue!",

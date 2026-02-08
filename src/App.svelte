@@ -491,9 +491,10 @@
                             <div>
                                 <input type="text" name="subject" bind:value={frmFields.subject} placeholder={langData.placeholders.subject} maxlength="80" on:input={check} required />
                             </div>
-                            <div>
+                            <div class="nogap">
                                 <textarea name="message" bind:value={frmFields.message} placeholder={langData.placeholders.text} maxlength="4096" on:input={check} required />
                             </div>
+                            <div class="nogap">&nbsp;<small class:hidden={formIsValid}>{langData.fillall}</small>&nbsp;</div>
                             <br>
 
                             {#if formMode == 0}
@@ -555,6 +556,14 @@
 {/if}
 
 <style>
+    .nogap {
+        margin-bottom: 0 !important;
+    }
+
+    .nogap small {
+        color: #888;
+    }
+
     .installformat {
         height: auto;
         overflow: hidden;
@@ -1548,6 +1557,10 @@
 
     @media screen and (max-width: 900px) {
 
+        #social {
+            display: none;
+        }
+
         :global(.clouds.start .cloud, .clouds.start .cloud_two, .clouds.start .cloud_three) {
             animation: none;
         }        
@@ -1870,6 +1883,10 @@
 /*         #contact > div {
             margin: 0;
         } */
+
+        form {
+            text-align: right;
+        }
 
         #downloads > div > div:first-child {
             justify-content: center;
