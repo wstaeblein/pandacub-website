@@ -14,35 +14,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/pages/pages.css">
     </head>
-    <body>
+    <body id="home">
         <script>
             window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
                 document.querySelector('section').classList.remove('hide');
+
+                handleScroll();
+                window.addEventListener('scroll', handleScroll);   
             });
-        </script>       
+
+            
+            function handleScroll() {
+                if (window.scrollY > window.innerHeight * 0.5) {
+                    document.querySelector('.back2top').classList.remove('vanish');
+                } else {
+                    document.querySelector('.back2top').classList.add('vanish');
+                }
+            }
+
+            function navigate(id) {
+                const ele = document.getElementById(id);
+                ele.scrollIntoView({ behavior: 'smooth'})
+            }
+        </script>    
+        
+        <span class="back2top vanish">
+            <a href="#home"><img src="/img/back.png" alt=""></a>
+        </span>
+
         <section class="hide">
             <header>
-                <img src="../img/logos/pandacub.png" class="logo svelte-1xsqtek" alt="Panda Cub Logo">
+                <img src="../img/logos/pandacub.png" class="logo" alt="Panda Cub Logo">
                 <div>
                     <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Home" /></a>               
                 </div>
             </header>
             <main>
                 <div class="help">
-                    <h1 class="first">AJUDA</h1>
+                    <h1>AJUDA</h1>
 
-                    <p>Panda Cub App - Copyright © 2022-<span id="year">2026</span> Walter Staeblein</p>
+                    <nav>
+                        <a href="#main">Principal</a>
+                        <a href="results">Resultados</a>
+                        <a href="configs">Configurações</a>
+                    </nav>
                     <br>
  
+                    <h2 id="main">Interface Principal</h2>
                     <p>Este app tem por objetivo facilitar o redimensionamento e otimização de imagens. Sua interface está praticamente toda na mesma janela e as opções são simples. A interface está dividida em 6 partes, indicadas por um número de 1 a 6. Basta achar a que lhe interessa.</p>
                 
                     <div class="interface">
                         <img src="/img/screens/pt.png" alt="Interface" />
-                        <img src="/img/screens/help-front.png" alt="Interface" />
+                        <img src="/img/screens/numbers-front.png" alt="Interface" />
                     </div>
+                    <br> 
+
                     <h3>1- Box de arquivos</h3>
-                    <p>Solte os arquivos de imagens que deseja otimizar ali dentro ou clique o botão para carregar arquivos usando a caixa de diálogo padrão do seu sistema.</p>
+                    <p>Arraste arquivos de imagens suportadas sobre o box para processa-las. O app irá indicar aceitação animando as bordas. Solte os arquivos de imagens que deseja otimizar ali dentro ou, alternativamente, clique o botão para carregar arquivos usando a caixa de diálogo padrão do seu sistema. Arquivos que não são de imagens ou de formatos não suportados serão mostrados com uma mensagem de erro na próxima tela mas o processamento não será interrompido.</p>
                     <br>
 
                     <h3>2- Ajustes das imagens</h3>
@@ -115,18 +144,103 @@
                     
 
                     <h3>6  Rodapé</h3>
-                    <p>Aqui temos um indicador de conexão com a internet, que tenta aferir se essa conexão existe, além de 4 links:</p>
+                    <p>Aqui temos um indicador de conexão com a internet, que tenta aferir em tempo real se essa conexão existe. Se não existir todas as atividades serão via o motor interno do aplicativo (local). </p>
+                    <p>Temos também um menu com 4 links:</p>
                     <ul>
                         <li><b>Privacidade: </b>Invoca página com a nossa política de privacidade.</li>
                         <li><b>EULA: </b>Invoca página com a nossa licença de uso.</li>
                         <li><b>Sobre: </b>Invoca box sobre este aplicativo e seu autor. Aqui você encontra contatos, outros aplicativos e dados diversos.</li>
                         <li><b>Ajuda: </b>Esta página.</li>
                     </ul>
-                    <br>                        
+                    <br><br>       
+                    
+                    <h2 id="results">Interface de Resultados</h2>
+                    <p>Depois que imagens são arrastadas ou abertas e o processo de compressão, redimensionamento e conversão é iniciado a tela abaixo aparece. Nela você apenas acompanha este processo. A interface está dividida em 6 partes, indicadas por um número de 1 a 6. Basta achar a que lhe interessa.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/rear-pt.png" alt="Interface" />
+                        <img src="/img/screens/numbers-rear.png" alt="Interface" />
+                    </div>
+                    <br> 
+
+                    <h3>1- Lista de imagens processadas</h3>
+                    <p>Contém as imagens sendo processadas para a sua conferência e acompanhamento. Inclui os seguintes campos:</p>
+                    <ul>
+                        <li>Uma miniatura, que mostra muitas vezes somente o centro da imagem original.</li>
+                        <li>O nome do arquivo.</li>
+                        <li>Indicador de conversão com o formato origem e destino.</li>
+                        <li>Um ícone designando se o processamento é local ou remoto.</li>
+                        <li>Tamanho original, comprimido e porcentagem de compressão.</li>
+                        <li>Tempo gasto no processamento.</li>
+                        <li>Status do processo:
+                            <ul>
+                                <li>Processando - animação</li>
+                                <li>Completo com êxito - ícone verde</li>
+                                <li>Um erro ocorreu - ícone vermelho</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <h3>2- Indicador de processamento</h3>
+                    <p>Indica visualmente e por porcentagem o quanto do processamento já foi concluído.</p>
+                    <br>
+
+                    <h3>3- Contador de imagens</h3>
+                    <p>Indica quantas imagens estão sendo processadas e quantas já terminaram.</p>
+                    <br>          
+                    
+
+                    <h3>4- Tempo de processamento</h3>
+                    <p>Indica o tempo total do processsamento de todas as imagens.</p>
+                    <br>       
+                    
+                    <h3>5- Ações</h3>
+                    <p>Neste momento apenas o botão de voltar a interface principal. Nada impede que você arraste novas imagens a serem processadas sobre esta interface de resultado. O app irá indicar a aceitação e processa-las do mesmo jeito.</p>
+                    <br>            
+                    
+                    <h3>6- Indicador de processamento do Tinypng.com</h3>
+                    <p>Se houver uma chave de API válida e estiver habilitado nas configurações, mostra quantas compressões foram feitas no mês com essa chave. Assim fica fácil você controlar quantas compressões já fez.</p>
+                    <br><br>       
+                    
+                    <h2 id="configs">Configurações</h2>
+                    <p>Ajuste aqui as configurações do aplicativo. A interface está dividida em 4 partes, indicadas por um número de 1 a 4. Basta achar a que lhe interessa.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/configs-pt.png" alt="Interface" />
+                        <img src="/img/screens/numbers-configs.png" alt="Interface" />
+                    </div>
+                    <br> 
+
+                    <h3>1- Chave de API do Tinypng</h3>
+                    <p>Se optar por abrir uma conta no Tinypng, para ter acesso a sua poderosa API de compressão e redimensionamento de imagens, entre sua chave de API nesta caixa de texto.</p>  
+                    <br>    
+                    
+                    <h3>2- Conversões forçadas</h3>
+                    <p>Os formatos BMP, PCX e HEIC são suportados apenas para leitura. Portanto, para serem comprimidos e/ou redimensionados devem obrigatoriamente ir para outro formato. Aqui você escolhe esse formato padrão. Note que quando optar por um outro formato de conversão no seletor da interface principal, ele terá prioridade sobre esta configuração.</p>  
+                    <br>   
+                    
+                
+                    <h3>3- Outras configurações</h3>
+                    <ul>
+                        <li>Sempre no topo - Mantem a janela do aplicativo sempre sobre as outras.</li>
+                        <li>Sinal sonoro: Emite um sinal sonoro ao fim do processamento.</li>
+                        <li>Contagem mensal do Tinypng: Mostra na interface quantas compressões foram feitas usando o serviço Tinypng no mês corrente.</li>
+                        <li>Correção de orientação: Tenta corrigir a orientação de uma imagem com base no seu EXIF, caso exista e só em formatos suportados.</li>
+                        <li>Zerar todos os contadores: Zera as contagens de compressões feitas pelo aplicativo e começa tudo do zero novamente.</li>
+                    </ul>   
+                    <br>           
+                                
+                    
+                    <h3>4- Botões de comando</h3>
+                    <p>Salva as configurações ou volta sem salvar.</p>  
+                    <br>                       
                 </div>
             </main>
         </section> 
-        <footer></footer>
+        <footer>
+            <span>Panda Cub App - Copyright © 2022-<span id="year">2026</span> Walter Staeblein</span>
+        </footer>
     </body>
 </html>
 

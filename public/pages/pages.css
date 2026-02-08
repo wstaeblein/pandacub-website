@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,6 +15,7 @@ body {
     background-color: #f1f1f1;      
     color: #444;  
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -26,18 +28,11 @@ h1 {
     color: #b6f9d1;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 40px;
+    font-size: 52px;
+    text-align: center;
+    margin: 0 0 10px;
 }
 
-h1.first {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-h1.first + p {
-    margin: 0;
-    font-size: smaller;
-}
 
 h2 {
     color: #008033;
@@ -94,9 +89,18 @@ main > div {
 
 footer {
     background-image: url(../img/grass.svg);
-    height: 60px;
+    height: 80px;
     width: 100%;
-    border-bottom: 20px solid #333;
+    border-bottom: 32px solid #333;
+    position: relative;
+    font-size: small;
+    color: #dfcfcf;
+    text-align: center;
+}
+
+footer > span {
+    transform: translateY(56px);
+    display: inline-block;
 }
 
 
@@ -172,9 +176,75 @@ ol > li {
     margin: 0;
 }
 
+nav {
+    display: flex;
+    width: fit-content;
+    border: 1px solid forestgreen;
+    border-radius: 7px;
+    box-shadow: 2px 2px 6px 1px #0b2d06;    
+    overflow: hidden;
+    font-size: smaller;
+    margin: auto;
+}
+
+nav > a {
+    appearance: none;
+    border: none;
+    padding: 8px;
+    text-transform: uppercase;
+    background-color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+nav > a:not(:last-child) {
+    border-right: 1px solid forestgreen;
+}
+
+nav > a:hover {
+    background-color: forestgreen;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.back2top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px; /* 0 15vw; */
+    width: 48px;
+    height: 48px;
+    z-index: 11;
+    transition: opacity 0.5s ease;
+}
+
+.back2top > a {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+}
+.back2top > a:hover {
+    opacity: 1;
+}
+
+.back2top > a > img {
+    width: 100%;
+    height: 100%;
+}
+
+    .vanish {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+
 @media (max-width: 1024px) {
     h1 {
-        font-size: 38px;
+        font-size: 42px;
     }
 
     main {
@@ -193,7 +263,7 @@ ol > li {
     }
 
     h1 {
-        font-size: 36px;
+        font-size: 38px;
     }
 
     h2 {
@@ -204,10 +274,6 @@ ol > li {
 @media (max-width: 600px) {
     header img {
         max-height: 50px;
-    }
-
-    h1 {
-        font-size: 34px;
     }
 
     h2 {
@@ -226,10 +292,6 @@ ol > li {
 
     main {
         padding: 0;
-    }
-
-    h1 {
-        font-size: 30px;
     }
     
     h2 {
@@ -265,10 +327,6 @@ ol > li {
         max-height: 30px;
     }
 
-    h1 {
-        font-size: 24px;
-    }
-    
     h2 {
         font-size: 20px;
     }
