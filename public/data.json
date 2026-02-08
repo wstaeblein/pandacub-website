@@ -13,10 +13,10 @@
             "list": [
                 {
                     "arch": "all",
-                    "url": "https://www.dropbox.com/s/3xz1ueen8qgir6b/Panda%20Cub%20App%200.8.2%20ia32.msi?dl=1",
+                    "url": "https://www.dropbox.com/scl/fi/iam97e53hb8kepr6jnr2v/pandacub-app-0.9.13-setup.exe?rlkey=fjwbz263pligil7xh43qrsjf7&st=ru2p9kp2&dl=1",
                     "desc": "32 & 64 bits",
-                    "ext": ".msi",
-                    "format": "MSI"
+                    "ext": ".exe",
+                    "format": "EXE"
                 }
             ]
         },
@@ -24,13 +24,7 @@
             "id": "linux",
             "os": "Linux",
             "list": [
-                {
-                    "arch": "x64",
-                    "url": "https://www.dropbox.com/s/jn8lqgfsfrr1gke/Panda%20Cub%20App-0.8.2.AppImage?dl=1",
-                    "desc": "64 bits",
-                    "ext": ".AppImage",
-                    "format": "AppImage"
-                }
+
             ]
         }
     ]

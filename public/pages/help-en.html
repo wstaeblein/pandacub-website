@@ -14,13 +14,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/pages/pages.css">
     </head>
-    <body>
+    <body id="home">
         <script>
             window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
                 document.querySelector('section').classList.remove('hide');
+
+                handleScroll();
+                window.addEventListener('scroll', handleScroll);   
             });
-        </script>       
+
+            
+            function handleScroll() {
+                if (window.scrollY > window.innerHeight * 0.5) {
+                    document.querySelector('.back2top').classList.remove('vanish');
+                } else {
+                    document.querySelector('.back2top').classList.add('vanish');
+                }
+            }
+
+            function navigate(id) {
+                const ele = document.getElementById(id);
+                ele.scrollIntoView({ behavior: 'smooth'})
+            }
+        </script>    
+        
+        <span class="back2top vanish">
+            <a href="#home"><img src="/img/back.png" alt=""></a>
+        </span>
+
         <section class="hide">
             <header>
                 <img src="../img/logos/pandacub.png" class="logo" alt="Panda Cub Logo">
@@ -30,20 +52,22 @@
             </header>
             <main>
                 <div class="help">
-                    <h1 class="first">HELP</h1>
+                    <h1>HELP</h1>
 
-                    <p>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</p>
+                    <nav> <a href="#main">Main</a> <a href="#results">Results</a> <a href="#configs">Settings</a> </nav>
                     <br>
  
+                    <h2 id="main">Main Interface</h2>
                     <p>This app aims to facilitate the resizing and optimization of images. Its interface is almost entirely in the same window and the options are simple. The interface is divided into 6 parts, indicated by a number from 1 to 6. Just find the one that interests you.</p>
                 
                     <div class="interface">
                         <img src="/img/screens/en.png" alt="Interface">
                         <img src="/img/screens/numbers-front.png" alt="Interface">
                     </div>
+                    <br> 
 
                     <h3>1- File Box</h3>
-                    <p>Drop the image files you want to optimize in there or click the button to load files using your system's standard dialog box.</p>
+                    <p>Drag supported image files onto the box to process them. The app will indicate acceptance by animating the borders. Drop the image files you want to optimize inside or, alternatively, click the button to load files using your system&#39;s standard dialog box. Files that are not images or in unsupported formats will be shown with an error message on the next screen, but processing will not be interrupted.</p>
                     <br>
 
                     <h3>2- Image Adjustments</h3>
@@ -53,16 +77,16 @@
                             <h4>Compression</h4>
                             <p>Defines where the image compression will come from.</p>
                             <ul>
-                                <li><b>Tinify when possible:</b> Will always use the Tinipng service if it is online, has an API key and the image type is supported. Otherwise it will be local.</li>
-                                <li><b>Best result:</b> Will trigger 2 compression routines, one for Tinypng and another for the local one, provided that Tinypng meets the above requirements. Otherwise it will only be local. In the end, the image with the smallest size will be used.</li>
-                                <li><b>Always local:</b> It will always use the application's internal engine to perform all activities.</li>
+                                <li><b>Tinify when possible:</b> Will always use the Tinipng service if it is online, has an API key, and the image type is supported. Otherwise, it will be local.</li>
+                                <li><b>Best result:</b> It will trigger 2 compression routines, one for Tinypng and another for the local application, provided Tinypng meets the above requirements. Otherwise, it will only be local. In the end, the image with the smallest size will be used.</li>
+                                <li><b>Always local:</b> It will always use the application&#39;s internal engine to perform all activities.</li>
                             </ul>
                             <br>
                         </li>
 
                         <li>
                             <h4>Background color</h4>
-                            <p>Defines the background color for conversions to formats without an alpha channel (transparency). Currently only JPG. Choose the transparent color (checkerboard) to take advantage of the alpha channel. If the chosen color is transparent and the destination image has an alpha channel and is converted to JPG, black will be used as the background color.</p>
+                            <p>Defines the background color for conversions to formats without an alpha channel (transparency). Currently only JPG. Choose the transparent (checkered) color to take advantage of the alpha channel. If the chosen color is transparent and the destination image has an alpha channel and is converted to JPG, black will be used as the background color.</p>
                             <br>
                         </li>      
                         
@@ -74,12 +98,12 @@
                         
                         <li>
                             <h4>Files</h4>
-                            <p>Defines how the new image will be created as a file. The options are:</p>
+                            <p>Defines how the new image will be created in a file. The options are:</p>
                             <ul>
                                 <li><b>Overwrite: </b>The original file will be overwritten.</li>                            
                                 <li><b>Create folder: </b>A folder called optimized will be created, if it does not already exist, and the file will be created in it with the original name. If a file with the same name already exists in this folder, it will be overwritten.</li>                            
-                                <li><b>New file: </b>A new file with the suffix "-optimized" will be created.</li>                            
-                                <li><b>Backup:</b> Makes a backup copy of the original file with the suffix "-backup" before overwriting it.</li>                            
+                                <li><b>New file: </b>A new file with the suffix &quot;-optimized&quot; will be created.</li>                            
+                                <li><b>Backup copy:</b> Creates a backup copy of the original file with the &quot;-backup&quot; suffix before overwriting it.</li>                            
                             </ul>
                                 
                             <br>
@@ -90,10 +114,10 @@
                             <p>Defines the dimensions of the image being processed.</p>
                             <ul>
                                 <li><b>Do not change: </b>The image will not be resized.</li>                            
-                                <li><b>Scale: </b>The image is resized on one of the axes. Either width or height. The choice appears when this option is selected. The new size in pixels and the axis it refers to. The size of the other axis is calculated to keep the image in the same aspect ratio.</li>
-                                <li><b>Fit: </b>The image will be resized to fit within a rectangle whose dimensions, width and height, are requested when this option is selected. The new size will be the largest possible to fit the chosen dimensions.</li>
+                                <li><b>Scale: </b>The image is resized along one of the axes. Either width or height. The choice appears when this option is selected. The new size in pixels and which axis it refers to. The size of the other axis is calculated in such a way as to leave the image with the same aspect ratio.</li>
+                                <li><b>Fit: </b>The image will be resized to fit within a rectangle whose dimensions, width and height, are specified when this option is selected. The new size will be the largest possible to fit the chosen dimensions.</li>
                                 <li><b>Cover: </b>The image will be resized to cover the rectangle whose dimensions, width and height, are requested when this option is selected. The new size will be the smallest possible to cover the chosen dimensions. When used in Tinypng, AI is used to determine where to crop the image.</li>
-                                <li><b>Thumbnail: </b>Locally, it's the same as Cover. In Tinypng, it can stretch backgrounds to create thumbnails. Like Cover, width and height are requested.</li>
+                                <li><b>Miniature: </b>On-site is the same as Cover. TinyPNG is able to stretch backgrounds to create thumbnails. To cover it, the width and height are specified.</li>
                             </ul>                               
                             <br>
                         </li>                            
@@ -101,33 +125,116 @@
                     <br>
 
                     <h3>3- Command Bar</h3>
-                    <p>The first 3 buttons allow you to check and uncheck options related to image metadata. They are, in order: Copyright information, geolocation, and image date.</p>                    
-                    <p>The last 3, also in order, change the interface language, make a donation to the author, and invoke the Settings screen.</p>
+                    <p>The first 3 buttons allow you to select and unselect options related to image metadata. They are, in order: Copyright information, geolocation information, and image date.</p>                    
+                    <p>The last 3, also in order, change the interface language, make a donation to the author, and bring up the Settings screen.</p>
                     <br>
 
                     <h3>4- Counters</h3>
-                    <p>The optimizations made by this application are counted in this space. Both via Tinypng and locally. A general total and a monthly total are maintained.</p>                    
-                    <p>The monthly count, both locally and online (Tinify), is only for compressions made using this app. Each image counts as one compression, regardless of conversions and/or resizing. To see how many compressions you've done in Tinify this month, enable "Show monthly Tinify compression count" in settings.</p>
+                    <p>The optimizations made by this application are tracked in this space. Both via Tinypng and locally. A grand total and a monthly total are maintained.</p>                    
+                    <p>The monthly count, both locally and online (Tinify), only includes compressions made using this app. Each image counts as compression regardless of whether there are conversions and/or resizing. To see how many compressions you&#39;ve done in Tinify this month, enable &quot;Show monthly Tinify compression count&quot; in settings.</p>
                     <br>   
 
                     <h3>5- Totals</h3>
-                    <p>Shows the total saved and the number of optimizations made. The percentage refers to the total saved compared to the size before optimizations.</p>                    
+                    <p>It shows the total savings and the number of optimizations made. The percentage refers to the total savings compared to the size before optimizations.</p>                    
                     <br>
                     
 
                     <h3>6 Footer</h3>
-                    <p>Here we have an internet connection indicator, which attempts to verify if this connection exists, in addition to 4 links:</p>
+                    <p>Here we have an internet connection indicator, which attempts to measure in real time whether that connection exists. If none of the activities exist, they will be handled by the application&#39;s internal (local) engine. </p>
+                    <p>We also have a menu with 4 links:</p>
                     <ul>
-                        <li><b>Privacy: </b>Invokes a page with our privacy policy.</li>
-                        <li><b>EULA: </b>Invokes a page with our usage license.</li>
-                        <li><b>About: </b>Invokes a box about this application and its author. Here you can find contacts, other applications and various data.</li>
+                        <li><b>Privacy: </b>Access our privacy policy page.</li>
+                        <li><b>EULA: </b>Invokes page with our usage license.</li>
+                        <li><b>About: </b>Invokes a box about this application and its author. Here you can find contacts, other apps, and various data.</li>
                         <li><b>Help: </b>This page.</li>
                     </ul>
-                    <br>                        
+                    <br><br>       
+                    
+                    <h2 id="results">Results Interface</h2>
+                    <p>After images are dragged or opened and the compression, resizing, and conversion process begins, the screen below appears. In it, you simply follow this process. The interface is divided into 6 parts, indicated by a number from 1 to 6. Just find the one that interests you.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/rear-en.png" alt="Interface">
+                        <img src="/img/screens/numbers-rear.png" alt="Interface">
+                    </div>
+                    <br> 
+
+                    <h3>1- List of processed images</h3>
+                    <p>Contains the images being processed for your review and monitoring. It includes the following fields:</p>
+                    <ul>
+                        <li>A thumbnail, often showing only the center of the original image.</li>
+                        <li>The file name.</li>
+                        <li>Conversion indicator with the source and destination format.</li>
+                        <li>An icon indicating whether the processing is local or remote.</li>
+                        <li>Original size, compressed size, and compression percentage.</li>
+                        <li>Processing time.</li>
+                        <li>Process status: <ul>
+                                <li>Processing - animation</li>
+                                <li>Successfully completed - green icon</li>
+                                <li>An error occurred - red icon</li>
+                            </ul> </li>
+                    </ul>
+                    <br>
+
+                    <h3>2- Processing indicator</h3>
+                    <p>Visually indicates, as a percentage, how much of the processing has been completed.</p>
+                    <br>
+
+                    <h3>3- Image counter</h3>
+                    <p>Indicates how many images are being processed and how many have finished.</p>
+                    <br>          
+                    
+
+                    <h3>4- Processing time</h3>
+                    <p>Indicates the total processing time for all images.</p>
+                    <br>       
+                    
+                    <h3>5- Actions</h3>
+                    <p>At this point, only the button to return to the main interface is displayed. Nothing prevents you from dragging new images to be processed onto this results interface. The app will indicate acceptance and process them in the same way.</p>
+                    <br>            
+                    
+                    <h3>6- Tinypng.com processing indicator</h3>
+                    <p>If there is a valid API key and it is enabled in the settings, it shows how many compressions were done in the month with that key. This makes it easy for you to control how many compressions you have already done.</p>
+                    <br><br>       
+                    
+                    <h2 id="configs">Settings</h2>
+                    <p>Adjust the application settings here. The interface is divided into 4 parts, indicated by a number from 1 to 4. Just find the one that interests you.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/configs-en.png" alt="Interface">
+                        <img src="/img/screens/numbers-configs.png" alt="Interface">
+                    </div>
+                    <br> 
+
+                    <h3>1 - Tinypng API Key</h3>
+                    <p>If you choose to open a Tinypng account to access its powerful image compression and resizing API, enter your API key in this text box.</p>  
+                    <br>    
+                    
+                    <h3>2- Forced conversions</h3>
+                    <p>The BMP, PCX, and HEIC formats are only supported for reading. Therefore, to be compressed and/or resized, they must be converted to another format. Here you choose this default format. Note that when you choose another conversion format in the main interface selector, it will take precedence over this setting.</p>  
+                    <br>   
+                    
+                
+                    <h3>3- Other settings</h3>
+                    <ul>
+                        <li>Always on top - Keeps the application window always on top of others.</li>
+                        <li>Sound signal: Emits a sound signal at the end of processing.</li>
+                        <li>Tinypng monthly count: Shows in the interface how many compressions were made using the Tinypng service in the current month.</li>
+                        <li>Orientation correction: Attempts to correct the orientation of an image based on its EXIF data, if it exists and only in supported formats.</li>
+                        <li>Reset all counters: Resets the compression counts made by the application and starts everything from zero again.</li>
+                    </ul>   
+                    <br>           
+                                
+                    
+                    <h3>4- Command buttons</h3>
+                    <p>Save settings or return without saving.</p>  
+                    <br>                       
                 </div>
             </main>
         </section> 
-        <footer></footer>
+        <footer>
+            <span>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</span>
+        </footer>
     </body>
 </html>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
     <head>
         <title>AYUDA - Panda Cub App</title>
 
@@ -14,13 +14,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/pages/pages.css">
     </head>
-    <body>
+    <body id="home">
         <script>
             window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
                 document.querySelector('section').classList.remove('hide');
+
+                handleScroll();
+                window.addEventListener('scroll', handleScroll);   
             });
-        </script>       
+
+            
+            function handleScroll() {
+                if (window.scrollY > window.innerHeight * 0.5) {
+                    document.querySelector('.back2top').classList.remove('vanish');
+                } else {
+                    document.querySelector('.back2top').classList.add('vanish');
+                }
+            }
+
+            function navigate(id) {
+                const ele = document.getElementById(id);
+                ele.scrollIntoView({ behavior: 'smooth'})
+            }
+        </script>    
+        
+        <span class="back2top vanish">
+            <a href="#home"><img src="/img/back.png" alt=""></a>
+        </span>
+
         <section class="hide">
             <header>
                 <img src="../img/logos/pandacub.png" class="logo" alt="Panda Cub Logo">
@@ -30,19 +52,22 @@
             </header>
             <main>
                 <div class="help">
-                    <h1 class="first">AYUDA</h1>
+                    <h1>AYUDA</h1>
 
-                    <p>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</p>
+                    <nav> <a href="#main">Resultados</a> <a href="#results">Principales</a> <a href="#configs">Configuraciones</a> </nav>
                     <br>
  
+                    <h2 id="main">Interfaz Principal</h2>
                     <p>Esta aplicaci&#243;n tiene como objetivo facilitar el redimensionamiento y optimizaci&#243;n de im&#225;genes. Su interfaz est&#225; pr&#225;cticamente toda en la misma ventana y las opciones son simples. La interfaz est&#225; dividida en 6 partes, indicadas por un n&#250;mero del 1 al 6. Solo necesitas encontrar la que te interesa.</p>
                 
                     <div class="interface">
                         <img src="/img/screens/es.png" alt="Interfaz">
                         <img src="/img/screens/numbers-front.png" alt="Interfaz">
                     </div>
+                    <br> 
+
                     <h3>1- Caja de archivos</h3>
-                    <p>Suelta los archivos de im&#225;genes que deseas optimizar all&#237; dentro o haz clic en el bot&#243;n para cargar archivos usando el cuadro de di&#225;logo est&#225;ndar de tu sistema.</p>
+                    <p>Arrastra archivos de im&#225;genes soportadas sobre la caja para procesarlas. La aplicaci&#243;n indicar&#225; aceptaci&#243;n animando los bordes. Suelta los archivos de im&#225;genes que deseas optimizar all&#237; dentro o, alternativamente, haz clic en el bot&#243;n para cargar archivos usando el cuadro de di&#225;logo est&#225;ndar de tu sistema. Archivos que no son de im&#225;genes o de formatos no soportados se mostrar&#225;n con un mensaje de error en la siguiente pantalla, pero el procesamiento no se interrumpir&#225;.</p>
                     <br>
 
                     <h3>2- Ajustes de las im&#225;genes</h3>
@@ -52,7 +77,7 @@
                             <h4>Compresi&#243;n</h4>
                             <p>Define de d&#243;nde vendr&#225; la compresi&#243;n de las im&#225;genes.</p>
                             <ul>
-                                <li><b>Tinify cuando sea posible:</b> Usar&#225; siempre el servicio de Tinipng si est&#225; en l&#237;nea, tiene una clave de API y el tipo de imagen es compatible. De lo contrario, ser&#225; local.</li>
+                                <li><b>Tinify cuando sea posible:</b> Usar&#225; siempre el servicio de Tinipng si est&#225; en l&#237;nea, tiene una clave de API y el tipo de imagen es soportado. De lo contrario, ser&#225; local.</li>
                                 <li><b>Mejor resultado:</b> Disparar&#225; 2 rutinas de compresi&#243;n, una para Tinypng y otra para local, siempre que Tinypng cumpla con los requisitos anteriores. De lo contrario, ser&#225; solo local. Al final, se usar&#225; la imagen con el menor tama&#241;o.</li>
                                 <li><b>Siempre local:</b> Usar&#225; siempre el motor interno de la aplicaci&#243;n para realizar todas las actividades.</li>
                             </ul>
@@ -67,7 +92,7 @@
                         
                         <li>
                             <h4>Conversi&#243;n</h4>
-                            <p>Define el formato al cual se convertir&#225; la imagen resultante. Si no se elige ninguno, la imagen permanece en su formato original. Las excepciones son BMP, PCX y HEIC, que se convierten autom&#225;ticamente a otro formato seg&#250;n la configuraci&#243;n si no se elige un formato espec&#237;fico en este ajuste.</p>
+                            <p>Define el formato al que se convertir&#225; la imagen resultante. Si no se elige ninguno, la imagen permanece en su formato original. Las excepciones son BMP, PCX y HEIC que se convierten autom&#225;ticamente a otro formato seg&#250;n la configuraci&#243;n si no se elige un formato espec&#237;fico en este ajuste.</p>
                             <br>
                         </li>       
                         
@@ -76,7 +101,7 @@
                             <p>Define c&#243;mo se crear&#225; la nueva imagen en archivo. Las opciones son:</p>
                             <ul>
                                 <li><b>Sobrescribir: </b>El archivo original ser&#225; sobrescrito.</li>                            
-                                <li><b>Crear carpeta: </b>Se crear&#225; una carpeta llamada optimizada, si a&#250;n no existe, y el archivo se crear&#225; en ella con el nombre original. Si ya existe un archivo con el mismo nombre en esa carpeta, ser&#225; sobrescrito.</li>                            
+                                <li><b>Crear carpeta: </b>Se crear&#225; una carpeta llamada optimizada, si no existe ya, y el archivo se crear&#225; en ella con el nombre original. Si ya existe un archivo con el mismo nombre en esa carpeta, ser&#225; sobrescrito.</li>                            
                                 <li><b>Nuevo archivo: </b>Se crear&#225; un nuevo archivo con el sufijo &quot;-optimizado&quot;.</li>                            
                                 <li><b>Copia de seguridad:</b> Hace una copia de seguridad del archivo original con el sufijo &quot;-backup&quot; antes de sobrescribirlo.</li>                            
                             </ul>
@@ -90,9 +115,9 @@
                             <ul>
                                 <li><b>No alterar: </b>La imagen no sufrir&#225; ning&#250;n redimensionamiento.</li>                            
                                 <li><b>Escalar: </b>La imagen se redimensiona en uno de los ejes. O ancho o alto. La elecci&#243;n aparece cuando esta opci&#243;n est&#225; seleccionada. El nuevo tama&#241;o en p&#237;xeles y a qu&#233; eje se refiere. El tama&#241;o del otro eje se calcula de forma que la imagen mantenga la misma proporci&#243;n.</li>
-                                <li><b>Ajustar: </b>La imagen se redimensionar&#225; para caber dentro de un rect&#225;ngulo cuyas dimensiones, ancho y alto, se solicitan cuando esta opci&#243;n est&#225; seleccionada. El nuevo tama&#241;o ser&#225; el mayor posible para caber en las dimensiones elegidas.</li>
+                                <li><b>Ajustar: </b>La imagen se redimensionar&#225; para ajustarse dentro de un rect&#225;ngulo cuyas dimensiones, ancho y alto, se solicitan cuando esta opci&#243;n est&#225; seleccionada. El nuevo tama&#241;o ser&#225; el mayor posible para ajustarse a las dimensiones elegidas.</li>
                                 <li><b>Cubrir: </b>La imagen se redimensionar&#225; para cubrir el rect&#225;ngulo cuyas dimensiones, ancho y alto, se solicitan cuando esta opci&#243;n est&#225; seleccionada. El nuevo tama&#241;o ser&#225; el menor posible para cubrir las dimensiones elegidas. Cuando se usa en Tinypng, se utiliza IA para determinar d&#243;nde cortar la imagen.</li>
-                                <li><b>Miniatura: </b>En local es lo mismo que Cubrir. En Tinypng es capaz de alargar los fondos para crear miniaturas. Como en cubrir, se solicitan ancho y alto.</li>
+                                <li><b>Miniatura: </b>Localmente es lo mismo que Cubrir. En Tinypng es capaz de alargar los fondos para crear miniaturas. Como en cubrir, se solicitan ancho y alto.</li>
                             </ul>                               
                             <br>
                         </li>                            
@@ -105,28 +130,111 @@
                     <br>
 
                     <h3>4- Contadores</h3>
-                    <p>Las optimizaciones hechas por esta aplicaci&#243;n se contabilizan en este espacio. Tanto v&#237;a Tinypng como local. Se mantienen un total general y otro mensual.</p>                    
-                    <p>El conteo mensual tanto local como online (Tinify) es solo de las compresiones hechas usando esta app. Cada imagen cuenta como una compresi&#243;n independiente de haber conversiones y/o redimensionamientos. Para ver cu&#225;ntas compresiones hiciste en Tinify en el mes corriente habilita &quot;Mostrar el conteo mensual de compresiones de Tinify&quot; en configuraciones.</p>
+                    <p>Las optimizaciones realizadas por esta aplicaci&#243;n se contabilizan en este espacio. Tanto v&#237;a Tinypng como localmente. Se mantienen un total general y otro mensual.</p>                    
+                    <p>La cuenta mensual tanto local como en l&#237;nea (Tinify) es solo de las compresiones realizadas usando esta aplicaci&#243;n. Cada imagen cuenta como una compresi&#243;n independiente de que haya conversiones y/o redimensionamientos. Para ver cu&#225;ntas compresiones has hecho en Tinify en el mes actual, habilita &quot;Mostrar el conteo mensual de compresiones de Tinify&quot; en configuraciones.</p>
                     <br>   
 
                     <h3>5- Totales</h3>
-                    <p>Muestra el total ahorrado y el n&#250;mero de optimizaciones hechas. El porcentaje se refiere al total ahorrado comparado con el tama&#241;o antes de las optimizaciones.</p>                    
+                    <p>Muestra el total ahorrado y el n&#250;mero de optimizaciones realizadas. La porcentaje se refiere al total ahorrado en comparaci&#243;n con el tama&#241;o antes de las optimizaciones.</p>                    
                     <br>
                     
 
                     <h3>6 Pie de p&#225;gina</h3>
-                    <p>Aqu&#237; tenemos un indicador de conexi&#243;n a internet, que intenta verificar si esta conexi&#243;n existe, adem&#225;s de 4 enlaces:</p>
+                    <p>Aqu&#237; tenemos un indicador de conexi&#243;n a internet, que intenta verificar en tiempo real si esta conexi&#243;n existe. Si no existe, todas las actividades ser&#225;n a trav&#233;s del motor interno de la aplicaci&#243;n (local). </p>
+                    <p>Tambi&#233;n tenemos un men&#250; con 4 enlaces:</p>
                     <ul>
                         <li><b>Privacidad: </b>Invoca p&#225;gina con nuestra pol&#237;tica de privacidad.</li>
                         <li><b>EULA: </b>Invoca p&#225;gina con nuestra licencia de uso.</li>
-                        <li><b>Acerca de: </b>Invoca cuadro sobre esta aplicaci&#243;n y su autor. Aqu&#237; encuentras contactos, otras aplicaciones y datos diversos.</li>
+                        <li><b>Sobre: </b>Invoca box sobre esta aplicaci&#243;n y su autor. Aqu&#237; encuentras contactos, otras aplicaciones y datos diversos.</li>
                         <li><b>Ayuda: </b>Esta p&#225;gina.</li>
                     </ul>
-                    <br>                        
+                    <br><br>       
+                    
+                    <h2 id="results">Interfaz de Resultados</h2>
+                    <p>Despu&#233;s de que las im&#225;genes son arrastradas o abiertas y el proceso de compresi&#243;n, redimensionamiento y conversi&#243;n es iniciado, aparece la pantalla de abajo. En ella solo sigues este proceso. La interfaz est&#225; dividida en 6 partes, indicadas por un n&#250;mero del 1 al 6. Basta encontrar la que le interesa.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/rear-es.png" alt="Interfaz">
+                        <img src="/img/screens/numbers-rear.png" alt="Interfaz">
+                    </div>
+                    <br> 
+
+                    <h3>1- Lista de im&#225;genes procesadas</h3>
+                    <p>Contiene las im&#225;genes que se est&#225;n procesando para su conferencia y seguimiento. Incluye los siguientes campos:</p>
+                    <ul>
+                        <li>Una miniatura, que muestra muchas veces solo el centro de la imagen original.</li>
+                        <li>El nombre del archivo.</li>
+                        <li>Indicador de conversi&#243;n con el formato origen y destino.</li>
+                        <li>Un &#237;cono designando si el procesamiento es local o remoto.</li>
+                        <li>Tama&#241;o original, comprimido y porcentaje de compresi&#243;n.</li>
+                        <li>Tiempo gastado en el procesamiento.</li>
+                        <li>Estado del proceso: <ul>
+                                <li>Procesando - animaci&#243;n</li>
+                                <li>Completo con &#233;xito - &#237;cono verde</li>
+                                <li>Ocurri&#243; un error - &#237;cono rojo</li>
+                            </ul> </li>
+                    </ul>
+                    <br>
+
+                    <h3>2- Indicador de procesamiento</h3>
+                    <p>Indica visualmente y por porcentaje cu&#225;nto del procesamiento ya se ha completado.</p>
+                    <br>
+
+                    <h3>3- Contador de im&#225;genes</h3>
+                    <p>Indica cu&#225;ntas im&#225;genes est&#225;n siendo procesadas y cu&#225;ntas ya terminaron.</p>
+                    <br>          
+                    
+
+                    <h3>4- Tiempo de procesamiento</h3>
+                    <p>Indica el tiempo total del procesamiento de todas las im&#225;genes.</p>
+                    <br>       
+                    
+                    <h3>5- Acciones</h3>
+                    <p>En este momento solo el bot&#243;n de volver a la interfaz principal. Nada impide que arrastres nuevas im&#225;genes a ser procesadas sobre esta interfaz de resultado. La app indicar&#225; la aceptaci&#243;n y las procesar&#225; de la misma manera.</p>
+                    <br>            
+                    
+                    <h3>6- Indicador de procesamiento de Tinypng.com</h3>
+                    <p>Si hay una clave de API v&#225;lida y est&#225; habilitada en las configuraciones, muestra cu&#225;ntas compresiones se han hecho en el mes con esa clave. As&#237; es f&#225;cil controlar cu&#225;ntas compresiones ya has hecho.</p>
+                    <br><br>       
+                    
+                    <h2 id="configs">Configuraciones</h2>
+                    <p>Ajusta aqu&#237; las configuraciones de la aplicaci&#243;n. La interfaz est&#225; dividida en 4 partes, indicadas por un n&#250;mero del 1 al 4. Solo encuentra la que te interesa.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/configs-es.png" alt="Interfaz">
+                        <img src="/img/screens/numbers-configs.png" alt="Interfaz">
+                    </div>
+                    <br> 
+
+                    <h3>1- Clave de API de Tinypng</h3>
+                    <p>Si opta por abrir una cuenta en Tinypng, para tener acceso a su poderosa API de compresi&#243;n y redimensionamiento de im&#225;genes, ingrese su clave de API en esta caja de texto.</p>  
+                    <br>    
+                    
+                    <h3>2- Conversiones forzadas</h3>
+                    <p>Los formatos BMP, PCX y HEIC son soportados solo para lectura. Por lo tanto, para ser comprimidos y/o redimensionados deben obligatoriamente ir a otro formato. Aqu&#237; usted elige ese formato predeterminado. Note que cuando opte por otro formato de conversi&#243;n en el selector de la interfaz principal, este tendr&#225; prioridad sobre esta configuraci&#243;n.</p>  
+                    <br>   
+                    
+                
+                    <h3>3- Otras configuraciones</h3>
+                    <ul>
+                        <li>Siempre en la parte superior - Mantiene la ventana de la aplicaci&#243;n siempre sobre las otras.</li>
+                        <li>Se&#241;al sonora: Emite una se&#241;al sonora al final del procesamiento.</li>
+                        <li>Conteo mensual de Tinypng: Muestra en la interfaz cu&#225;ntas compresiones se han hecho usando el servicio Tinypng en el mes corriente.</li>
+                        <li>Correcci&#243;n de orientaci&#243;n: Intenta corregir la orientaci&#243;n de una imagen con base en su EXIF, si existe y solo en formatos soportados.</li>
+                        <li>Reiniciar todos los contadores: Reinicia los conteos de compresiones hechas por la aplicaci&#243;n y comienza todo desde cero nuevamente.</li>
+                    </ul>   
+                    <br>           
+                                
+                    
+                    <h3>4- Botones de comando</h3>
+                    <p>Guarda las configuraciones o regresa sin guardar.</p>  
+                    <br>                       
                 </div>
             </main>
         </section> 
-        <footer></footer>
+        <footer>
+            <span>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</span>
+        </footer>
     </body>
 </html>
 

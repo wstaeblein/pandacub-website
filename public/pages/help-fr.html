@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fr" dir="ltr">
     <head>
-        <title>AIDE - Panda Cub App</title>
+        <title>AIDE - Application Panda Cub</title>
 
         <link rel="preload" href="/img/logos/pandacub.png" as="image">
         
@@ -14,35 +14,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/pages/pages.css">
     </head>
-    <body>
+    <body id="home">
         <script>
             window.addEventListener('load', (event) => {
                 document.getElementById('year').textContent = new Date().getFullYear();
                 document.querySelector('section').classList.remove('hide');
+
+                handleScroll();
+                window.addEventListener('scroll', handleScroll);   
             });
-        </script>       
+
+            
+            function handleScroll() {
+                if (window.scrollY > window.innerHeight * 0.5) {
+                    document.querySelector('.back2top').classList.remove('vanish');
+                } else {
+                    document.querySelector('.back2top').classList.add('vanish');
+                }
+            }
+
+            function navigate(id) {
+                const ele = document.getElementById(id);
+                ele.scrollIntoView({ behavior: 'smooth'})
+            }
+        </script>    
+        
+        <span class="back2top vanish">
+            <a href="#home"><img src="/img/back.png" alt=""></a>
+        </span>
+
         <section class="hide">
             <header>
-                <img src="../img/logos/pandacub.png" class="logo" alt="Panda Cub Logo">
+                <img src="../img/logos/pandacub.png" class="logo" alt="Logo Panda Cub">
                 <div>
                     <a href="https://pandacub.app"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAB9CAMAAABd7Js+AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMAx2PN9Xc8vfnuHyPyC14H4dGpcsOFU0sbFg+ULysSt7FpWSbn256Yf20zrItA5L961aJEj/qaTAUAAAOUSURBVGje7ZnZcqpAEIYbNAgqILggLoD7Erdo+v1f7aTKicTYjExk9OLMd0tZ/4dD9/QAKBSKh+gFjjOuwsvofOAX03YIkhgkrTPanMhw28j4MEAKYQMvJLf5Pl6wtiADB1PqXTqfYTkggcNPgSpc0U3wmhEUz1u2QNXD36wAnicwaOAt/ecJbKdIsXiWQMdCmvfoKQIjzGQfSRZg+RyDULrAAbnMBpIF+niH3UCqwALv0jDkCUQ+5sAcyxKI9piPNzkCEw/z0pYgEA4bZO/RTQkGhIDlkPl9GwKyLx/tggXM7Btd75AgcYsU4C/1eoYEcVW2gKkDI2whwUdNhgBd7lFMGkxkCkw78AN7jgTWSZ7Abs1mwwAgu0nXT3IE0vyhhweugSNHwJsAXCpwA2eaSLGSIdBihwTj3IPmrOmMTCQ4FC9w7LGDy3dgzAxOFhLM4a80kWRxe3CKIzYuF2vQR4pPdnVpEiU/9JAgCUGIXA/Vhp4Fq6SBFkrMZ1gBM9BIgyEIQpe11WGNL8EbygG79k42zjWIQbfWLcuIkaA8gjNt0sAAAXpHJPDYOnfjO7PgkvTrQG5CjcxnG/xkhlkceAZm7rbc5eaz8YNm7hZgsG7wTr6BhTyOcGb891k1mJL5LrtaRj7vIWuK5G1sxN5MpXyy/KaJ9yixnYoe4337Xj6ZsOQfjelioQ1iWzzfZOXlLjAXlsGa4h4JNN6k2EYq/7uAfUQxg15F7BWC/cnLj3zMTVnnGdSDjPyYl98toQg6z7oc5M9vGAL5VMn3875CmLTImmLbqDFDUfrcwe7tZvsh77DSY/kWitNnBaeb2WuUQj5/fiSWT+vTs2p9eL0AFudP1MsoBP0H8kdVh5ePf8YbZhtoVwLj7H3jDR+gwQwGnrCAnpaRIHQZtwgBzhJYrFDtB/PTSSxKuAIGp5k/auBQH5kQY7giofJreyyCJWkQwBWGiRdmRrqhF2qwwRQfUn4NcVo3/TBUEEeXVdQlJLmdS7alc4fa9NIPMw9Aj5SGdl7jtktth9vRaNWppmvyGHTfc42vkFzfu0dYKB6IomOhTMMXC9SrSuDFArtXPwMlUAJKQAkoASWgBJSAElAChQqUjG9OqyZj1TafJ1ABgm75xQI1JaAElIASUAJKQAkoASXwPwnshQU8EGViYTYJ+QuewAKE6XAMHCDozTAT3wZxasuKRtJqAsnA12j8ABQKRSb/AKDZ2xfhftr9AAAAAElFTkSuQmCC" class="home" alt="Accueil"></a>               
                 </div>
             </header>
             <main>
                 <div class="help">
-                    <h1 class="first">AIDE</h1>
+                    <h1>AIDE</h1>
 
-                    <p>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</p>
+                    <nav> <a href="#main">Principaux</a> <a href="#results">R&#233;sultats</a> <a href="#configs">Param&#232;tres</a> </nav>
                     <br>
  
+                    <h2 id="main">Interface Principale</h2>
                     <p>Cette application a pour objectif de faciliter le redimensionnement et l&#39;optimisation des images. Son interface est pratiquement toute dans la m&#234;me fen&#234;tre et les options sont simples. L&#39;interface est divis&#233;e en 6 parties, indiqu&#233;es par un num&#233;ro de 1 &#224; 6. Il suffit de trouver celle qui vous int&#233;resse.</p>
                 
                     <div class="interface">
                         <img src="/img/screens/fr.png" alt="Interface">
                         <img src="/img/screens/numbers-front.png" alt="Interface">
                     </div>
+                    <br> 
+
                     <h3>1- Bo&#238;te de fichiers</h3>
-                    <p>D&#233;posez les fichiers d&#39;images que vous souhaitez optimiser &#224; l&#39;int&#233;rieur ou cliquez sur le bouton pour charger des fichiers en utilisant la bo&#238;te de dialogue standard de votre syst&#232;me.</p>
+                    <p>Faites glisser les fichiers d&#39;images pris en charge sur la bo&#238;te pour les traiter. L&#39;application indiquera l&#39;acceptation en animant les bords. D&#233;posez les fichiers d&#39;images que vous souhaitez optimiser &#224; l&#39;int&#233;rieur ou, alternativement, cliquez sur le bouton pour charger des fichiers en utilisant la bo&#238;te de dialogue standard de votre syst&#232;me. Les fichiers qui ne sont pas des images ou de formats non pris en charge seront affich&#233;s avec un message d&#39;erreur &#224; l&#39;&#233;cran suivant, mais le traitement ne sera pas interrompu.</p>
                     <br>
 
                     <h3>2- R&#233;glages des images</h3>
@@ -53,7 +78,7 @@
                             <p>D&#233;finit d&#39;o&#249; viendra la compression des images.</p>
                             <ul>
                                 <li><b>Tinify lorsque possible :</b> Utilisera toujours le service de Tinipng si vous &#234;tes en ligne, avez une cl&#233; API et que le type d&#39;image est pris en charge. Sinon, ce sera local.</li>
-                                <li><b>Meilleur r&#233;sultat :</b> D&#233;clenchera 2 routines de compression, une pour Tinypng et une autre pour le local, &#224; condition que Tinypng remplisse les conditions ci-dessus. Sinon, ce sera uniquement local. &#192; la fin, l&#39;image de plus petite taille sera utilis&#233;e.</li>
+                                <li><b>Meilleur r&#233;sultat :</b> D&#233;clenchera 2 routines de compression, une pour Tinypng et une autre pour le local, &#224; condition que Tinypng remplisse les conditions ci-dessus. Sinon, ce sera uniquement local. &#192; la fin, l&#39;image avec la plus petite taille sera utilis&#233;e.</li>
                                 <li><b>Toujours local :</b> Utilisera toujours le moteur interne de l&#39;application pour effectuer toutes les activit&#233;s.</li>
                             </ul>
                             <br>
@@ -61,19 +86,19 @@
 
                         <li>
                             <h4>Couleur de fond</h4>
-                            <p>D&#233;finit la couleur de fond pour les conversions vers des formats sans canal alpha (transparence). Actuellement, seulement JPG. Choisissez la couleur transparente (damier) pour profiter du canal alpha. Si la couleur choisie est transparente et que l&#39;image de destination a un canal alpha et est convertie en JPG, le noir sera utilis&#233; comme couleur de fond.</p>
+                            <p>D&#233;finir la couleur de fond pour les conversions vers des formats sans canal alpha (transparence). Actuellement, seulement JPG. Choisissez la couleur transparente (damier) pour profiter du canal alpha. Si la couleur choisie est transparente et que l&#39;image cible a un canal alpha et est convertie en JPG, le noir sera utilis&#233; comme couleur de fond.</p>
                             <br>
                         </li>      
                         
                         <li>
                             <h4>Conversion</h4>
-                            <p>D&#233;finit le format dans lequel l&#39;image r&#233;sultante sera convertie. Si aucun n&#39;est choisi, l&#39;image reste dans son format original. Les exceptions sont BMP, PCX et HEIC qui sont automatiquement convertis dans un autre format selon la configuration si un format sp&#233;cifique n&#39;est pas choisi dans ce r&#233;glage.</p>
+                            <p>D&#233;finir le format vers lequel l&#39;image r&#233;sultante sera convertie. Si aucun n&#39;est choisi, l&#39;image reste dans son format original. Les exceptions sont BMP, PCX et HEIC qui sont automatiquement convertis en un autre format selon la configuration si un format sp&#233;cifique n&#39;est pas choisi dans ce r&#233;glage.</p>
                             <br>
                         </li>       
                         
                         <li>
                             <h4>Fichiers</h4>
-                            <p>D&#233;finit comment la nouvelle image sera cr&#233;&#233;e en fichier. Les options sont :</p>
+                            <p>D&#233;finir comment la nouvelle image sera cr&#233;&#233;e en fichier. Les options sont :</p>
                             <ul>
                                 <li><b>&#201;craser : </b>Le fichier original sera &#233;cras&#233;.</li>                            
                                 <li><b>Cr&#233;er un dossier : </b>Un dossier appel&#233; optimis&#233; sera cr&#233;&#233;, s&#39;il n&#39;existe pas d&#233;j&#224;, et le fichier y sera cr&#233;&#233; avec le nom original. Si un fichier du m&#234;me nom existe d&#233;j&#224; dans ce dossier, il sera &#233;cras&#233;.</li>                            
@@ -86,13 +111,13 @@
                         
                         <li>
                             <h4>Dimensions</h4>
-                            <p>D&#233;finit les dimensions de l&#39;image en cours de traitement.</p>
+                            <p>D&#233;finir les dimensions de l&#39;image en cours de traitement.</p>
                             <ul>
                                 <li><b>Ne pas modifier : </b>L&#39;image ne subira aucun redimensionnement.</li>                            
-                                <li><b>&#201;chelle : </b>L&#39;image est redimensionn&#233;e sur l&#39;un des axes. Soit la largeur, soit la hauteur. Le choix appara&#238;t lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille en pixels et &#224; quel axe elle se r&#233;f&#232;re. La taille de l&#39;autre axe est calcul&#233;e de mani&#232;re &#224; garder l&#39;image avec les m&#234;mes proportions.</li>
-                                <li><b>Ajuster </b>: L&#39;image sera redimensionn&#233;e pour s&#39;adapter &#224; un rectangle dont les dimensions, largeur et hauteur, sont demand&#233;es lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille sera la plus grande possible pour s&#39;adapter aux dimensions choisies.</li>
-                                <li><b>Couverture : </b>L&#39;image sera redimensionn&#233;e pour couvrir le rectangle dont les dimensions, largeur et hauteur, sont demand&#233;es lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille sera la plus petite possible pour couvrir les dimensions choisies. Lorsqu&#39;elle est utilis&#233;e dans Tinypng, l&#39;IA est utilis&#233;e pour d&#233;terminer o&#249; couper l&#39;image.</li>
-                                <li><b>Miniature : </b>Sur place, c&#39;est la m&#234;me chose que Couverture. Dans Tinypng, il est capable d&#39;&#233;tirer les arri&#232;re-plans pour cr&#233;er des miniatures. Comme pour la couverture, la largeur et la hauteur sont demand&#233;es.</li>
+                                <li><b>Escalader : </b>L&#39;image est redimensionn&#233;e sur l&#39;un des axes. Soit la largeur, soit la hauteur. Le choix appara&#238;t lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille en pixels et l&#39;axe auquel elle se r&#233;f&#232;re. La taille de l&#39;autre axe est calcul&#233;e de mani&#232;re &#224; conserver la m&#234;me proportion de l&#39;image.</li>
+                                <li><b>Adapter </b>: L&#39;image sera redimensionn&#233;e pour s&#39;adapter &#224; l&#39;int&#233;rieur d&#39;un rectangle dont les dimensions, largeur et hauteur, sont demand&#233;es lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille sera la plus grande possible pour s&#39;adapter aux dimensions choisies.</li>
+                                <li><b>Couvrir </b>: L&#39;image sera redimensionn&#233;e pour couvrir le rectangle dont les dimensions, largeur et hauteur, sont demand&#233;es lorsque cette option est s&#233;lectionn&#233;e. La nouvelle taille sera la plus petite possible pour couvrir les dimensions choisies. Lorsqu&#39;elle est utilis&#233;e dans Tinypng, l&#39;IA est utilis&#233;e pour d&#233;terminer o&#249; couper l&#39;image.</li>
+                                <li><b>Miniature : </b>Sur place, c&#39;est la m&#234;me chose que Couvrir. Dans Tinypng, il est capable d&#39;&#233;tirer les arri&#232;re-plans pour cr&#233;er des miniatures. Comme pour couvrir, la largeur et la hauteur sont demand&#233;es.</li>
                             </ul>                               
                             <br>
                         </li>                            
@@ -100,13 +125,13 @@
                     <br>
 
                     <h3>3- Barre de Commandes</h3>
-                    <p>Les 3 premiers boutons permettent de cocher et d&#233;cocher des options concernant les m&#233;tadonn&#233;es de l&#39;image. Ce sont, dans l&#39;ordre : Informations sur le copyright, la g&#233;olocalisation et la date de l&#39;image.</p>                    
+                    <p>Les 3 premiers boutons permettent de cocher et d&#233;cocher des options relatives aux m&#233;tadonn&#233;es de l&#39;image. Ce sont, dans l&#39;ordre : Informations sur le copyright, la g&#233;olocalisation et la date de l&#39;image.</p>                    
                     <p>Les 3 derniers, &#233;galement dans l&#39;ordre, changent la langue de l&#39;interface, font un don &#224; l&#39;auteur et invoquent l&#39;&#233;cran de Configuration.</p>
                     <br>
 
                     <h3>4- Compteurs</h3>
                     <p>Les optimisations effectu&#233;es par cette application sont comptabilis&#233;es dans cet espace. Tant via Tinypng que localement. Un total g&#233;n&#233;ral et un autre mensuel sont maintenus.</p>                    
-                    <p>Le d&#233;compte mensuel, tant local qu&#39;en ligne (Tinify), concerne uniquement les compressions effectu&#233;es &#224; l&#39;aide de cette application. Chaque image compte comme une compression ind&#233;pendamment des conversions et/ou redimensionnements. Pour voir combien de compressions vous avez effectu&#233;es sur Tinify au cours du mois en cours, activez &quot;Afficher le d&#233;compte mensuel des compressions de Tinify&quot; dans les param&#232;tres.</p>
+                    <p>La comptabilisation mensuelle, tant locale qu&#39;en ligne (Tinify), concerne uniquement les compressions effectu&#233;es &#224; l&#39;aide de cette application. Chaque image compte comme une compression, ind&#233;pendamment des conversions et/ou redimensionnements. Pour voir combien de compressions vous avez effectu&#233;es sur Tinify au cours du mois en cours, activez &quot;Afficher le comptage mensuel des compressions de Tinify&quot; dans les param&#232;tres.</p>
                     <br>   
 
                     <h3>5- Totaux</h3>
@@ -114,19 +139,102 @@
                     <br>
                     
 
-                    <h3>6 Pied de page</h3>
-                    <p>Voici un indicateur de connexion &#224; Internet, qui tente de v&#233;rifier si cette connexion existe, ainsi que 4 liens :</p>
+                    <h3>6- Pied de page</h3>
+                    <p>Ici, nous avons un indicateur de connexion &#224; Internet, qui tente de v&#233;rifier en temps r&#233;el si cette connexion existe. Si elle n&#39;existe pas, toutes les activit&#233;s se feront via le moteur interne de l&#39;application (local). </p>
+                    <p>Nous avons &#233;galement un menu avec 4 liens :</p>
                     <ul>
-                        <li><b>Confidentialit&#233; : </b>Ouvre la page avec notre politique de confidentialit&#233;.</li>
-                        <li><b>EULA : </b>Ouvre la page avec notre licence d&#39;utilisation.</li>
-                        <li><b>&#192; propos : </b>Ouvre une bo&#238;te &#224; propos de cette application et de son auteur. Vous y trouverez des contacts, d&#39;autres applications et diverses informations.</li>
+                        <li><b>Confidentialit&#233; : </b>Ouvre une page avec notre politique de confidentialit&#233;.</li>
+                        <li><b>EULA : </b>Ouvre une page avec notre licence d&#39;utilisation.</li>
+                        <li><b>&#192; propos : </b>Ouvre une bo&#238;te sur cette application et son auteur. Vous y trouverez des contacts, d&#39;autres applications et diverses informations.</li>
                         <li><b>Aide : </b>Cette page.</li>
                     </ul>
-                    <br>                        
+                    <br><br>       
+                    
+                    <h2 id="results">Interface de r&#233;sultats</h2>
+                    <p>Apr&#232;s que les images sont gliss&#233;es ou ouvertes et que le processus de compression, redimensionnement et conversion est lanc&#233;, l&#39;&#233;cran ci-dessous appara&#238;t. Vous y suivez simplement ce processus. L&#39;interface est divis&#233;e en 6 parties, indiqu&#233;es par un num&#233;ro de 1 &#224; 6. Il suffit de trouver celle qui vous int&#233;resse.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/rear-fr.png" alt="Interface">
+                        <img src="/img/screens/numbers-rear.png" alt="Interface">
+                    </div>
+                    <br> 
+
+                    <h3>1- Liste des images trait&#233;es</h3>
+                    <p>Contient les images en cours de traitement pour votre v&#233;rification et suivi. Inclut les champs suivants :</p>
+                    <ul>
+                        <li>Une miniature, qui montre souvent seulement le centre de l&#39;image originale.</li>
+                        <li>Le nom du fichier.</li>
+                        <li>Indicateur de conversion avec le format source et destination.</li>
+                        <li>Une ic&#244;ne d&#233;signant si le traitement est local ou distant.</li>
+                        <li>Taille originale, compress&#233;e et pourcentage de compression.</li>
+                        <li>Temps pass&#233; sur le traitement.</li>
+                        <li>Statut du processus : <ul>
+                                <li>Traitement - animation</li>
+                                <li>Termin&#233; avec succ&#232;s - ic&#244;ne verte</li>
+                                <li>Une erreur s&#39;est produite - ic&#244;ne rouge</li>
+                            </ul> </li>
+                    </ul>
+                    <br>
+
+                    <h3>2- Indicateur de traitement</h3>
+                    <p>Indique visuellement et par pourcentage combien du traitement a d&#233;j&#224; &#233;t&#233; compl&#233;t&#233;.</p>
+                    <br>
+
+                    <h3>3- Compteur d&#39;images</h3>
+                    <p>Indique combien d&#39;images sont en cours de traitement et combien sont d&#233;j&#224; termin&#233;es.</p>
+                    <br>          
+                    
+
+                    <h3>4- Temps de traitement</h3>
+                    <p>Indique le temps total du traitement de toutes les images.</p>
+                    <br>       
+                    
+                    <h3>5- Actions</h3>
+                    <p>Pour le moment, seulement le bouton pour revenir &#224; l&#39;interface principale. Rien n&#39;emp&#234;che que vous glissiez de nouvelles images &#224; traiter sur cette interface de r&#233;sultat. L&#39;application indiquera l&#39;acceptation et les traitera de la m&#234;me mani&#232;re.</p>
+                    <br>            
+                    
+                    <h3>6- Indicateur de traitement de Tinypng.com</h3>
+                    <p>S&#39;il y a une cl&#233; API valide et qu&#39;elle est activ&#233;e dans les param&#232;tres, montre combien de compressions ont &#233;t&#233; faites dans le mois avec cette cl&#233;. Ainsi, il est facile de contr&#244;ler combien de compressions ont d&#233;j&#224; &#233;t&#233; faites.</p>
+                    <br><br>       
+                    
+                    <h2 id="configs">Param&#232;tres</h2>
+                    <p>Ajustez ici les param&#232;tres de l&#39;application. L&#39;interface est divis&#233;e en 4 parties, indiqu&#233;es par un num&#233;ro de 1 &#224; 4. Il suffit de trouver celle qui vous int&#233;resse.</p>
+                
+                    <div class="interface">
+                        <img src="/img/screens/configs-fr.png" alt="Interface">
+                        <img src="/img/screens/numbers-configs.png" alt="Interface">
+                    </div>
+                    <br> 
+
+                    <h3>1- Cl&#233; API de Tinypng</h3>
+                    <p>Si vous choisissez d&#39;ouvrir un compte sur Tinypng pour acc&#233;der &#224; sa puissante API de compression et de redimensionnement d&#39;images, entrez votre cl&#233; API dans cette zone de texte.</p>  
+                    <br>    
+                    
+                    <h3>2- Conversions forc&#233;es</h3>
+                    <p>Les formats BMP, PCX et HEIC sont uniquement pris en charge pour la lecture. Par cons&#233;quent, pour &#234;tre compress&#233;s et/ou redimensionn&#233;s, ils doivent obligatoirement &#234;tre convertis dans un autre format. Ici, vous choisissez ce format par d&#233;faut. Notez que si vous optez pour un autre format de conversion dans le s&#233;lecteur de l&#39;interface principale, il aura priorit&#233; sur ce param&#232;tre.</p>  
+                    <br>   
+                    
+                
+                    <h3>3- Autres param&#232;tres</h3>
+                    <ul>
+                        <li>Toujours au-dessus - Maintient la fen&#234;tre de l&#39;application toujours au-dessus des autres.</li>
+                        <li>Signal sonore : &#201;met un signal sonore &#224; la fin du traitement.</li>
+                        <li>Comptage mensuel de Tinypng : Affiche dans l&#39;interface le nombre de compressions effectu&#233;es avec le service Tinypng au cours du mois en cours.</li>
+                        <li>Correction d&#39;orientation : Tente de corriger l&#39;orientation d&#39;une image en fonction de son EXIF, si disponible et uniquement pour les formats pris en charge.</li>
+                        <li>R&#233;initialiser tous les compteurs : R&#233;initialise les compteurs de compressions effectu&#233;es par l&#39;application et recommence &#224; z&#233;ro.</li>
+                    </ul>   
+                    <br>           
+                                
+                    
+                    <h3>4- Boutons de commande</h3>
+                    <p>Enregistre les param&#232;tres ou revient sans enregistrer.</p>  
+                    <br>                       
                 </div>
             </main>
         </section> 
-        <footer></footer>
+        <footer>
+            <span>Panda Cub App - Copyright &#169; 2022-<span id="year">2026</span> Walter Staeblein</span>
+        </footer>
     </body>
 </html>
 

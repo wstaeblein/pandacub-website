@@ -32,13 +32,16 @@
         mainclass: "colors",
         data: [],
     };
+    let frmFields = { name: '', email: '', subject: '', message: '' };
+    let formIsValid = false;
 
 
-    // PANDACUB MAIL
-    // LOGIN: walter@pandacub.app
-    // PWD: Ei]ohxOyp*vtawmndrfgj4zcqlk0be
+
+
 
     $: if (ready) { setTimeout(() => { showAfter = true; }, 300)};
+
+
 
     window.addEventListener('scroll', function() { 
         const scrolledTo = window.scrollY + window.innerHeight;
@@ -52,7 +55,7 @@
         }
 
         if (scrolledTo >= totalHeight - 1) { 
-            ele.classList.add('start');
+            setTimeout(() => ele.classList.add('start'), Math.ceil(Math.random() * 5000));
         }
     });
 
@@ -209,33 +212,29 @@
     async function handleSubmit(event) {
         event.preventDefault();
 
-        console.log(myForm);
-        const formData = new FormData(myForm);
+
+
         formMode = 1;
-        await setTimeout(() => {}, 2000)
+        await setTimeout(() => {}, 2000);           
 
-        fetch("/form", {
+        fetch("https://formsubmit.co/ajax/7dc2563d9edba8c49d33cba7ff4f6a59", { 
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-        }).then(async () => {
-            formMode = 3;
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(frmFields)
 
-            
+        }).then(async () => { 
+            formMode = 2;
             await tick();
             flipped = true;
-
-            myForm.reset();
-            //setTimeout(() => formMode = 0, 5000);
+            setTimeout(() => reset, 15000);
 
         }).catch(async (error) => {
             formMode = 3;
-
             await tick();
             flipped = true;
 
             console.log(error);
-            setTimeout(() => formMode = 0, 5000);
+            setTimeout(() => reset, 15000);
         });            
         
 
@@ -243,6 +242,7 @@
 
     function reset() {
         formMode = 0;
+        flipped = false;
         myForm.reset();
     }
 
@@ -255,6 +255,9 @@
     }
 
     
+    function check() { 
+        formIsValid = myForm.checkValidity()
+    }
 </script>
 
 
@@ -472,31 +475,29 @@
 
                 <div class="flipcard">
                     <div class="cardbody" class:flipped={flipped}>
-                        <form method="POST" name="Contact" class="card" action="/thanks-en.html" data-netlify="true" bind:this={myForm}>
-                            <input type="hidden" name="form-name" value="Contact">
-                            <input type="hidden" name="appid" value="{appid}">
+                        <form name="Contact" class="card" bind:this={myForm}>
                             <p class="just">
                                 {langData.contacttext.first}<a
-                                    href="mailto:ola@pandacub.app"
+                                    href="mailto:hello@pandacub.app"
                                     >{langData.contacttext.link}</a
                                 >{langData.contacttext.last}
                             </p>
                             <div>
-                                <input type="text" name="Name" placeholder={langData.placeholders.name} required />
+                                <input type="text" name="name" bind:value={frmFields.name} placeholder={langData.placeholders.name} maxlength="50" minlength="3" on:input={check} required />
                             </div>
                             <div>
-                                <input type="email" name="Email" placeholder="Email" required />
+                                <input type="email" name="email" bind:value={frmFields.email} placeholder="Email" maxlength="80" on:input={check} required />
                             </div>                    
                             <div>
-                                <input type="text" name="Subject" placeholder={langData.placeholders.subject} />
+                                <input type="text" name="subject" bind:value={frmFields.subject} placeholder={langData.placeholders.subject} maxlength="80" on:input={check} required />
                             </div>
                             <div>
-                                <textarea name="Text" placeholder={langData.placeholders.text} required />
+                                <textarea name="message" bind:value={frmFields.message} placeholder={langData.placeholders.text} maxlength="4096" on:input={check} required />
                             </div>
                             <br>
 
                             {#if formMode == 0}
-                                <button class="button" on:click|preventDefault={handleSubmit}><span>{langData.sendmailbtn}</span></button>
+                                <button class="button" on:click|preventDefault={handleSubmit} class:disabled={!formIsValid}><span>{langData.sendmailbtn}</span></button>
                                 <br><br><br>
                             {:else if formMode == 1}
                                 <div class="formwait anim">
@@ -513,7 +514,7 @@
                                 <h3>{langData.youropinion}</h3>
                                 <p>{langData.betterprod}</p>
                                 <nav>
-                                    <button class="button" on:click={() => formMode = 0}><span>{langData.back}</span></button>
+                                    <button class="button" on:click={reset}><span>{langData.back}</span></button>
                                 </nav>                
                             </div>    
 
@@ -526,7 +527,7 @@
                                 </div>
 
                                 <nav>
-                                    <button class="button" on:click={() => formMode = 0}><span>{langData.back}</span></button>
+                                    <button class="button" on:click={reset}><span>{langData.back}</span></button>
                                 </nav>                                       
                             </div>
                                            
@@ -612,6 +613,9 @@
 
     .error {
         display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;        
     }
 
     .error img.errimg {
@@ -654,7 +658,7 @@
     }
 
     div.thanks p {
-        margin-bottom: 12px;
+        margin-bottom: 12px !important;
     }
 
     .result {
@@ -667,11 +671,12 @@
         justify-content: center;
         align-items: center;
         gap: 0.5vw;
+        transform: translateY(-20px);
     }
 
     .result > div.thanks > img {
-        width: max(calc(12vw + 44px), 180px);
-        height: max(calc(12vw + 44px), 180px);
+        width: max(calc(9vw + 20px), 180px);
+        aspect-ratio: 1;
     }
 
     .result > div.thanks > p {
@@ -688,10 +693,17 @@
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
 
+    .result h1 {
+        color: rgb(6, 44, 6);
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+
     .formwait {
         display: flex;
         justify-content: center;
         gap: 15px;
+        transform: translateY(-15px);
     }
     .formwait img {
         height: 40px;
@@ -1796,6 +1808,17 @@
             margin: 0 3vw;
         } */
 
+        .formwait > img {
+            display: none;
+        }
+
+        .formwait > span {
+            font-size: 20px;
+            margin-left: auto;
+            display: inline-block;
+            transform: translateY(-10px);
+        }
+
         .pandabamboo {
             left: -4vw;
             transform: rotate(45deg);
@@ -1891,6 +1914,10 @@
         #resources > div {
             margin-left: 5px;
             margin-right: 5px;
+        }
+
+        .formwait > span {
+            font-size: 18px;
         }
     }
 

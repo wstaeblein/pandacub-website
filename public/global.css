@@ -51,11 +51,18 @@ input, button, select, textarea {
 	padding: 8px 10px;
 	margin: 0;
 	box-sizing: border-box;
-	border: 1px solid #aaa;
-	border-radius: 4px;
+	border: 2px solid #aaa;
+	border-radius: 5px;
     resize: none;
     width: 100%;
+    outline: none;
 }
+
+input:user-invalid, textarea:user-invalid {
+    border-color: red;
+}
+
+
 
 /* input.dirty:valid, textarea.dirty:valid {
     border-color: forestgreen;
@@ -65,8 +72,9 @@ input.dirty:invalid, textarea.dirty:invalid {
     border-color: crimson;
 } */
 
-input:disabled {
-	color: #ccc;
+.disabled {
+	opacity: 0.5;
+    pointer-events: none;
 }
 
 a.button, button {
@@ -121,7 +129,7 @@ button:hover::before {
 }
 
 .shown {
-    display: flex;
+    display: flex !important;
 }
 
 
