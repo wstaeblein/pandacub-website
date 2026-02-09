@@ -143,7 +143,7 @@
                     <br>
                     
 
-                    <h3>6  Rodapé</h3>
+                    <h3>6- Rodapé</h3>
                     <p>Aqui temos um indicador de conexão com a internet, que tenta aferir em tempo real se essa conexão existe. Se não existir todas as atividades serão via o motor interno do aplicativo (local). </p>
                     <p>Temos também um menu com 4 links:</p>
                     <ul>
@@ -151,6 +151,24 @@
                         <li><b>EULA: </b>Invoca página com a nossa licença de uso.</li>
                         <li><b>Sobre: </b>Invoca box sobre este aplicativo e seu autor. Aqui você encontra contatos, outros aplicativos e dados diversos.</li>
                         <li><b>Ajuda: </b>Esta página.</li>
+                    </ul>
+                    <br>
+
+                    <h3>Dicas & Observações</h3>
+                    <ul>
+                        <li>Arquivos comprimidos que forem para a pasta otimizada usarão a pasta se ela já existir e sobrescreverão arquivos com o mesmo nome dentro da pasta.</li>
+                        <li>Arquivos comprimidos com sufixo, receberão o sufixo mesmo se mudarem de extensão (ex. estão mudando de formato tb).</li>
+                        <li>Auto orientar resolve problemas como o de imagens que estão de cabeça pra baixo mas tem um EXIF tipo: Orientation: Rotate 180. Este comando vai seguir o EXIF sempre que houver. Note que nem sempre imagens assim aparecem de cabeça pra baixo. Qualquer software que leve este EXIF em consideração ira mostrar a imagem corretamente, mas nem todos são assim.</li>
+                        <li>Tocar o som ao terminar o processamento é útil se vc colocar varias imagens para processar e for fazer outra coisa. Assim o som te avisa que o processamento terminou.</li>
+                        <li>A contagem mensal tanto local como online (Tinypng) é apenas das compressões feitas usando este app. Cada imagem conta como uma compressão independente de haverem conversões e/ou redimensionamentos. Para ver realmente quanto você gastou da sua quota mensal no Tinypng, habilite "Mostrar a contagem mensal de compressões do Tinypng".</li>
+                        <li>Quando o arquivo de origem é um SVG, não é computada economia pq não há como comparar imagem vetorial com raster e pelo motivo da conversão nunca ser gerar imagens menores. A economia só é computada entre imagens raster.</li>
+                        <li>Cor de fundo pode ser usada para:
+                            <ul>
+                                <li>Transformar o fundo transparente de uma imagem num fundo opaco da cor passada.</li>
+                                <li>Fornecer uma cor de fundo para uma conversão de imagem com transparência (alpha channel) para uma que não tem. Se não for fornecido (mantido como transparente) será usado preto (RGB 0, 0, 0).</li>
+                            </ul>
+                        </li>
+                        <li>Não é possível substituir o fundo opaco de uma imagem por outro de cor diferente.</li>
                     </ul>
                     <br><br>       
                     

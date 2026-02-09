@@ -138,8 +138,26 @@
                     <p>It shows the total savings and the number of optimizations made. The percentage refers to the total savings compared to the size before optimizations.</p>                    
                     <br>
                     
+                    <h3>Tips and Observations</h3>
+                    <ul>
+                        <li>Compressed files that go to the optimized folder will use the folder if it already exists and will overwrite files with the same name inside the folder.</li>
+                        <li>Compressed files with a suffix will receive the suffix even if they change their extension (e.g., they are also changing format).</li>
+                        <li>Auto-orient solves problems such as images that are upside down but have an EXIF like: Orientation: Rotate 180. This command will follow the EXIF whenever it exists. Note that not all images like this appear upside down. Any software that takes this EXIF into account will display the image correctly, but not all are like that.</li>
+                        <li>Playing the sound when processing is finished is useful if you put several images to process and go do something else. This way the sound alerts you that the processing has finished.</li>
+                        <li>The monthly count, both local and online (Tinypng), is only for compressions done using this app.</li> Each image counts as a compression regardless of whether there are conversions and/or resizings. To see exactly how much of your monthly Tinypng quota you've used, enable "Show Tinypng monthly compression count".</li>
+                        <li>When the source file is an SVG, no savings are calculated because there's no way to compare vector images with raster images, and because conversions never generate smaller images. Savings are only calculated between raster images.</li>
+                        <li>
+                            Background color can be used to:
+                            <ul>
+                                <li>Transform the transparent background of an image into an opaque background of the passed color.</li>
+                                <li>Provide a background color for an image conversion with transparency (alpha channel) to one that does not have it.</li> If not provided (kept as transparent), black (RGB 0, 0, 0) will be used.</li>
+                            </ul>
+                        </li>
+                        <li>It is not possible to replace the opaque background of an image with another of a different color.</li>                        
+                    </ul>
+                    <br><br>
 
-                    <h3>6 Footer</h3>
+                    <h3>6- Footer</h3>
                     <p>Here we have an internet connection indicator, which attempts to measure in real time whether that connection exists. If none of the activities exist, they will be handled by the application&#39;s internal (local) engine. </p>
                     <p>We also have a menu with 4 links:</p>
                     <ul>

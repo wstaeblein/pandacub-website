@@ -139,7 +139,7 @@
                     <br>
                     
 
-                    <h3>6 Pie de p&#225;gina</h3>
+                    <h3>6- Pie de p&#225;gina</h3>
                     <p>Aqu&#237; tenemos un indicador de conexi&#243;n a internet, que intenta verificar en tiempo real si esta conexi&#243;n existe. Si no existe, todas las actividades ser&#225;n a trav&#233;s del motor interno de la aplicaci&#243;n (local). </p>
                     <p>Tambi&#233;n tenemos un men&#250; con 4 enlaces:</p>
                     <ul>
@@ -148,7 +148,27 @@
                         <li><b>Sobre: </b>Invoca box sobre esta aplicaci&#243;n y su autor. Aqu&#237; encuentras contactos, otras aplicaciones y datos diversos.</li>
                         <li><b>Ayuda: </b>Esta p&#225;gina.</li>
                     </ul>
-                    <br><br>       
+                    <br>
+
+                    <h3>Consejos y observaciones</h3>
+                    <ul>
+                        <li>Los archivos comprimidos que se guardan en la carpeta optimizada usarán la carpeta si ya existe y sobrescribirán los archivos con el mismo nombre dentro de ella.</li>
+                        <li>Los archivos comprimidos con sufijo lo recibirán incluso si cambian de extensión (por ejemplo, si también cambian de formato).</li>
+                        <li>La orientación automática soluciona problemas como imágenes que están invertidas pero tienen un EXIF ​​como: Orientación: Rotar 180. Este comando seguirá el EXIF ​​siempre que exista. Tenga en cuenta que no todas las imágenes de este tipo aparecen invertidas. Cualquier software que tenga en cuenta este EXIF ​​mostrará la imagen correctamente, pero no todos son así.</li>
+                        <li>Reproducir el sonido al finalizar el procesamiento es útil si procesa varias imágenes y luego hace otra cosa. De esta forma, el sonido te avisa de que el procesamiento ha finalizado.</li>
+                        <li>El recuento mensual, tanto local como online (Tinypng), solo corresponde a las compresiones realizadas con esta aplicación.</li> Cada imagen cuenta como una compresión, independientemente de si se realizan conversiones o cambios de tamaño. Para ver exactamente cuánto has utilizado de tu cuota mensual de Tinypng, activa "Mostrar recuento mensual de compresión de Tinypng".
+                        <li>Cuando el archivo de origen es un SVG, no se calcula el ahorro porque no es posible comparar imágenes vectoriales con imágenes rasterizadas y porque las conversiones nunca generan imágenes más pequeñas. Los ahorros solo se calculan entre imágenes rasterizadas.</li>
+                        <li>El color de fondo se puede usar para:
+
+                        <ul>
+                            <li>Transformar el fondo transparente de una imagen en un fondo opaco del color transferido.</li>
+                            <li>Proporcionar un color de fondo para la conversión de una imagen con transparencia (canal alfa) a una sin ella.</li> Si no se proporciona (se mantiene transparente), se usará el negro (RGB 0, 0, 0).</li>
+                        </ul>
+                    </li>
+                    <li>No es posible reemplazar el fondo opaco de una imagen por otro de un color diferente.</li>
+                    </ul>
+                    <br><br>                    
+     
                     
                     <h2 id="results">Interfaz de Resultados</h2>
                     <p>Despu&#233;s de que las im&#225;genes son arrastradas o abiertas y el proceso de compresi&#243;n, redimensionamiento y conversi&#243;n es iniciado, aparece la pantalla de abajo. En ella solo sigues este proceso. La interfaz est&#225; dividida en 6 partes, indicadas por un n&#250;mero del 1 al 6. Basta encontrar la que le interesa.</p>

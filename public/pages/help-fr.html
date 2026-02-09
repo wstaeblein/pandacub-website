@@ -148,6 +148,27 @@
                         <li><b>&#192; propos : </b>Ouvre une bo&#238;te sur cette application et son auteur. Vous y trouverez des contacts, d&#39;autres applications et diverses informations.</li>
                         <li><b>Aide : </b>Cette page.</li>
                     </ul>
+                    <br>
+
+                    <h3>Conseils et observations</h3>
+                    <ul>
+                        <li>Les fichiers compressés envoyés dans le dossier optimisé utiliseront ce dossier s'il existe déjà et écraseront les fichiers portant le même nom à l'intérieur.</li>
+                        <li>Les fichiers compressés avec un suffixe conserveront ce suffixe même si leur extension change (par exemple, s'ils changent également de format).</li>
+                        <li>L'orientation automatique résout les problèmes d'images à l'envers présentant une donnée EXIF ​​telle que : Orientation : Rotation 180°. Cette commande suivra cette donnée EXIF ​​lorsqu'elle est présente. Notez que toutes les images de ce type ne sont pas à l'envers. Tout logiciel prenant en compte cette donnée EXIF ​​affichera l'image correctement, mais ce n'est pas le cas de tous.</li>
+                        <li>Lire un son à la fin du traitement est utile si vous traitez plusieurs images et que vous vous absentez pour une autre tâche. Ainsi, un signal sonore vous avertit de la fin du traitement.
+                        <li>Le nombre mensuel de compressions, locales et en ligne (Tinypng), concerne uniquement les compressions effectuées avec cette application. Chaque image est comptabilisée comme une compression, qu'il y ait ou non des conversions et/ou des redimensionnements. Pour connaître votre consommation mensuelle de votre quota Tinypng, activez l'option « Afficher le nombre de compressions mensuelles Tinypng ».</li>
+                        <li>Lorsque le fichier source est un SVG, aucune économie n'est calculée, car il est impossible de comparer des images vectorielles et des images matricielles, et les conversions ne génèrent jamais d'images plus petites. Les économies ne sont calculées que pour les images raster.</li>
+                        <li>
+                            La couleur d'arrière-plan peut servir à :
+                            <ul>
+                                <li>Transformer l'arrière-plan transparent d'une image en un arrière-plan opaque de la couleur spécifiée.</li>
+                                <li>Fournir une couleur d'arrière-plan pour la conversion d'une image avec transparence (canal alpha) vers une image qui n'en possède pas.</li> Si aucune couleur n'est spécifiée (image conservée transparente), le noir (RVB 0, 0, 0) sera utilisé.</li>
+                            </ul>
+                        </li>
+                        <li>Il n'est pas possible de remplacer l'arrière-plan opaque d'une image par un autre d'une couleur différente.</li>
+                    </ul>
+
+                
                     <br><br>       
                     
                     <h2 id="results">Interface de r&#233;sultats</h2>
